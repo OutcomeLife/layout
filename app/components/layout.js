@@ -3,6 +3,7 @@ import { Body, Footer, Header, Sidebar } from './';
 
 
 
+
 export default class Layout extends Component {
   getUser() {
     var user = {
@@ -14,14 +15,15 @@ export default class Layout extends Component {
   }
 
   getList() {
-    var list = [{
-      id: "1",
-      text: "Text",
-      logo: "logo"
-    },
+    var list = [
     {
       id: "2",
-      text: "Text2",
+      text: "body2",
+      logo: "logo2"
+    },
+      {
+      id: "3",
+      text: "body3",
       logo: "logo2"
     }
     ];
@@ -29,7 +31,7 @@ export default class Layout extends Component {
   }
 
   render() {
-
+console.log(this.props);
 
     var logo = 'company logo';
     var headerClass = 'navbar navbar-default';
@@ -42,9 +44,7 @@ export default class Layout extends Component {
       <div className={`row ${themeClass}`}>
         <Header user={this.getUser()} logo={logo} headerClass={headerClass} />
         <Sidebar list={this.getList()} sidebarClass={sidebarClass} />
-        <Body bodyClass={bodyClass}>
-          Hello World
-        </Body>
+            {this.props.children}
         <Footer content='some text' footerClass={footerClass} />
       </div>
     );
