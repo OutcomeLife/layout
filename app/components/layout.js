@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { Body, Footer, Header, Sidebar } from './';
-
-
-
 
 export default class Layout extends Component {
   getUser() {
@@ -31,7 +27,7 @@ export default class Layout extends Component {
   }
 
   render() {
-console.log(this.props);
+    console.log(this.props);
 
     var logo = 'company logo';
     var headerClass = 'navbar navbar-default';
@@ -42,10 +38,9 @@ console.log(this.props);
 
     return (
       <div className={`row ${themeClass}`}>
-        <Header user={this.getUser()} logo={logo} headerClass={headerClass} />
-        <Sidebar list={this.getList()} sidebarClass={sidebarClass} />
+        
+        <h2>Layout</h2>
             {this.props.children}
-        <Footer content='some text' footerClass={footerClass} />
       </div>
     );
   }
