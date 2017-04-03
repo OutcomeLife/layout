@@ -11,8 +11,8 @@ export default class Rout extends Component {
 		return (
 			<Switch>
 			    <Route exact path="/" component={Body1} />				
-				<Route path="/body2" component={Body2} />
-				<Route path="/body3" component={Body3} />
+				<Route  path="/body2" component={Body2} />
+				<Route  path="/body3" component={Body3} />
   			</Switch>
   );
 	}

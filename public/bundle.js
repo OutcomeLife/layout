@@ -11131,6 +11131,11 @@ var Body1 = function (_Component) {
                     'h1',
                     null,
                     'from Body1 '
+                ),
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,'
                 )
             );
         }
@@ -11469,39 +11474,31 @@ var Header = function (_Component) {
         'div',
         { className: 'navbar' },
         _react2.default.createElement(
-          'nav',
-          { className: headerClass },
+          'i',
+          { className: 'navbar-brand material-icons', onClick: this.renderSidebar.bind(this) },
+          'menu'
+        ),
+        _react2.default.createElement(
+          'a',
+          { className: 'navbar-brand', href: '#' },
+          'Heading'
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'userProfile' },
           _react2.default.createElement(
-            'div',
-            { className: 'container-fluid' },
+            'li',
+            { className: 'user' },
             _react2.default.createElement(
-              'div',
-              { className: 'navbar-header' },
+              'button',
+              { className: 'drop', onClick: this.handelDropdown.bind(this) },
+              _react2.default.createElement('img', { className: 'userImage', src: './images/user.png' }),
               _react2.default.createElement(
-                'i',
-                { className: 'navbar-brand material-icons', onClick: this.renderSidebar.bind(this) },
-                'menu'
+                'text',
+                { style: { fontSize: "10" } },
+                'Bill'
               ),
-              _react2.default.createElement(
-                'a',
-                { className: 'navbar-brand', href: '#' },
-                'Heading'
-              )
-            ),
-            _react2.default.createElement(
-              'ul',
-              { className: 'nav navbar-nav navbar-right' },
-              _react2.default.createElement(
-                'li',
-                { className: 'user' },
-                _react2.default.createElement(
-                  'button',
-                  { className: 'drop', onClick: this.handelDropdown.bind(this) },
-                  _react2.default.createElement('img', { className: 'userImage', src: './images/user.png' }),
-                  'Bill',
-                  _react2.default.createElement('span', { className: 'glyphicon glyphicon-triangle-bottom' })
-                )
-              )
+              _react2.default.createElement('span', { className: 'glyphicon glyphicon-triangle-bottom' })
             )
           )
         ),
@@ -11785,11 +11782,7 @@ var Sidebar = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'sidebar' },
-        _react2.default.createElement(
-          'div',
-          { className: 'navbar-nav' },
-          renderList
-        )
+        renderList
       );
     }
   }]);
@@ -13754,7 +13747,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".userProfile {\n  float: right; }\n\n.userImage {\n  height: 25px;\n  width: 30px;\n  padding-right: 5px;\n  border-radius: 15px; }\n\n.user {\n  text-align: justify;\n  margin-top: 10px;\n  margin-right: 10px; }\n\n.navbar-right {\n  display: block; }\n\n.navbar {\n  background: none;\n  outline: none;\n  position: absolute;\n  height: 10vh;\n  width: 100%;\n  top: 0; }\n\n.glyphicon-triangle-bottom {\n  font-size: 10px;\n  padding-left: 3px; }\n\n.drop {\n  border: none;\n  background: none;\n  background-image: none;\n  background-color: none;\n  outline: none; }\n\n.drop:hover {\n  background-image: none;\n  background-color: none; }\n\n.drop:active {\n  background-color: #f1f1f1; }\n\n.DropDownMenuItem {\n  margin-top: -20px;\n  position: absolute;\n  right: 0;\n  background-color: #f9f9f9;\n  min-width: 100px;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1; }\n\n.DropDownMenuItem a {\n  color: black;\n  padding: 6px 10px;\n  padding-left: 8px;\n  text-decoration: none;\n  display: block;\n  text-align: center; }\n\n.DropDownMenuItem a:hover {\n  background-color: #f1f1f1; }\n\n.material-icons {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, ".userProfile {\n  float: right; }\n\n.userImage {\n  height: 25px;\n  width: 30px;\n  padding-right: 5px;\n  border-radius: 15px; }\n\n.user {\n  text-align: justify;\n  margin-right: 10px; }\n\n.navbar-right {\n  display: block; }\n\n.navbar {\n  background: none;\n  outline: none;\n  position: absolute;\n  height: 5vh;\n  width: 100%;\n  top: 0; }\n  .navbar .navbar-brand {\n    margin-top: -10px; }\n  .navbar .userProfile {\n    margin-right: 20px;\n    right: 20px;\n    list-style: none; }\n\n.glyphicon-triangle-bottom {\n  font-size: 10px;\n  padding-left: 3px; }\n\n.drop {\n  border: none;\n  background: none;\n  background-image: none;\n  background-color: none;\n  outline: none; }\n\n.drop:hover {\n  background-image: none;\n  background-color: none; }\n\n.drop:active {\n  background-color: #f1f1f1; }\n\n.DropDownMenuItem {\n  margin-top: 5vh;\n  position: absolute;\n  right: 0;\n  background-color: #f9f9f9;\n  min-width: 100px;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1; }\n\n.DropDownMenuItem a {\n  color: black;\n  padding: 6px 10px;\n  padding-left: 8px;\n  text-decoration: none;\n  display: block;\n  text-align: center; }\n\n.DropDownMenuItem a:hover {\n  background-color: #f1f1f1; }\n\n.material-icons {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -13768,7 +13761,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".sidebar {\n  background-color: #212121;\n  position: relative;\n  height: 100%;\n  color: white;\n  width: 200px;\n  display: block; }\n\n.sidebar a {\n  padding: 8px 8px 8px 32px;\n  text-decoration: none;\n  font-size: 15px;\n  color: #818181;\n  display: block;\n  transition: 0.3s; }\n\n.sidebar a.active {\n  color: blue; }\n\n.sidebar a:hover, .offcanvas a:focus {\n  color: #f1f1f1; }\n\n@media screen and (max-width: 991px) {\n  .sidebar {\n    display: none; } }\n", ""]);
+exports.push([module.i, ".sidebar {\n  background-color: #2b3f4f;\n  position: relative;\n  height: 100%;\n  color: white;\n  width: 200px;\n  display: block; }\n  .sidebar a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 15px;\n    color: #818181;\n    display: block;\n    transition: 0.3s; }\n\n.sidebar a.active {\n  color: green; }\n\n.sidebar a:hover, .offcanvas a:focus {\n  color: #f1f1f1; }\n", ""]);
 
 // exports
 
@@ -13782,7 +13775,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".main {\n  position: absolute;\n  height: 85vh;\n  width: 100%;\n  top: 10vh;\n  display: flex; }\n\n.rightPane2 {\n  background-color: green;\n  position: relative;\n  height: 100%;\n  display: block;\n  width: 100%; }\n", ""]);
+exports.push([module.i, ".main {\n  position: absolute;\n  height: 90vh;\n  width: 100%;\n  top: 5vh;\n  display: flex; }\n  .main .rightPane2 {\n    background-color: green;\n    position: relative;\n    height: 100%;\n    display: block;\n    width: 100%; }\n    .main .rightPane2 .rightPane {\n      background-color: green;\n      position: relative;\n      height: 100%;\n      display: inline-block;\n      width: 100%;\n      padding: 10px; }\n  .main .sidebar {\n    background-color: #2b3f4f;\n    position: relative;\n    height: 100%;\n    color: white;\n    width: 200px;\n    display: block; }\n  .main .sidebar a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 15px;\n    color: #818181;\n    display: block;\n    transition: 0.3s; }\n  .main .sidebar a.active {\n    color: blue; }\n  .main .sidebar a:hover, .main .offcanvas a:focus {\n    color: #f1f1f1; }\n\n.toggleMenu {\n  position: absolute;\n  height: 90vh;\n  width: 100%;\n  top: 5vh;\n  display: flex; }\n  .toggleMenu .rightPane2 {\n    background-color: green;\n    position: relative;\n    height: 100%;\n    display: block;\n    width: 100%; }\n    .toggleMenu .rightPane2 .rightPane {\n      background-color: green;\n      position: relative;\n      height: 100%;\n      display: inline-block;\n      width: 100%;\n      padding: 10px; }\n  .toggleMenu .sidebar {\n    display: none; }\n", ""]);
 
 // exports
 

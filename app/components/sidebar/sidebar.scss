@@ -1,32 +1,30 @@
 .sidebar  {
-  background-color: #212121;
+  background-color: rgb(43,63,79);
+
   position:relative;
   height:100%;
   color:white;
   width:200px;
   display:block;
-}
 
-.sidebar a {
+  a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 15px;
     color: #818181;
     display: block;
     transition: 0.3s
+
+    }
 }
 
 .sidebar a.active {
-    color: blue
+    color:green;
 }
 
 .sidebar a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
 
-@media screen and (max-width: 991px) {
-.sidebar {
-    display: none;
-}
-}
+
 

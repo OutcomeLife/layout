@@ -15,9 +15,7 @@ export default class Sidebar extends Component {
     });
     return (
       <div className="sidebar" >
-        <div className="navbar-nav">
           {renderList}
-        </div>
       </div>
 
     );

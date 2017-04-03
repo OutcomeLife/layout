@@ -9,9 +9,8 @@
   border-radius: 15px;
 }
 .user {
-
   text-align: justify;
-  margin-top: 10px;
+  // margin-top: 10px;
   margin-right: 10px;
 }
 
@@ -20,18 +19,22 @@ display:block;
 }
 
 
-
-
 .navbar {
   background: none;
   outline:none;
   position: absolute;
-  height:10vh;
+  height:5vh;
   width:100%;
   top:0;
+.navbar-brand {
+  margin-top:-10px;
 }
-
-
+.userProfile {
+    margin-right:20px;
+    right:20px;
+    list-style:none;
+}
+}
 
 
 .glyphicon-triangle-bottom {
@@ -56,7 +59,7 @@ display:block;
   background-color: #f1f1f1;
 }
 .DropDownMenuItem {
-    margin-top:-20px;
+    margin-top:5vh;
     position: absolute;
     right: 0;
     background-color: #f9f9f9;
@@ -78,3 +81,11 @@ display:block;
 .material-icons {
  cursor:pointer;
 }
+
+// @media (max-width: 991px) {
+//   .navbar-right {
+    
+//   }
+
+ 
+// }

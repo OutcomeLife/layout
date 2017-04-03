@@ -17,40 +17,36 @@ export default class Header extends Component {
       this.setState({ visibility: "hidden" });
     }
   }
-renderSidebar() {
-  if(document.getElementById("main").className == "main")
-  {
+  renderSidebar() {
+    if (document.getElementById("main").className == "main") {
 
-    document.getElementById("main").className = "toggleMenu";
-  }
-  else {
-    document.getElementById("main").className = "main";
-  }
+      document.getElementById("main").className = "toggleMenu";
+    }
+    else {
+      document.getElementById("main").className = "main";
+    }
 
-}
+  }
 
   render() {
     var { user, logo, headerClass } = this.props;
 
     return (
       <div className="navbar">
-        <nav className={headerClass}>
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <i className="navbar-brand material-icons" onClick={this.renderSidebar.bind(this)}>menu</i>
-              <a className="navbar-brand" href="#">Heading</a>
-            </div>
-            <ul className="nav navbar-nav navbar-right">
-              <li className="user" >
-                <button className="drop" onClick={this.handelDropdown.bind(this)}>
-                  <img className="userImage" src="./images/user.png" />
-                  Bill
-                      <span className="glyphicon glyphicon-triangle-bottom"></span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <i className="navbar-brand material-icons" onClick={this.renderSidebar.bind(this)}>menu</i>
+        <a className="navbar-brand" href="#">Heading</a>
+
+        <ul className="userProfile">
+
+          <li className="user" >
+            <button className="drop" onClick={this.handelDropdown.bind(this)}>
+              <img className="userImage" src="./images/user.png" />
+              <text style={{fontSize:"10"}}>Bill</text>
+             <span className="glyphicon glyphicon-triangle-bottom"></span>
+            </button>
+          </li>
+        </ul>
+
         <DropDownMenuItem visibility={this.state.visibility} />
 
       </div>
