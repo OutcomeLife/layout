@@ -1,8 +1,10 @@
 .sidebar  {
   background-color: #212121;
-  height:100vh;
-  margin-top:-20px;
+  position:relative;
+  height:100%;
   color:white;
+  width:200px;
+  display:block;
 }
 
 .sidebar a {
@@ -21,3 +23,10 @@
 .sidebar a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
+
+@media screen and (max-width: 991px) {
+.sidebar {
+    display: none;
+}
+}
+

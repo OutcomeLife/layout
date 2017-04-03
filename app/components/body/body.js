@@ -6,8 +6,8 @@ export default class Body extends Component {
 
 
     return (
-      <div className="col-sm-9 col-md-9 col-lg-10">
-        {this.props.children}
+      <div className="rightPane">
+        {/*{this.props.children}*/}
       </div>
 
     );

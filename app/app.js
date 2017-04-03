@@ -43,12 +43,14 @@ class App extends Component {
         return (
             <div className="app">
                 <Header user={this.getUser()} logo={logo} headerClass={headerClass} />
+                <div id="main" className="main">
                 <Sidebar list={this.getList()} sidebarClass={sidebarClass} />
 
-                <main>
+                <div className="rightPane2">
                     <Routes />
-                </main>
+                </div>
 
+                </div>
                 <Footer content='some text' footerClass={footerClass} />
             </div>
         );

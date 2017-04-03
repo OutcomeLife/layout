@@ -1,5 +1,19 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
+   overflow: hidden;
 
 }
+
+.rightPane {
+  background-color:green;
+  position:relative;
+  height:100%;
+  display:inline-block;
+  width:100%;
+
+}
+
+// @media screen and (max-width: 991px) {
+
+// }

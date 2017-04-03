@@ -6,7 +6,7 @@ export default class Header extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { visibility: "hidden" };
+    this.state = { visibility: "hidden", toggleClass: "main" };
 
   }
   handelDropdown() {
@@ -17,17 +17,28 @@ export default class Header extends Component {
       this.setState({ visibility: "hidden" });
     }
   }
+renderSidebar() {
+  if(document.getElementById("main").className == "main")
+  {
 
+    document.getElementById("main").className = "toggleMenu";
+  }
+  else {
+    document.getElementById("main").className = "main";
+  }
+
+}
 
   render() {
     var { user, logo, headerClass } = this.props;
 
     return (
-      <div>
+      <div className="navbar">
         <nav className={headerClass}>
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#">nav header</a>
+              <i className="navbar-brand material-icons" onClick={this.renderSidebar.bind(this)}>menu</i>
+              <a className="navbar-brand" href="#">Heading</a>
             </div>
             <ul className="nav navbar-nav navbar-right">
               <li className="user" >
