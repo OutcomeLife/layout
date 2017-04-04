@@ -5,6 +5,24 @@
         height:5vh;
         width:100%;
         top:0;
+
+        .navbar-form {
+            .form-control {
+                background-color:rgb(236,240,241);
+
+            }
+            .input-group-btn {
+              
+                .btn {
+                background-color:rgb(41,97,147);
+                .glyphicon-search {
+                    color:white;
+                }
+            }
+
+            }
+
+        }
         .material-icons {
             cursor:pointer;
             }
@@ -50,12 +68,24 @@
                         }
 
                         }
-                   
+               
                     }
-
             }
+    .DropDownMenuItem:before{
+        content:"";
+        width: 0;
+        height: 0;
+        right:0;
+        bottom:100%;
+        left:95px;
+        position:absolute;
+        border-bottom: 7px solid #f9f9f9;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+       
     }
-    .DropDownMenuItem {
+
+        .DropDownMenuItem {
         margin-top: 6vh;
         min-width: 140px;
         right:1px;
@@ -81,21 +111,10 @@
             font-size:12px;
         }
             :hover {color: blue;}
-   
+
 } 
 
-    .DropDownMenuItem:before{
-        content:"";
-        width: 0;
-        height: 0;
-        right:0;
-        bottom:100%;
-        left:95px;
-        position:absolute;
-        border-bottom: 7px solid #f9f9f9;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-       
+  
     }
 //This is without messaging look
     .dropDownMenuItem {
@@ -125,17 +144,65 @@
             width:100%;
             top:5vh;
             display: flex;
-            transition-delay: 1s;
-        
 
         .content {
             background-color:green;
-            position:relative;
+            position:absolute;
             height:100%;
             display:block;
             width:100%;
+            left:0;
+ 
             }
             .sidebar {
-                display:none;
+
+                left: -200px;
             }
         }
+        .badge1 {
+            position: relative;
+            border:none;
+            background-color: transparent;
+            outline:none;
+              :hover {
+                background-color:red;
+            }
+        }
+.badge1[data-badge]:after {
+    content:attr(data-badge);
+   position:absolute;
+   top:-6px;
+   right:-6px;
+   font-size:.7em;
+   background:green;
+   color:white;
+   width:18px;height:18px;
+   text-align:center;
+   line-height:18px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+}
+
+       .badge2 {
+            position: relative;
+            border:none;
+            background-color: transparent;
+            outline:none;
+            :hover {
+                background-color:red;
+            }
+        }
+.badge2[data-badge]:after {
+    content:attr(data-badge);
+   position:absolute;
+   top:-6px;
+   right:-6px;
+   font-size:.7em;
+   background:green;
+   color:white;
+   width:18px;height:18px;
+   text-align:center;
+   line-height:18px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+}
