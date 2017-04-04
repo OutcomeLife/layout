@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './body.scss';
-export default class Body extends Component {
+ import './content.scss';
+export default class Content extends Component {
 
   render() {
 

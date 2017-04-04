@@ -1,91 +1,141 @@
-.userProfile {
-  float: right;
-}
-.userImage {
-  height:25px;
-  width:30px;
-  padding-right: 5px;
+ .navbar {
+        background: none;
+        outline:none;
+        position: absolute;
+        height:5vh;
+        width:100%;
+        top:0;
+        .material-icons {
+            cursor:pointer;
+            }
+        .navbar-right {
+        display:block;
+        }
+        .navbar-brand {
+            margin-top:-10px;
+         }
+        .userProfile {
+                float: right;
+                margin-right:20px;
+                right:20px;
+                list-style:none;
+                .user {
+                    text-align: justify;
+                    margin-right: 10px;
+                    
+                    .drop {
+                        border: none;
+                        background: none;
+                        background-image: none;
+                        background-color: none;
+                        outline:none;
+                        
+                        :hover {
+                            background-image: none;
+                            background-color: none;
 
-  border-radius: 15px;
-}
-.user {
-  text-align: justify;
-  // margin-top: 10px;
-  margin-right: 10px;
-}
+                            }
+                        :active {
+                            background-color: #f1f1f1;
+                        }
+                        .glyphicon-triangle-bottom {
+                            font-size: 10px;
+                            padding-left: 3px;
+                        }
+                         .userImage {
+                            height:25px;
+                            width:30px;
+                            padding-right: 5px;
+                            border-radius: 15px;
+                        }
 
-.navbar-right {
-display:block;
-}
+                        }
+                   
+                    }
 
+            }
+    }
+    .DropDownMenuItem {
+        margin-top: 6vh;
+        min-width: 140px;
+        right:1px;
+        background: #f9f9f9;
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        .divider {
+                height: 1px;
+                width:100%;
+                display:block; /* for use on default inline elements like span */
+                margin: 0;
+                overflow: hidden;
+                background-color: rgb(255, 165, 0);
+                }
+      a {
+            color: black;
+            padding-left:7px;
+            text-decoration: none;
+            display: block;
+            padding-top:8px;
+            min-height:30px;
+            font-size:12px;
+        }
+            :hover {color: blue;}
+   
+} 
 
-.navbar {
-  background: none;
-  outline:none;
-  position: absolute;
-  height:5vh;
-  width:100%;
-  top:0;
-.navbar-brand {
-  margin-top:-10px;
-}
-.userProfile {
-    margin-right:20px;
-    right:20px;
-    list-style:none;
-}
-}
+    .DropDownMenuItem:before{
+        content:"";
+        width: 0;
+        height: 0;
+        right:0;
+        bottom:100%;
+        left:95px;
+        position:absolute;
+        border-bottom: 7px solid #f9f9f9;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+       
+    }
+//This is without messaging look
+    .dropDownMenuItem {
+        margin-top:5vh;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
 
+        a {
+            color: black;
+            padding: 6px 10px;
+            padding-left: 8px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        :hover {background-color: #f1f1f1}
+    }
 
-.glyphicon-triangle-bottom {
-    font-size: 10px;
-    padding-left: 3px;
-}
+    //This is when the toggle button is clicked
+        .toggleMenu {
+            position:absolute;
+            height:90vh;
+            width:100%;
+            top:5vh;
+            display: flex;
+            transition-delay: 1s;
+        
 
-
-.drop {
-  border: none;
-  background: none;
-  background-image: none;
-  background-color: none;
-  outline:none;
-}
-.drop:hover {
-  background-image: none;
-  background-color: none;
-
-}
-.drop:active {
-  background-color: #f1f1f1;
-}
-.DropDownMenuItem {
-    margin-top:5vh;
-    position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.DropDownMenuItem a {
-    color: black;
-    padding: 6px 10px;
-    padding-left: 8px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
-.DropDownMenuItem a:hover {background-color: #f1f1f1}
-.material-icons {
- cursor:pointer;
-}
-
-// @media (max-width: 991px) {
-//   .navbar-right {
-    
-//   }
-
- 
-// }
+        .content {
+            background-color:green;
+            position:relative;
+            height:100%;
+            display:block;
+            width:100%;
+            }
+            .sidebar {
+                display:none;
+            }
+        }

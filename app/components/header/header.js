@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DropDownMenuItem from './dropdownMenuItem.js';
+import DropDownMenuItem from './dropdown';
 import './header.scss';
 
 export default class Header extends Component {
