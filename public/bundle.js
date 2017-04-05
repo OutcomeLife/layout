@@ -11317,6 +11317,8 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(260);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11335,61 +11337,61 @@ var DropDownMenuItem = function (_Component) {
   }
 
   _createClass(DropDownMenuItem, [{
-    key: "renderProfile",
+    key: 'renderProfile',
     value: function renderProfile() {
       alert("please fetch api");
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var visibility = this.props.visibility;
 
       return _react2.default.createElement(
-        "div",
-        { style: { visibility: visibility }, className: "DropDownMenuItem" },
+        'div',
+        { style: { visibility: visibility }, className: 'DropDownMenuItem' },
         _react2.default.createElement(
-          "a",
-          { href: "#" },
-          "profile ",
+          'a',
+          { href: '#' },
+          'profile ',
           _react2.default.createElement(
-            "i",
-            { className: "material-icons",
+            'i',
+            { className: 'material-icons',
               style: { fontSize: "18px",
                 float: "right",
                 paddingRight: "5px" }
             },
-            "person_outline"
+            'person_outline'
           ),
-          " "
+          ' '
         ),
-        _react2.default.createElement("span", { className: "divider" }),
+        _react2.default.createElement('span', { className: 'divider' }),
         _react2.default.createElement(
-          "a",
-          { href: "#" },
-          "setting ",
+          'a',
+          { href: '#' },
+          'setting ',
           _react2.default.createElement(
-            "i",
-            { className: "material-icons",
+            'i',
+            { className: 'material-icons',
               style: { fontSize: "18px",
                 float: "right",
                 paddingRight: "5px" }
             },
-            "settings"
+            'settings'
           )
         ),
-        _react2.default.createElement("span", { className: "divider" }),
+        _react2.default.createElement('span', { className: 'divider' }),
         _react2.default.createElement(
-          "a",
-          { href: "#" },
-          "logout ",
+          'a',
+          { href: '#' },
+          'logout ',
           _react2.default.createElement(
-            "i",
-            { className: "material-icons",
+            'i',
+            { className: 'material-icons',
               style: { fontSize: "18px",
                 float: "right",
                 paddingRight: "5px" }
             },
-            "exit_to_app"
+            'exit_to_app'
           )
         )
       );
@@ -11444,6 +11446,18 @@ var _dropdown = __webpack_require__(107);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
 
+var _emailDropdown = __webpack_require__(253);
+
+var _emailDropdown2 = _interopRequireDefault(_emailDropdown);
+
+var _notificationDropdown = __webpack_require__(254);
+
+var _notificationDropdown2 = _interopRequireDefault(_notificationDropdown);
+
+var _reactAutobind = __webpack_require__(251);
+
+var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
+
 __webpack_require__(247);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -11462,18 +11476,30 @@ var Header = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
-    _this.state = { visibility: "hidden", toggleClass: "main" };
+    _this.state = {
+      visibility: "hidden",
+      toggleClass: "main",
+      Notification: "hidden",
+      Email: "hidden"
+    };
+
+    (0, _reactAutobind2.default)(_this);
 
     return _this;
   }
 
   _createClass(Header, [{
-    key: 'handelDropdown',
-    value: function handelDropdown() {
+    key: 'renderDropdown',
+    value: function renderDropdown() {
+
       if (this.state.visibility == "hidden") {
-        this.setState({ visibility: "visible" });
+        this.setState({
+          visibility: "visible"
+        });
       } else {
-        this.setState({ visibility: "hidden" });
+        this.setState({
+          visibility: "hidden"
+        });
       }
     }
   }, {
@@ -11484,6 +11510,51 @@ var Header = function (_Component) {
         document.getElementById("main").className = "toggleMenu";
       } else {
         document.getElementById("main").className = "main";
+      }
+    }
+  }, {
+    key: 'renderEmail',
+    value: function renderEmail() {
+      if (this.state.Email == "hidden") {
+        this.setState({
+          Email: "visible"
+        });
+      } else {
+        this.setState({
+          Email: "hidden"
+        });
+      }
+    }
+  }, {
+    key: 'renderNotification',
+    value: function renderNotification() {
+      if (this.state.Notification == "hidden") {
+        this.setState({
+          Notification: "visible"
+        });
+      } else {
+        this.setState({
+          Notification: "hidden"
+        });
+      }
+    }
+  }, {
+    key: 'collapse',
+    value: function collapse() {
+      if (this.state.Email == "visible") {
+        this.setState({
+          Email: "hidden"
+        });
+      }
+      if (this.state.Notification == "visible") {
+        this.setState({
+          Notification: "hidden"
+        });
+      }
+      if (this.state.visibility == "visible") {
+        this.setState({
+          visibility: "hidden"
+        });
       }
     }
   }, {
@@ -11520,7 +11591,7 @@ var Header = function (_Component) {
               { className: 'input-group-btn' },
               _react2.default.createElement(
                 'button',
-                { className: 'btn btn-primary', type: 'submit' },
+                { className: 'btn btn-default', type: 'submit' },
                 _react2.default.createElement('i', { className: 'glyphicon glyphicon-search' })
               )
             )
@@ -11531,7 +11602,12 @@ var Header = function (_Component) {
           { className: 'nav navbar-nav navbar-right' },
           _react2.default.createElement(
             'button',
-            { className: 'badge1', 'data-badge': '6', style: { marginTop: "9px", marginRight: "30px" } },
+            { className: 'badge1', 'data-badge': '6', style: { marginTop: "9px", marginRight: "30px" },
+              onClick: this.renderEmail,
+              onBlur: this.collapse
+              /*onMouseEnter={this.renderEmail}
+              onMouseLeave={this.collapse}*/
+            },
             _react2.default.createElement(
               'i',
               { className: 'material-icons', style: { color: "teal" } },
@@ -11540,7 +11616,10 @@ var Header = function (_Component) {
           ),
           _react2.default.createElement(
             'button',
-            { className: 'badge2', 'data-badge': '6', style: { marginTop: "9px", marginRight: "30px" } },
+            { className: 'badge2', 'data-badge': '6', style: { marginTop: "9px", marginRight: "30px" },
+              onClick: this.renderNotification,
+              onBlur: this.collapse
+            },
             _react2.default.createElement(
               'i',
               { className: 'material-icons', style: { color: "teal" } },
@@ -11555,11 +11634,11 @@ var Header = function (_Component) {
               { className: 'user' },
               _react2.default.createElement(
                 'button',
-                { className: 'drop', onClick: this.handelDropdown.bind(this) },
+                { className: 'drop', onClick: this.renderDropdown, onBlur: this.collapse },
                 _react2.default.createElement('img', { className: 'userImage', src: './images/user.png' }),
                 _react2.default.createElement(
                   'text',
-                  { style: { fontSize: "10" } },
+                  { style: { fontSize: "15" } },
                   'Bill'
                 ),
                 _react2.default.createElement('span', { className: 'glyphicon glyphicon-triangle-bottom' })
@@ -11567,6 +11646,8 @@ var Header = function (_Component) {
             )
           )
         ),
+        _react2.default.createElement(_emailDropdown2.default, { visibility: this.state.Email }),
+        _react2.default.createElement(_notificationDropdown2.default, { visibility: this.state.Notification }),
         _react2.default.createElement(_dropdown2.default, { visibility: this.state.visibility })
       );
     }
@@ -13773,7 +13854,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".intern .content {\n  background-color: #ecf0f1; }\n\n.main {\n  position: absolute;\n  height: 90vh;\n  width: 100%;\n  top: 5vh;\n  display: flex; }\n  .main .content {\n    position: relative;\n    height: 100%;\n    display: block;\n    width: 100%;\n    padding-left: 10px;\n    padding-right: 10px; }\n", ""]);
+exports.push([module.i, "/*************** primary colors  **************/\n/*************** primary colors End **************/\n/*************** primary colors  **************/\n/*************** primary colors End **************/\n.intern .content {\n  background-color: #004d40;\n  color: white; }\n\n.main {\n  position: absolute;\n  height: 90vh;\n  width: 100%;\n  top: 5vh;\n  display: flex; }\n  .main .content {\n    position: relative;\n    height: 100%;\n    display: block;\n    width: 100%;\n    padding-left: 10px;\n    padding-right: 10px; }\n", ""]);
 
 // exports
 
@@ -13787,7 +13868,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".intern .footer {\n  background-color: blue; }\n\n.footer {\n  position: absolute;\n  bottom: 0px;\n  width: 100%;\n  height: 5vh; }\n", ""]);
+exports.push([module.i, ".intern .footer {\n  background-color: white; }\n\n.footer {\n  position: absolute;\n  bottom: 0px;\n  width: 100%;\n  height: 5vh; }\n", ""]);
 
 // exports
 
@@ -13801,7 +13882,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".navbar {\n  background: none;\n  outline: none;\n  position: absolute;\n  height: 5vh;\n  width: 100%;\n  top: 0; }\n  .navbar .navbar-form .form-control {\n    background-color: #ecf0f1; }\n  .navbar .navbar-form .input-group-btn .btn {\n    background-color: #296193; }\n    .navbar .navbar-form .input-group-btn .btn .glyphicon-search {\n      color: white; }\n  .navbar .material-icons {\n    cursor: pointer; }\n  .navbar .navbar-right {\n    display: block; }\n  .navbar .navbar-brand {\n    margin-top: -10px; }\n  .navbar .userProfile {\n    float: right;\n    margin-right: 20px;\n    right: 20px;\n    list-style: none; }\n    .navbar .userProfile .user {\n      text-align: justify;\n      margin-right: 10px; }\n      .navbar .userProfile .user .drop {\n        border: none;\n        background: none;\n        background-image: none;\n        background-color: none;\n        outline: none; }\n        .navbar .userProfile .user .drop :hover {\n          background-image: none;\n          background-color: none; }\n        .navbar .userProfile .user .drop :active {\n          background-color: #f1f1f1; }\n        .navbar .userProfile .user .drop .glyphicon-triangle-bottom {\n          font-size: 10px;\n          padding-left: 3px; }\n        .navbar .userProfile .user .drop .userImage {\n          height: 25px;\n          width: 30px;\n          padding-right: 5px;\n          border-radius: 15px; }\n  .navbar .DropDownMenuItem:before {\n    content: \"\";\n    width: 0;\n    height: 0;\n    right: 0;\n    bottom: 100%;\n    left: 95px;\n    position: absolute;\n    border-bottom: 7px solid #f9f9f9;\n    border-left: 7px solid transparent;\n    border-right: 7px solid transparent; }\n  .navbar .DropDownMenuItem {\n    margin-top: 6vh;\n    min-width: 140px;\n    right: 1px;\n    background: #f9f9f9;\n    position: absolute;\n    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n    z-index: 1; }\n    .navbar .DropDownMenuItem .divider {\n      height: 1px;\n      width: 100%;\n      display: block;\n      /* for use on default inline elements like span */\n      margin: 0;\n      overflow: hidden;\n      background-color: orange; }\n    .navbar .DropDownMenuItem a {\n      color: black;\n      padding-left: 7px;\n      text-decoration: none;\n      display: block;\n      padding-top: 8px;\n      min-height: 30px;\n      font-size: 12px; }\n    .navbar .DropDownMenuItem :hover {\n      color: blue; }\n\n.dropDownMenuItem {\n  margin-top: 5vh;\n  position: absolute;\n  right: 0;\n  background-color: #f9f9f9;\n  min-width: 100px;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1; }\n  .dropDownMenuItem a {\n    color: black;\n    padding: 6px 10px;\n    padding-left: 8px;\n    text-decoration: none;\n    display: block;\n    text-align: center; }\n  .dropDownMenuItem :hover {\n    background-color: #f1f1f1; }\n\n.toggleMenu {\n  position: absolute;\n  height: 90vh;\n  width: 100%;\n  top: 5vh;\n  display: flex; }\n  .toggleMenu .content {\n    background-color: green;\n    position: absolute;\n    height: 100%;\n    display: block;\n    width: 100%;\n    left: 0; }\n  .toggleMenu .sidebar {\n    left: -200px; }\n\n.badge1 {\n  position: relative;\n  border: none;\n  background-color: transparent;\n  outline: none; }\n  .badge1 :hover {\n    background-color: red; }\n\n.badge1[data-badge]:after {\n  content: attr(data-badge);\n  position: absolute;\n  top: -6px;\n  right: -6px;\n  font-size: .7em;\n  background: green;\n  color: white;\n  width: 18px;\n  height: 18px;\n  text-align: center;\n  line-height: 18px;\n  border-radius: 50%;\n  box-shadow: 0 0 1px #333; }\n\n.badge2 {\n  position: relative;\n  border: none;\n  background-color: transparent;\n  outline: none; }\n  .badge2 :hover {\n    background-color: red; }\n\n.badge2[data-badge]:after {\n  content: attr(data-badge);\n  position: absolute;\n  top: -6px;\n  right: -6px;\n  font-size: .7em;\n  background: green;\n  color: white;\n  width: 18px;\n  height: 18px;\n  text-align: center;\n  line-height: 18px;\n  border-radius: 50%;\n  box-shadow: 0 0 1px #333; }\n", ""]);
+exports.push([module.i, "/*************** primary colors  **************/\n/*************** primary colors End **************/\n.intern .navbar {\n  background-color: #009688;\n  color: white; }\n  .intern .navbar .navbar-brand {\n    color: white; }\n  .intern .navbar .navbar-form .form-control {\n    background-color: white; }\n  .intern .navbar .userProfile .user .drop :hover {\n    color: black; }\n  .intern .navbar .userProfile .user .drop :active {\n    color: black; }\n\n.intern .badge1 :hover {\n  background-color: black; }\n\n.intern .badge1[data-badge]:after {\n  background: green;\n  color: white;\n  box-shadow: 0 0 1px #333; }\n\n.intern .badge2 :hover {\n  background-color: black; }\n\n.intern .badge2 :active {\n  background-color: white; }\n\n.intern .badge2[data-badge]:after {\n  background: green;\n  color: white;\n  box-shadow: 0 0 1px #333; }\n\n.navbar {\n  background: none;\n  outline: none;\n  position: absolute;\n  height: 5vh;\n  width: 100%;\n  top: 0; }\n  .navbar .material-icons {\n    cursor: pointer; }\n  .navbar .navbar-right {\n    display: block; }\n  .navbar .navbar-brand {\n    margin-top: -10px; }\n  .navbar .userProfile {\n    float: right;\n    margin-right: 20px;\n    right: 20px;\n    list-style: none;\n    margin-top: 5px; }\n    .navbar .userProfile .user {\n      text-align: justify;\n      margin-right: 10px; }\n      .navbar .userProfile .user .drop {\n        border: none;\n        background: none;\n        background-image: none;\n        background-color: none;\n        outline: none; }\n        .navbar .userProfile .user .drop :hover {\n          background-image: none;\n          background-color: none; }\n        .navbar .userProfile .user .drop .glyphicon-triangle-bottom {\n          font-size: 10px;\n          padding-left: 3px; }\n        .navbar .userProfile .user .drop .userImage {\n          height: 25px;\n          width: 30px;\n          padding-right: 5px;\n          border-radius: 15px; }\n\n.toggleMenu {\n  position: absolute;\n  height: 90vh;\n  width: 100%;\n  top: 5vh;\n  display: flex; }\n  .toggleMenu .content {\n    position: absolute;\n    height: 100%;\n    display: block;\n    width: 100%;\n    left: 0;\n    padding-left: 10px;\n    padding-right: 10px; }\n  .toggleMenu .sidebar {\n    left: -200px; }\n\n.badge1 {\n  position: relative;\n  border: none;\n  background-color: transparent;\n  outline: none; }\n\n.badge1[data-badge]:after {\n  content: attr(data-badge);\n  position: absolute;\n  top: -6px;\n  right: -6px;\n  font-size: .7em;\n  width: 18px;\n  height: 18px;\n  text-align: center;\n  line-height: 18px;\n  border-radius: 50%;\n  box-shadow: 0 0 1px #333; }\n\n.badge2 {\n  position: relative;\n  border: none;\n  background-color: transparent;\n  outline: none; }\n\n.badge2[data-badge]:after {\n  content: attr(data-badge);\n  position: absolute;\n  top: -6px;\n  right: -6px;\n  font-size: .7em;\n  width: 18px;\n  height: 18px;\n  text-align: center;\n  line-height: 18px;\n  border-radius: 50%;\n  box-shadow: 0 0 1px #333; }\n", ""]);
 
 // exports
 
@@ -13815,7 +13896,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".body {\n  font-family: 'Roboto', sans-serif;\n  font-weight: lighter;\n  overflow: hidden; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -13829,7 +13910,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".sidebar {\n  background-color: #2b3f4f;\n  position: relative;\n  height: 100%;\n  color: white;\n  width: 200px;\n  display: block; }\n  .sidebar a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 15px;\n    color: #818181;\n    display: block;\n    transition: 0.3s; }\n  .sidebar a:hover, .sidebar .offcanvas a:focus {\n    color: #f1f1f1; }\n", ""]);
+exports.push([module.i, "/*************** primary colors  **************/\n/*************** primary colors End **************/\n.intern .sidebar {\n  background-color: #00796b; }\n  .intern .sidebar a {\n    color: white; }\n  .intern .sidebar a:hover, .intern .sidebar .offcanvas a:focus {\n    color: black; }\n\n/*************** primary colors  **************/\n/*************** primary colors End **************/\n.jobby .sidebar {\n  background-color: #00bcd4; }\n\n.sidebar {\n  position: relative;\n  height: 100%;\n  width: 200px;\n  display: block; }\n  .sidebar a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 15px;\n    display: block;\n    transition: 0.3s; }\n", ""]);
 
 // exports
 
@@ -28546,6 +28627,358 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
+
+/***/ }),
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(252);
+
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+exports['default'] = autoBind;
+var wontBind = ['constructor', 'render', 'componentWillMount', 'componentDidMount', 'componentWillReceiveProps', 'shouldComponentUpdate', 'componentWillUpdate', 'componentDidUpdate', 'componentWillUnmount'];
+
+var toBind = [];
+
+function autoBind(context) {
+  if (context === undefined) {
+    console.error('Autobind error: No context provided.');
+    return;
+  }
+
+  var objPrototype = Object.getPrototypeOf(context);
+
+  if (arguments.length > 1) {
+    // If a list of methods to bind is provided, use it.
+    toBind = Array.prototype.slice.call(arguments, 1);
+  } else {
+    // If no list of methods to bind is provided, bind all available methods in class.
+    toBind = Object.getOwnPropertyNames(objPrototype);
+  }
+
+  toBind.forEach(function (method) {
+    var descriptor = Object.getOwnPropertyDescriptor(objPrototype, method);
+
+    if (descriptor === undefined) {
+      console.warn('Autobind: "' + method + '" method not found in class.');
+      return;
+    }
+
+    // Return if it's special case function or if not a function at all
+    if (wontBind.indexOf(method) !== -1 || typeof descriptor.value !== 'function') {
+      return;
+    }
+
+    Object.defineProperty(objPrototype, method, boundMethod(objPrototype, method, descriptor));
+  });
+}
+
+/**
+* From autobind-decorator (https://github.com/andreypopp/autobind-decorator/tree/master)
+* Return a descriptor removing the value and returning a getter
+* The getter will return a .bind version of the function
+* and memoize the result against a symbol on the instance
+*/
+function boundMethod(objPrototype, method, descriptor) {
+  var fn = descriptor.value;
+
+  return {
+    configurable: true,
+    get: function get() {
+      if (this === objPrototype || this.hasOwnProperty(method)) {
+        return fn;
+      }
+
+      var boundFn = fn.bind(this);
+      Object.defineProperty(this, method, {
+        value: boundFn,
+        configurable: true,
+        writable: true
+      });
+      return boundFn;
+    }
+  };
+}
+module.exports = exports['default'];
+
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(257);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EmailDropdown = function (_Component) {
+  _inherits(EmailDropdown, _Component);
+
+  function EmailDropdown() {
+    _classCallCheck(this, EmailDropdown);
+
+    return _possibleConstructorReturn(this, (EmailDropdown.__proto__ || Object.getPrototypeOf(EmailDropdown)).apply(this, arguments));
+  }
+
+  _createClass(EmailDropdown, [{
+    key: 'renderProfile',
+    value: function renderProfile() {
+      alert("please fetch api");
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var visibility = this.props.visibility;
+
+      return _react2.default.createElement(
+        'div',
+        { style: { visibility: visibility }, className: 'EmailDropDown' },
+        _react2.default.createElement(
+          'a',
+          { href: '#' },
+          'email 1 ',
+          _react2.default.createElement(
+            'i',
+            { className: 'material-icons',
+              style: { fontSize: "18px",
+                float: "right",
+                paddingRight: "5px" }
+            },
+            'person_outline'
+          ),
+          ' '
+        ),
+        _react2.default.createElement('span', { className: 'divider' })
+      );
+    }
+  }]);
+
+  return EmailDropdown;
+}(_react.Component);
+
+exports.default = EmailDropdown;
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(258);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NotificationDropdown = function (_Component) {
+  _inherits(NotificationDropdown, _Component);
+
+  function NotificationDropdown() {
+    _classCallCheck(this, NotificationDropdown);
+
+    return _possibleConstructorReturn(this, (NotificationDropdown.__proto__ || Object.getPrototypeOf(NotificationDropdown)).apply(this, arguments));
+  }
+
+  _createClass(NotificationDropdown, [{
+    key: 'renderProfile',
+    value: function renderProfile() {
+      alert("please fetch api");
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var visibility = this.props.visibility;
+
+      return _react2.default.createElement(
+        'div',
+        { style: { visibility: visibility }, className: 'NotificationDropDown' },
+        _react2.default.createElement(
+          'a',
+          { href: '#' },
+          'notification 1 ',
+          _react2.default.createElement(
+            'i',
+            { className: 'material-icons',
+              style: { fontSize: "18px",
+                float: "right",
+                paddingRight: "5px" }
+            },
+            'person_outline'
+          ),
+          ' '
+        ),
+        _react2.default.createElement('span', { className: 'divider' })
+      );
+    }
+  }]);
+
+  return NotificationDropdown;
+}(_react.Component);
+
+exports.default = NotificationDropdown;
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".EmailDropDown:before {\n  content: \"\";\n  width: 0;\n  height: 0;\n  right: 0;\n  bottom: 100%;\n  left: 95px;\n  position: absolute;\n  border-bottom: 7px solid #f9f9f9;\n  border-left: 7px solid transparent;\n  border-right: 7px solid transparent; }\n\n.EmailDropDown {\n  margin-top: 6vh;\n  min-width: 140px;\n  right: 170px;\n  background: #f9f9f9;\n  position: absolute;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1; }\n  .EmailDropDown .divider {\n    height: 1px;\n    width: 100%;\n    display: block;\n    /* for use on default inline elements like span */\n    margin: 0;\n    overflow: hidden;\n    background-color: orange; }\n  .EmailDropDown a {\n    color: black;\n    padding-left: 7px;\n    text-decoration: none;\n    display: block;\n    padding-top: 8px;\n    min-height: 30px;\n    font-size: 12px; }\n  .EmailDropDown :hover {\n    color: blue; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".NotificationDropDown:before {\n  content: \"\";\n  width: 0;\n  height: 0;\n  right: 0;\n  bottom: 100%;\n  left: 95px;\n  position: absolute;\n  border-bottom: 7px solid #f9f9f9;\n  border-left: 7px solid transparent;\n  border-right: 7px solid transparent; }\n\n.NotificationDropDown {\n  margin-top: 6vh;\n  min-width: 140px;\n  right: 100px;\n  background: #f9f9f9;\n  position: absolute;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1; }\n  .NotificationDropDown .divider {\n    height: 1px;\n    width: 100%;\n    display: block;\n    /* for use on default inline elements like span */\n    margin: 0;\n    overflow: hidden;\n    background-color: orange; }\n  .NotificationDropDown a {\n    color: black;\n    padding-left: 7px;\n    text-decoration: none;\n    display: block;\n    padding-top: 8px;\n    min-height: 30px;\n    font-size: 12px; }\n  .NotificationDropDown :hover {\n    color: blue; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(255);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(30)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./emailDropdown.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./emailDropdown.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(256);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(30)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./notificationDropdown.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./notificationDropdown.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".DropDownMenuItem:before {\n  content: \"\";\n  width: 0;\n  height: 0;\n  right: 0;\n  bottom: 100%;\n  left: 95px;\n  position: absolute;\n  border-bottom: 7px solid #f9f9f9;\n  border-left: 7px solid transparent;\n  border-right: 7px solid transparent; }\n\n.DropDownMenuItem {\n  margin-top: 6vh;\n  min-width: 140px;\n  right: 1px;\n  background: #f9f9f9;\n  position: absolute;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1; }\n  .DropDownMenuItem .divider {\n    height: 1px;\n    width: 100%;\n    display: block;\n    /* for use on default inline elements like span */\n    margin: 0;\n    overflow: hidden;\n    background-color: orange; }\n  .DropDownMenuItem a {\n    color: black;\n    padding-left: 7px;\n    text-decoration: none;\n    display: block;\n    padding-top: 8px;\n    min-height: 30px;\n    font-size: 12px; }\n  .DropDownMenuItem :hover {\n    color: blue; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(259);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(30)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./dropDownMenuItem.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./dropDownMenuItem.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

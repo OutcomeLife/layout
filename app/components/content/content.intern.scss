@@ -1,8 +1,9 @@
-@import '../../style/color.intern.scss';
-
+@import '../../style/color.scss';
+@import '../../style/color.scss';
 .intern {
     .content {
-         background-color:rgb(236,240,241);
+         background-color:$teal9;
+         color:$white;
         
     }
 }

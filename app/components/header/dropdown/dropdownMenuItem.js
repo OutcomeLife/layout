@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './dropDownMenuItem.scss';
 
 export default class DropDownMenuItem extends Component {
 

@@ -1,0 +1,13 @@
+@import '../../style/color.scss';
+
+.intern{
+.sidebar {
+     background-color: $teal7;
+     a {
+         color:$white;
+     }
+     a:hover, .offcanvas a:focus{
+         color:black;
+         }
+}
+}
