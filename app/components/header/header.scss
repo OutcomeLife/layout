@@ -1,3 +1,4 @@
+ @import './header.intern.scss';
  .navbar {
         background: none;
         outline:none;
@@ -6,23 +7,6 @@
         width:100%;
         top:0;
 
-        .navbar-form {
-            .form-control {
-                background-color:rgb(236,240,241);
-
-            }
-            .input-group-btn {
-              
-                .btn {
-                background-color:rgb(41,97,147);
-                .glyphicon-search {
-                    color:white;
-                }
-            }
-
-            }
-
-        }
         .material-icons {
             cursor:pointer;
             }
@@ -37,6 +21,8 @@
                 margin-right:20px;
                 right:20px;
                 list-style:none;
+                margin-top:5px;
+          
                 .user {
                     text-align: justify;
                     margin-right: 10px;
@@ -53,9 +39,6 @@
                             background-color: none;
 
                             }
-                        :active {
-                            background-color: #f1f1f1;
-                        }
                         .glyphicon-triangle-bottom {
                             font-size: 10px;
                             padding-left: 3px;
@@ -71,70 +54,7 @@
                
                     }
             }
-    .DropDownMenuItem:before{
-        content:"";
-        width: 0;
-        height: 0;
-        right:0;
-        bottom:100%;
-        left:95px;
-        position:absolute;
-        border-bottom: 7px solid #f9f9f9;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-       
-    }
 
-        .DropDownMenuItem {
-        margin-top: 6vh;
-        min-width: 140px;
-        right:1px;
-        background: #f9f9f9;
-        position: absolute;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        .divider {
-                height: 1px;
-                width:100%;
-                display:block; /* for use on default inline elements like span */
-                margin: 0;
-                overflow: hidden;
-                background-color: rgb(255, 165, 0);
-                }
-      a {
-            color: black;
-            padding-left:7px;
-            text-decoration: none;
-            display: block;
-            padding-top:8px;
-            min-height:30px;
-            font-size:12px;
-        }
-            :hover {color: blue;}
-
-} 
-
-  
-    }
-//This is without messaging look
-    .dropDownMenuItem {
-        margin-top:5vh;
-        position: absolute;
-        right: 0;
-        background-color: #f9f9f9;
-        min-width: 100px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-
-        a {
-            color: black;
-            padding: 6px 10px;
-            padding-left: 8px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-        :hover {background-color: #f1f1f1}
     }
 
     //This is when the toggle button is clicked
@@ -146,27 +66,24 @@
             display: flex;
 
         .content {
-            background-color:green;
             position:absolute;
             height:100%;
             display:block;
             width:100%;
             left:0;
- 
+            padding-left:10px;
+            padding-right:10px;
+            
             }
             .sidebar {
-
                 left: -200px;
             }
         }
         .badge1 {
             position: relative;
             border:none;
-            background-color: transparent;
+            background-color:transparent;
             outline:none;
-              :hover {
-                background-color:red;
-            }
         }
 .badge1[data-badge]:after {
     content:attr(data-badge);
@@ -174,8 +91,6 @@
    top:-6px;
    right:-6px;
    font-size:.7em;
-   background:green;
-   color:white;
    width:18px;height:18px;
    text-align:center;
    line-height:18px;
@@ -183,23 +98,18 @@
    box-shadow:0 0 1px #333;
 }
 
-       .badge2 {
-            position: relative;
-            border:none;
-            background-color: transparent;
-            outline:none;
-            :hover {
-                background-color:red;
-            }
-        }
+ .badge2 {
+        position: relative;
+        border:none;
+        background-color: transparent;
+        outline:none;
+     }
 .badge2[data-badge]:after {
-    content:attr(data-badge);
+content:attr(data-badge);
    position:absolute;
    top:-6px;
    right:-6px;
    font-size:.7em;
-   background:green;
-   color:white;
    width:18px;height:18px;
    text-align:center;
    line-height:18px;
