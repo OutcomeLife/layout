@@ -6,7 +6,7 @@ export default class Content extends Component {
 
 
     return (
-      <div className="rightPane">
+      <div className="righsstPane">
         {/*{this.props.children}*/}
       </div>
 

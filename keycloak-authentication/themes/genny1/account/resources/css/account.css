@@ -1,0 +1,230 @@
+/* Wrapper */
+
+.boxed-wrapper {
+    overflow-x: hidden;
+}
+#wrapper {
+    right: 0;
+    min-height: calc(100vh - 56px);
+}
+body.page-small.show-sidebar #wrapper {
+    right: -182px;
+    margin-left: 0;
+}
+
+/* Header */
+
+#header {
+    padding-top: 12px;
+}
+#header .header-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background: #fff;
+    border: 0;
+}
+#header .header-link i {
+    vertical-align: middle;
+}
+.kc-locale {
+    margin-left: 15px;
+}
+.normalheader {
+    min-width: 0;
+}
+.show-sidebar  #header .header-link {
+    color: #1677cb;
+}
+
+/* Panel */
+
+.hpanel .panel-body {
+    padding-top: 35px;
+}
+.hpanel .panel-body.panel-body--padding-reset {
+    padding: 0;
+}
+.panel-body__title {
+    margin: 0;
+    background: #f9f9fa;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #78838d;
+    height: 35px;
+    line-height: 35px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    padding-left: 34px;
+}
+.panel-body__content {
+    padding: 20px;
+    font-size: 14px;
+}
+.panel-body__content a {
+    color: #1677cb;
+    text-decoration: underline;
+}
+
+/* Qrcode image */
+
+.img-thumbnail {
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-width: 200px;
+}
+
+/* Forms */
+
+.form-group label {
+    color: #5c646e;
+}
+.input-btn-absolute {
+    position: relative;
+}
+.input-btn-absolute .btn {
+    position: absolute;
+}
+.form-horizontal .control-label {
+    font-weight: normal;
+}
+@media (min-width: 768px) {
+    .input-btn-absolute .btn {
+        right: 2px;
+        top: 2px;
+        height: calc(100% - 4px);
+        line-height: calc(100% - 0px);
+    }
+}
+
+/* Side menu (mobile) */
+
+#side-menu-bis {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #f9f9fa;
+}
+#side-menu-bis a,
+#side-menu-bis a.c-current-locale-link,
+#side-menu-bis .kc-locale ul li a {
+    color: #68717c;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0 20px;
+    border: 0;
+    border-top: 1px solid #e4e5e7;
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 52px;
+    border-radius: 0;
+    font-size: 13px;
+}
+#side-menu-bis .kc-locale ul li a {
+    height: 35px;
+    line-height: 37px;
+    padding: 0 20px;
+}
+#side-menu-bis a:hover {
+    background: #fff;
+    color: #2b2b2b;
+}
+#side-menu-bis a.kc-current-locale-link:after {
+    line-height: 46px;
+}
+#side-menu-bis .kc-locale {
+    width: 100%;
+    margin: 0;
+}
+#side-menu-bis .kc-locale ul {
+    position: relative;
+    max-height: 0;
+    overflow: hidden;
+    border: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+}
+#side-menu-bis .kc-locale.hover ul {
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tables */
+
+.table-panel {
+    border: 1px solid #ddd;
+}
+.table-panel .btn {
+    margin-bottom: 0;
+}
+.table-panel  .width-40 {
+    width: 40px;
+}
+.table-panel .label {
+  margin-bottom: 2px;
+  margin-top: 2px;
+  margin-right: 2px;
+  float: left;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+
+/* Footer */
+
+#menu,
+.footer {
+    background: transparent;
+}
+.footer {
+    text-align: center;
+    font-size: 11px;
+    color: #78838d;
+}
+.footer a {
+    color: #78838d;
+}
+
+/* Media queries */
+
+@media (max-width: 767px) {
+    #kc-logo {
+        box-sizing: border-box;
+    }
+    #kc-logo img {
+        max-width: 136px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    #kc-form-buttons .btn {
+        display: block;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    .normalheader h2 {
+        text-align: left;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .form-group .text-right {
+        text-align: left;
+    }
+
+    .input-btn-absolute .btn {
+        position: relative;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .btn-block-sm {
+        display: block;
+    }
+}
