@@ -2,8 +2,11 @@
 @import '../../style/color.scss';
 .intern {
     .content {
-         background-color:$teal9;
-         color:$white;
+         background-color:$body_background;
+         color:$black;
+         h1 {
+             color:blue;
+         }
         
     }
 }

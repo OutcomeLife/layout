@@ -2,12 +2,21 @@
 
 .intern{
 .sidebar {
-     background-color: $teal7;
+     background-color:$teal6;
      a {
-         color:$white;
+         color:$black;
      }
      a:hover, .offcanvas a:focus{
-         color:black;
+         background-color:$teal7;
+         color:$white;
          }
+    a.active {
+             background-color: $teal8;
+             color:$white;
+
+         }
+              .divider {
+                background-color: $teal7;
+            }
 }
 }

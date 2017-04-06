@@ -48,8 +48,7 @@ class Layout extends Component {
       <div className={`body ${themeClass}`}>
         <Header user={this.getUser()} logo={logo} />
         <div id="main" className="main">
-          <Sidebar list={this.getList()} />
-
+          <Sidebar />
           <div className="content">
             <Routes />
           </div>

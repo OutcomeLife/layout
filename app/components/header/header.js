@@ -110,7 +110,7 @@ export default class Header extends Component {
             /*onMouseEnter={this.renderEmail}
             onMouseLeave={this.collapse}*/
             >
-            <i className="material-icons" style={{ color: "teal" }}>email</i>
+            <i className="material-icons" style={{ color: "teal" }}>mail_outline</i>
           </button>
 
           <button className="badge2" data-badge="6" style={{ marginTop: "9px", marginRight: "30px" }}
