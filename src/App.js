@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { Header, Body, Footer} from './entry';
 
 class App extends Component {
   render(){
-    return <h1> hello </h1>;
+    return (
+    	<div className="intern">
+    	<Header />
+    	</div>
+    );
   }
 }
 

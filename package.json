@@ -5,16 +5,23 @@
   "main": "./dist/entry.js",
   "dependencies": {
     "react": "^15.5.4",
+    "react-bootstrap": "^0.30.8",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "node-sass": "^4.5.2",
+    "npm-run-all": "^4.0.2",
+    "react-autobind": "^1.0.6",
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
     "prepublish": "npm run build",
     "build": "babel ./src --out-dir ./dist && node-sass ./src -o ./dist",
     "test": "react-scripts test --env=jsdom",
