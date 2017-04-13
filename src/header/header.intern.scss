@@ -1,0 +1,53 @@
+@import '../style/color.scss';
+
+.intern {
+.navbar {
+        background-color:$teal5;
+        color:$white;
+        .navbar-brand {
+            color:$white;
+        }
+        .userProfile {
+                .user {       
+                    .drop {
+                        :hover {
+                            color:$black;
+                            }
+                        :active {
+                            color:$black;
+                        }
+                        }
+               
+                    }
+            } 
+    }
+
+    .badge1 {
+    
+        :hover {
+            color: $black;
+        }
+        
+        }
+.badge1[data-badge]:after {
+   background:green;
+   color:$white;
+   box-shadow:0 0 1px #333;
+}
+
+ .badge2 {
+    
+    :hover {
+        color:$black;
+        }
+        :active {
+             color:$black;
+        }
+     }
+.badge2[data-badge]:after {
+
+   background:green;
+   color:$white;
+   box-shadow:0 0 1px #333;
+}
+}
