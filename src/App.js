@@ -13,8 +13,9 @@ class App extends Component {
     		<Content>
     		content
     		</Content>
-    	</Body>
+    	</Body>*/}
     	<Footer >
+				Outcome.life Jenny layout
     	</Footer>
     	</div>
     );

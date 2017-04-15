@@ -1,32 +1,22 @@
-@import '../style/color.scss';
+@import '../../style/color.scss';
 
 .intern {
 .navbar {
         background-color:$teal5;
-        color:$white;
         .navbar-brand {
             color:$white;
         }
-        .userProfile {
-                .user {       
-                    .drop {
-                        :hover {
-                            color:$black;
-                            }
-                        :active {
-                            color:$black;
-                        }
-                        }
-               
-                    }
-            } 
     }
 
     .badge1 {
+        .material-icons {
+            color:$white;
+        }
     
         :hover {
             color: $black;
         }
+
         
         }
 .badge1[data-badge]:after {
@@ -36,7 +26,9 @@
 }
 
  .badge2 {
-    
+    .material-icons {
+            color:$white;
+        }
     :hover {
         color:$black;
         }

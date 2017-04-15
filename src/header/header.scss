@@ -22,7 +22,7 @@
                 margin-right:20px;
                 right:20px;
                 list-style:none;
-                margin-top:5px;
+                
           
                 .user {
                     text-align: justify;
@@ -34,6 +34,12 @@
                         background-image: none;
                         background-color: none;
                         outline:none;
+                        .displayUser {
+                            text-shadow: none;
+                        }
+                        .caret {
+                            display:none;
+                        }
                         
                         :hover {
                             background-image: none;
@@ -55,42 +61,36 @@
                
                     }
             }
+         .divider {
+                height: 1px;
+                width:100%;
+                display:block; /* for use on default inline elements like span */
+                margin: 0;
+                overflow: hidden;
+                background-color:whitesmoke;
+                }
 
     }
 
-    //This is when the toggle button is clicked
-        .toggleMenu {
-            position:absolute;
-            height:90vh;
-            width:100%;
-            top:5vh;
-            display: flex;
-
-        .content {
-            position:absolute;
-            height:100%;
-            display:block;
-            width:95%;
-            left:50px;
-            padding-left:10px;
-            padding-right:10px;
-            
-            }
-            .sidebar {
-                left: -150px;
-            }
-        }
-        .badge1 {
-            position: relative;
-            border:none;
-            background-color:transparent;
-            outline:none;
+.badge1 {
+    position: relative;
+    border:none;
+    background-color:transparent;
+    outline:none;
+    margin-right:20px;
+    .material-icons {
+        text-shadow: none;
+        padding-top:5px;
+    }
+    .caret {
+        display:none;
+    }
         }
 .badge1[data-badge]:after {
     content:attr(data-badge);
    position:absolute;
-   top:-6px;
-   right:-6px;
+   top:-2px;
+   right:2px;
    font-size:.7em;
    width:18px;height:18px;
    text-align:center;
@@ -104,16 +104,31 @@
         border:none;
         background-color: transparent;
         outline:none;
+        margin-right:30px;
+    .material-icons {
+        text-shadow: none;
+        padding-top:5px;
+    }
+    .caret {
+        display:none;
+    }
      }
 .badge2[data-badge]:after {
 content:attr(data-badge);
    position:absolute;
-   top:-6px;
-   right:-6px;
+   top:0px;
+   right:9px;
    font-size:.7em;
    width:18px;height:18px;
    text-align:center;
    line-height:18px;
    border-radius:50%;
    box-shadow:0 0 1px #333;
+}
+
+.dropdown-menu {
+    border-radius:10px;
+}
+.dropdown-menu>li>a:hover {
+    color:blue;
 }

@@ -17,8 +17,8 @@ export default class Sidebar extends Component {
     autoBind(this);
   }
   openDropdown() {
-    var role = (this.state.role == "none") ? "block" : "none";
-    var expand = (this.state.expand == "chevron_right") ? "expand_more" : "chevron_right";
+    var role = (this.state.role === "none") ? "block" : "none";
+    var expand = (this.state.expand === "chevron_right") ? "expand_more" : "chevron_right";
 
     this.setState({
       role: role,
