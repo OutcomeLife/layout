@@ -2,8 +2,17 @@
 /*************** primary colors End **************/
 .intern .navbar {
   background-color: #009688; }
-  .intern .navbar .navbar-brand {
-    color: white; }
+
+.intern .navbar .navbar-brand {
+  color: black; }
+
+.intern .navbar .navbar-brand:hover {
+  color: white;
+  text-shadow: none; }
+
+.intern .navbar .navbar-brand > .active {
+  color: white;
+  text-shadow: none; }
 
 .intern .badge1 .material-icons {
   color: white; }

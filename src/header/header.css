@@ -12,7 +12,8 @@
   cursor: pointer; }
 
 .navbar .navbar-right {
-  display: block; }
+  display: block;
+  float: right; }
 
 .navbar .navbar-brand {
   margin-top: -10px; }
@@ -62,25 +63,6 @@
   margin: 0;
   overflow: hidden;
   background-color: whitesmoke; }
-
-.toggleMenu {
-  position: absolute;
-  height: 90vh;
-  width: 100%;
-  top: 5vh;
-  display: flex; }
-
-.toggleMenu .content {
-  position: absolute;
-  height: 100%;
-  display: block;
-  width: 95%;
-  left: 50px;
-  padding-left: 10px;
-  padding-right: 10px; }
-
-.toggleMenu .sidebar {
-  left: -150px; }
 
 .badge1 {
   position: relative;

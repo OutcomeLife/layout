@@ -8,7 +8,16 @@ class App extends Component {
     	<Header />
     	<Body >
     		<Sidebar>
-    		hello 
+  
+					<a href="#" >Roles </a>
+
+					<a href="#" >Message </a>
+
+					<a href="#" >Contact </a>
+					
+					<a href="#" >Admin </a>
+					
+
     		</Sidebar>
     		<Content>
     		content

@@ -30,7 +30,7 @@ export default class Sidebar extends Component {
   render() {
 
     return (
-      <div className="sidebar" >
+      <div className="sidebar" id="sidebar" >
       {this.props.children}
       </div>
 

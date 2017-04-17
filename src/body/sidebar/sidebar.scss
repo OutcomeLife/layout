@@ -3,10 +3,12 @@
 
 
 .sidebar  {
-            position:relative;
-            height:100%;
+         position:fixed;
+            height:90%;
             width:200px;
+            overflow-x: hidden;
             display:block;
+            transition: 0.5s;
             a {
                 padding: 10px 8px 10px 16px;
                 text-decoration: none;

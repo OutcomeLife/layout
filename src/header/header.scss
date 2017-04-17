@@ -12,7 +12,8 @@
             cursor:pointer;
             }
         .navbar-right {
-        display:block;
+        display:block;     
+        float:right;
         }
         .navbar-brand {
             margin-top:-10px;
@@ -87,7 +88,7 @@
     }
         }
 .badge1[data-badge]:after {
-    content:attr(data-badge);
+ content:attr(data-badge);
    position:absolute;
    top:-2px;
    right:2px;

@@ -6,7 +6,7 @@ export default class Content extends Component {
 
 
     return (
-      <div className="content">
+      <div className="content" id="content">
         {this.props.children}
       </div>
 

@@ -12,7 +12,22 @@ export default class Header extends Component {
 
   }
   renderSidebar() {
+    var element = document.getElementById('sidebar'),
+    style = window.getComputedStyle(element),
+    width = style.getPropertyValue('width');
+    var sidebarWidht = width.slice(0, -2);
+    
+    if( sidebarWidht > 0 ) {
+    document.getElementById('sidebar').style.width = "0";
+    document.getElementById('content').style.marginLeft = "0";
+  }
+  else {
+     document.getElementById('sidebar').style.width = "200px";
+    document.getElementById('content').style.marginLeft = "200px";
+  }
+  
 
+    
   }
   
 
