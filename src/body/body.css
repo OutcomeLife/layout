@@ -3,12 +3,13 @@
 .intern .body {
   background-color: #ecf0f1;
   color: black; }
-  .intern .body h1 {
-    color: blue; }
+
+.intern .body h1 {
+  color: blue; }
 
 .body {
   position: absolute;
-  height: 90vh;
   width: 100%;
-  top: 5vh;
+  top: 40px;
+  bottom: 40px;
   display: flex; }

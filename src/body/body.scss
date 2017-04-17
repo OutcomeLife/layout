@@ -1,8 +1,8 @@
 @import './body.intern.scss';
 .body {
         position:absolute;
-        height:90vh;
         width:100%;
-        top:5vh;
+        top:40px;
+        bottom:40px;
         display: flex;   
     }
