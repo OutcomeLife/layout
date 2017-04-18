@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import './header.css';
-import autoBind from 'react-autobind';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 export default class Header extends Component {
 
-  constructor(props) {
-    super(props);
 
-    autoBind(this);
-
-  }
   renderSidebar() {
     var element = document.getElementById('sidebar'),
     style = window.getComputedStyle(element),
