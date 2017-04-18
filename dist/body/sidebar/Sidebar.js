@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactAutobind = require('react-autobind');
-
-var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
-
 require('./sidebar.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27,35 +23,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Sidebar = function (_Component) {
   _inherits(Sidebar, _Component);
 
-  function Sidebar(props) {
+  function Sidebar() {
     _classCallCheck(this, Sidebar);
 
-    var _this = _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
-
-    _this.state = {
-      //lower case
-      role: "none",
-      message: "none",
-      contact: "none",
-      admin: "none",
-      expand: "chevron_right"
-    };
-    (0, _reactAutobind2.default)(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
   }
 
   _createClass(Sidebar, [{
-    key: 'openDropdown',
-    value: function openDropdown() {
-      var role = this.state.role === "none" ? "block" : "none";
-      var expand = this.state.expand === "chevron_right" ? "expand_more" : "chevron_right";
-
-      this.setState({
-        role: role,
-        expand: expand
-      });
-    }
-  }, {
     key: 'render',
     value: function render() {
 

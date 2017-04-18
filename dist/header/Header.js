@@ -12,10 +12,6 @@ var _react2 = _interopRequireDefault(_react);
 
 require('./header.css');
 
-var _reactAutobind = require('react-autobind');
-
-var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
-
 var _reactBootstrap = require('react-bootstrap');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29,14 +25,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Header = function (_Component) {
   _inherits(Header, _Component);
 
-  function Header(props) {
+  function Header() {
     _classCallCheck(this, Header);
 
-    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
-
-    (0, _reactAutobind2.default)(_this);
-
-    return _this;
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
   }
 
   _createClass(Header, [{
