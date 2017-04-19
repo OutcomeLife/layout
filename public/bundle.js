@@ -11014,7 +11014,7 @@ var Content = function (_Component) {
     key: 'render',
     value: function render() {
 
-      return _react2.default.createElement('div', { className: 'rightPane' });
+      return _react2.default.createElement('div', { className: 'righsstPane' });
     }
   }]);
 
@@ -11343,6 +11343,11 @@ var DropDownMenuItem = function (_Component) {
       alert("please fetch api");
     }
   }, {
+    key: '_logout',
+    value: function _logout() {
+      window.location.replace("http://localhost:9990/auth/realms/genny1/protocol/openid-connect/logout?redirect_uri=http://localhost:3000/");
+    }
+  }, {
     key: 'render',
     value: function render() {
       var visibility = this.props.visibility;
@@ -11383,7 +11388,7 @@ var DropDownMenuItem = function (_Component) {
         _react2.default.createElement('span', { className: 'divider' }),
         _react2.default.createElement(
           'a',
-          { href: '#' },
+          { href: '#', onClick: this._logout.bind(this) },
           'logout ',
           _react2.default.createElement(
             'i',
@@ -11752,8 +11757,7 @@ var Header = function (_Component) {
           _react2.default.createElement(
             'button',
             { className: 'badge1', 'data-badge': '6', style: { marginTop: "9px", marginRight: "30px" },
-              onClick: this.renderEmail,
-              onBlur: this.collapse
+              onClick: this.renderEmail
               /*onMouseEnter={this.renderEmail}
               onMouseLeave={this.collapse}*/
             },
@@ -11766,8 +11770,7 @@ var Header = function (_Component) {
           _react2.default.createElement(
             'button',
             { className: 'badge2', 'data-badge': '6', style: { marginTop: "9px", marginRight: "30px" },
-              onClick: this.renderNotification,
-              onBlur: this.collapse
+              onClick: this.renderNotification
             },
             _react2.default.createElement(
               'i',
@@ -11783,7 +11786,7 @@ var Header = function (_Component) {
               { className: 'user' },
               _react2.default.createElement(
                 'button',
-                { className: 'drop', onClick: this.renderDropdown, onBlur: this.collapse },
+                { className: 'drop', onClick: this.renderDropdown },
                 _react2.default.createElement('img', { className: 'userImage', src: './images/user.png' }),
                 _react2.default.createElement(
                   'text',

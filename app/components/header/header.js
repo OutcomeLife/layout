@@ -106,7 +106,6 @@ export default class Header extends Component {
         <ul className="nav navbar-nav navbar-right" >
           <button className="badge1" data-badge="6" style={{ marginTop: "9px", marginRight: "30px" }}
             onClick={this.renderEmail} 
-            onBlur={this.collapse}
             /*onMouseEnter={this.renderEmail}
             onMouseLeave={this.collapse}*/
             >
@@ -115,14 +114,13 @@ export default class Header extends Component {
 
           <button className="badge2" data-badge="6" style={{ marginTop: "9px", marginRight: "30px" }}
             onClick={this.renderNotification}
-            onBlur={this.collapse}
             >
             <i className="material-icons" style={{ color: "teal" }}>notifications_none</i>
           </button>
 
           <span className="userProfile">
             <li className="user" >
-              <button className="drop" onClick={this.renderDropdown} onBlur={this.collapse}>
+              <button className="drop" onClick={this.renderDropdown} >
                 <img className="userImage" src="./images/user.png" />
                 <text style={{ fontSize: "15" }}>Bill</text>
                 <span className="glyphicon glyphicon-triangle-bottom"></span>
