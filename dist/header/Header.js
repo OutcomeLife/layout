@@ -48,6 +48,11 @@ var Header = function (_Component) {
       }
     }
   }, {
+    key: '_logout',
+    value: function _logout() {
+      window.location.replace('http://localhost:9990/auth/realms/genny1/protocol/openid-connect/logout?redirect_uri=http://localhost:3000');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -160,9 +165,7 @@ var Header = function (_Component) {
                   _react2.default.createElement('span', { className: 'divider' }),
                   _react2.default.createElement(
                     _reactBootstrap.MenuItem,
-                    { href: '#podcasts', onClick: function onClick() {
-                        alert("please implement logout");
-                      } },
+                    { href: '#podcasts', onClick: this._logout.bind(this) },
                     'logout',
                     _react2.default.createElement(
                       'i',
