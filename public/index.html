@@ -1,21 +1,38 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+<!DOCTYPE html>
+<html>
 
-      <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
-    <title>React App</title>
-  </head>
-  <body>
-    <div id="root"></div>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <script src="http://localhost:9990/auth/js/keycloak.js"></script>
+</head>
 
-  </body>
+<body>
+  <div id="app"></div>
+ 
+
+  <script>
+    var keycloak = Keycloak({
+      url: 'http://localhost:9990/auth',
+      realm: 'genny1',
+      clientId: 'genny1'
+    });
+
+    keycloak.init({ onLoad: 'login-required' }).success(function (authenticated) {
+      // alert(authenticated ? 'authenticated' : 'not authenticated');
+      
+      keycloak.loadUserInfo().success((user) =>  alert("Welcome " + user.given_name + " to genny"));
+    }).error(function () {
+      alert('failed to initialize');
+    });
+    
+  </script>
+</body>
+
 </html>

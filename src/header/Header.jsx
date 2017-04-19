@@ -19,11 +19,12 @@ export default class Header extends Component {
      document.getElementById('sidebar').style.width = "200px";
     document.getElementById('content').style.marginLeft = "200px";
   }
-  
-
-    
+   
   }
   
+  _logout () {
+    window.location.replace('http://localhost:9990/auth/realms/genny1/protocol/openid-connect/logout?redirect_uri=http://localhost:3000');
+  }
 
 
   render() {
@@ -73,7 +74,7 @@ export default class Header extends Component {
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>settings</i>   
               </MenuItem>
               <span className="divider"></span>
-                 <MenuItem href="#podcasts" onClick={() => {alert("please implement logout")}}>
+                 <MenuItem href="#podcasts" onClick={this._logout.bind(this)}>
               logout
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>exit_to_app</i>   
               </MenuItem>
