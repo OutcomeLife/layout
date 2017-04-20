@@ -24,7 +24,7 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "prepublish": "npm run build",
-    "build": "babel ./src --out-dir ./dist && node-sass ./src -o ./dist",
+    "build": "node node_modules/react-scripts/scripts/build.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

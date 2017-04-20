@@ -1,4 +1,4 @@
-FROM nginx:alpine 
+FROM nginx:alpine
 
-COPY ./dist /usr/share/nginx/html
-RUN rm -Rf /usr/share/nginx/html/index.html
+COPY ./build  /usr/share/nginx/html
+#RUN rm -Rf /usr/share/nginx/html/index.html
