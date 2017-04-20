@@ -10,7 +10,7 @@ export default class Header extends Component {
     style = window.getComputedStyle(element),
     width = style.getPropertyValue('width');
     var sidebarWidht = width.slice(0, -2);
-    
+
     if( sidebarWidht > 0 ) {
     document.getElementById('sidebar').style.width = "0";
     document.getElementById('content').style.marginLeft = "0";
@@ -19,11 +19,11 @@ export default class Header extends Component {
      document.getElementById('sidebar').style.width = "200px";
     document.getElementById('content').style.marginLeft = "200px";
   }
-   
+
   }
-  
+
   _logout () {
-    window.location.replace('http://localhost:9990/auth/realms/genny1/protocol/openid-connect/logout?redirect_uri=http://localhost:3000');
+    window.location.replace('http://localhost:8080/auth/realms/genny2/protocol/openid-connect/logout?redirect_uri=http://localhost:3000');
   }
 
 
@@ -49,13 +49,13 @@ export default class Header extends Component {
           <button className="badge1" data-badge="6" >
             <DropdownButton title={<i  className="material-icons" >mail_outline</i>} style={{height:"40px",marginTop: "-4px",background:"none", border:"none"}}>
             <MenuItem  href="#books">Email</MenuItem>
-        
+
             </DropdownButton>
         </button>
           <button className="badge2" data-badge="6" >
             <DropdownButton title={<i  className="material-icons" >notifications_none</i>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}}>
             <MenuItem  href="#books">Notification</MenuItem>
-          
+
             </DropdownButton>
         </button>
 
@@ -63,22 +63,22 @@ export default class Header extends Component {
         <li className="user" >
           <button className="drop" >
           <DropdownButton title={ <div className="displayUser"><img className="userImage" src={user.image} alt="user profile" /><text style={{ fontSize: "15px" }}>{user.name}</text><span className="glyphicon glyphicon-triangle-bottom"></span></div>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}}>
-              
+
               <MenuItem href="#podcasts">
               profile
-              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>person_outline</i>   
+              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>person_outline</i>
               </MenuItem>
               <span className="divider"></span>
             <MenuItem href="#podcasts">
               setting
-              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>settings</i>   
+              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>settings</i>
               </MenuItem>
               <span className="divider"></span>
                  <MenuItem href="#podcasts" onClick={this._logout.bind(this)}>
               logout
-              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>exit_to_app</i>   
+              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>exit_to_app</i>
               </MenuItem>
-              
+
             </DropdownButton>
           </button>
         </li>

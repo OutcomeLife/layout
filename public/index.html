@@ -10,28 +10,24 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <script src="http://localhost:9990/auth/js/keycloak.js"></script>
+   <script src="http://localhost:8080/auth/js/keycloak.js"></script>
 </head>
 
 <body>
   <div id="app"></div>
- 
-
   <script>
     var keycloak = Keycloak({
-      url: 'http://localhost:9990/auth',
-      realm: 'genny1',
-      clientId: 'genny1'
+      url: 'http://localhost:8080/auth',
+      realm: 'genny2',
+      clientId: 'genny2'
     });
 
     keycloak.init({ onLoad: 'login-required' }).success(function (authenticated) {
-      // alert(authenticated ? 'authenticated' : 'not authenticated');
-      
       keycloak.loadUserInfo().success((user) =>  alert("Welcome " + user.given_name + " to genny"));
     }).error(function () {
       alert('failed to initialize');
     });
-    
+
   </script>
 </body>
 
