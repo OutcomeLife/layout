@@ -4,6 +4,8 @@
   "private": true,
   "main": "./dist/entry.js",
   "dependencies": {
+    "json-loader": "^0.5.4",
+    "keycloak-js": "^3.0.0",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.5.4"

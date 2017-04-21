@@ -19,4 +19,4 @@ keycloak:
   volumes:
     - ./themes:/opt/jboss/keycloak/themes/
   ports:
-    - "9990:8080"
+    - "8080:8080"
