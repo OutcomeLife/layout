@@ -24,7 +24,7 @@ export default class Header extends Component {
 
 
   _logout () {
-    window.location.replace('http://bouncer.outcome-hub.com/auth/realms/genny/protocol/openid-connect/logout?redirect_uri=https://genny.outcome-hub.com');
+    window.location.replace('https://bouncer.outcome-hub.com/auth/realms/genny/protocol/openid-connect/logout?redirect_uri=https://genny.outcome-hub.com');
   }
 
 
