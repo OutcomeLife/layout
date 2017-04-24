@@ -1,21 +1,21 @@
-postgres:
-  image: postgres
+mysql:
+  image: mysql
   environment:
-    - POSTGRES_DATABASE=keycloak
-    - POSTGRES_USER=keycloak
-    - POSTGRES_PASSWORD=password
-    - POSTGRES_ROOT_PASSWORD=root_password
+    - MYSQL_DATABASE=keycloakdb
+    - MYSQL_USER=keycloak
+    - MYSQL_PASSWORD=password
+    - MYSQL_ROOT_PASSWORD=root_password
 
 keycloak:
-  image: jboss/keycloak-postgres
+  image: outcomelife/bouncer:latest
   links:
-    - postgres:postgres
+    - mysql:mysql
   environment:
-    - POSTGRES_DATABASE=keycloak
-    - POSTGRES_USER=keycloak
-    - POSTGRES_PASSWORD=password
-    - KEYCLOAK_USER=admin
-    - KEYCLOAK_PASSWORD=admin
+    - MYSQL_DATABASE=keycloakdb
+    - MYSQL_USER=keycloak
+    - MYSQL_PASSWORD=password
+    - KEYCLOAK_USER=prasam
+    - KEYCLOAK_PASSWORD=prasam
   volumes:
     - ./themes:/opt/jboss/keycloak/themes/
   ports:
