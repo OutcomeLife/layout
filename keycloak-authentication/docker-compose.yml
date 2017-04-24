@@ -7,15 +7,15 @@ mysql:
     - MYSQL_ROOT_PASSWORD=root_password
 
 keycloak:
-  image: outcomelife/bouncer:latest
+  image: jboss/keycloak
   links:
     - mysql:mysql
   environment:
     - MYSQL_DATABASE=keycloakdb
     - MYSQL_USER=keycloak
     - MYSQL_PASSWORD=password
-    - KEYCLOAK_USER=prasam
-    - KEYCLOAK_PASSWORD=prasam
+    - KEYCLOAK_USER=admin 
+    - KEYCLOAK_PASSWORD=admin
   volumes:
     - ./themes:/opt/jboss/keycloak/themes/
   ports:
