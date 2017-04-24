@@ -4,11 +4,14 @@
   "private": true,
   "main": "./dist/entry.js",
   "dependencies": {
+    "appversion": "^1.7.1",
+    "dotenv": "^4.0.0",
     "json-loader": "^0.5.4",
     "keycloak-js": "^3.0.0",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.8",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "setenv": "^1.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -25,7 +28,6 @@
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "prepublish": "npm run build",
     "build": "node node_modules/react-scripts/scripts/build.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

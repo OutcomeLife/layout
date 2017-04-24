@@ -9,7 +9,8 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-const kc = Keycloak('./keycloak.json');
+const kc = Keycloak(process.env.KEYCLOAK_JSON_FILE);
+console.log(process.KEYCLOAK_JSON_FILE);
 
  kc.init({ onLoad: 'login-required' }).success(function (authenticated) {
       kc.loadUserInfo().success((user) =>  alert("Welcome " + user.given_name + " to genny"));
@@ -17,5 +18,5 @@ const kc = Keycloak('./keycloak.json');
     }).error(function () {
       alert('failed to initialize');
     });
-    
+
       console.log(kc);
