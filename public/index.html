@@ -24,7 +24,7 @@
     });
 
     keycloak.init({ onLoad: 'login-required' }).success(function (authenticated) {
-      keycloak.loadUserInfo().success((user) =>  alert("Welcome " + user.given_name + " to genny"));
+      keycloak.loadUserInfo().success((user) =>  alert("Welcome " + user.given_name + " to genny proj"));
     }).error(function () {
       alert('failed to initialize');
     });
