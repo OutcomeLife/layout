@@ -21,7 +21,7 @@ services:
      - MYSQL_USERNAME=admin
      - MYSQL_PASSWORD=551Realm
    volumes:
-     - ./themes/genny:/opt/jboss/keycloak/themes/genny
+     - ./themes:/opt/jboss/keycloak/themes/
 #      - IMPORTEXPORT=IMPORT
    ports:
      - "28080:8080"
