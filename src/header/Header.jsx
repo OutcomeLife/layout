@@ -20,10 +20,11 @@ export default class Header extends Component {
     document.getElementById('content').style.marginLeft = "200px";
   }
 
-  }
+}
+
 
   _logout () {
-    window.location.replace('http://localhost:8080/auth/realms/genny2/protocol/openid-connect/logout?redirect_uri=http://localhost:3000');
+    window.location.replace('http://bouncer.outcome-hub.com/auth/realms/genny/protocol/openid-connect/logout?redirect_uri=https://genny.outcome-hub.com');
   }
 
 
