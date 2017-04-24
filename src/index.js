@@ -9,7 +9,7 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-const kc = Keycloak(process.env.KEYCLOAK_JSON_FILE);
+const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 console.log(process.KEYCLOAK_JSON_FILE);
 
  kc.init({ onLoad: 'login-required' }).success(function (authenticated) {
