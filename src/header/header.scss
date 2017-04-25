@@ -81,7 +81,7 @@
     margin-right:20px;
     .material-icons {
         text-shadow: none;
-        padding-top:5px;
+        padding-top:8px;
     }
     .caret {
         display:none;
@@ -90,7 +90,7 @@
 .badge1[data-badge]:after {
  content:attr(data-badge);
    position:absolute;
-   top:-2px;
+   top:4px;
    right:2px;
    font-size:.7em;
    width:18px;height:18px;
@@ -108,7 +108,7 @@
         margin-right:30px;
     .material-icons {
         text-shadow: none;
-        padding-top:5px;
+        padding-top:8px;
     }
     .caret {
         display:none;
@@ -117,7 +117,7 @@
 .badge2[data-badge]:after {
 content:attr(data-badge);
    position:absolute;
-   top:0px;
+   top:4px;
    right:9px;
    font-size:.7em;
    width:18px;height:18px;

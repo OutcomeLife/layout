@@ -23,13 +23,20 @@ export default class Header extends Component {
 }
 
 
-  _logout () {
-    window.location.replace('https://bouncer.outcome-hub.com/auth/realms/genny/protocol/openid-connect/logout?redirect_uri=https://genny.outcome-hub.com');
+  _logout (e) {
+
+     //for production
+      this.props.keycloak.logout({redirectUri:"https://genny.outcome-hub.com/"});
+    //for local development
+    // this.props.keycloak.logout({redirectUri:"http://localhost:3000/"});
+    this.props.keycloak.loadUserProfile().success((user) => console.log(user));
+     e.preventDefault();
+    
   }
 
 
   render() {
-    var { user, logo } = this.props;
+    var { user, logo,keycloak } = this.props;
     if (user === undefined) {
       user = {
         image: './Images/user.png',
@@ -47,41 +54,38 @@ export default class Header extends Component {
         <a className="navbar-brand" href="#">{logo}</a>
 
         <ul className="nav navbar-nav navbar-right" >
-          <button className="badge1" data-badge="6" >
-            <DropdownButton title={<i  className="material-icons" >mail_outline</i>} style={{height:"40px",marginTop: "-4px",background:"none", border:"none"}}>
-            <MenuItem  href="#books">Email</MenuItem>
+    
+            <DropdownButton className="badge1" data-badge="6" title={<i  className="material-icons" >mail_outline</i>} style={{height:"40px",marginTop: "-4px",background:"none", border:"none"}} id="1" >
+            <MenuItem  href="email">Email</MenuItem>
 
             </DropdownButton>
-        </button>
-          <button className="badge2" data-badge="6" >
-            <DropdownButton title={<i  className="material-icons" >notifications_none</i>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}}>
-            <MenuItem  href="#books">Notification</MenuItem>
+
+            <DropdownButton  className="badge2" data-badge="6" title={<i  className="material-icons" >notifications_none</i>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="2" > 
+            <MenuItem  href="notification">Notification</MenuItem>
 
             </DropdownButton>
-        </button>
 
       <span className="userProfile">
         <li className="user" >
-          <button className="drop" >
-          <DropdownButton title={ <div className="displayUser"><img className="userImage" src={user.image} alt="user profile" /><text style={{ fontSize: "15px" }}>{user.name}</text><span className="glyphicon glyphicon-triangle-bottom"></span></div>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}}>
+          <DropdownButton  className="drop"  title={ <div className="displayUser"><img className="userImage" src={user.image} alt="user profile" /><text style={{ fontSize: "15px" }}>{user.name}</text><span className="glyphicon glyphicon-triangle-bottom"></span></div>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="3">
 
-              <MenuItem href="#podcasts">
+              <MenuItem href="profile">
               profile
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>person_outline</i>
               </MenuItem>
               <span className="divider"></span>
-            <MenuItem href="#podcasts">
+            <MenuItem href="setting">
               setting
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>settings</i>
               </MenuItem>
               <span className="divider"></span>
-                 <MenuItem href="#podcasts" onClick={this._logout.bind(this)}>
+                 <MenuItem href="logout" onClick={this._logout.bind(this)}>      
               logout
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>exit_to_app</i>
               </MenuItem>
 
             </DropdownButton>
-          </button>
+
         </li>
       </span>
         </ul >
