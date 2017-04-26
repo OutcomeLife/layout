@@ -7,62 +7,50 @@
   width: 100%;
   top: 0;
   border-radius: 0; }
-
-.navbar .material-icons {
-  cursor: pointer; }
-
-.navbar .navbar-right {
-  display: block;
-  float: right; }
-
-.navbar .navbar-brand {
-  margin-top: -10px; }
-
-.navbar .userProfile {
-  float: right;
-  margin-right: 20px;
-  right: 20px;
-  list-style: none; }
-
-.navbar .userProfile .user {
-  text-align: justify;
-  margin-right: 10px; }
-
-.navbar .userProfile .user .drop {
-  border: none;
-  background: none;
-  background-image: none;
-  background-color: none;
-  outline: none; }
-
-.navbar .userProfile .user .drop .displayUser {
-  text-shadow: none; }
-
-.navbar .userProfile .user .drop .caret {
-  display: none; }
-
-.navbar .userProfile .user .drop :hover {
-  background-image: none;
-  background-color: none; }
-
-.navbar .userProfile .user .drop .glyphicon-triangle-bottom {
-  font-size: 10px;
-  padding-left: 3px; }
-
-.navbar .userProfile .user .drop .userImage {
-  height: 25px;
-  width: 30px;
-  padding-right: 5px;
-  border-radius: 15px; }
-
-.navbar .divider {
-  height: 1px;
-  width: 100%;
-  display: block;
-  /* for use on default inline elements like span */
-  margin: 0;
-  overflow: hidden;
-  background-color: whitesmoke; }
+  .navbar .material-icons {
+    cursor: pointer; }
+  .navbar .navbar-right {
+    display: block;
+    float: right; }
+  .navbar .navbar-brand {
+    margin-top: -10px; }
+  .navbar .userProfile {
+    float: right;
+    margin-right: 20px;
+    right: 20px;
+    list-style: none; }
+    .navbar .userProfile .user {
+      text-align: justify;
+      margin-right: 10px; }
+      .navbar .userProfile .user .drop {
+        border: none;
+        background: none;
+        background-image: none;
+        background-color: none;
+        outline: none; }
+        .navbar .userProfile .user .drop .displayUser {
+          text-shadow: none; }
+        .navbar .userProfile .user .drop .caret {
+          display: none; }
+        .navbar .userProfile .user .drop :hover {
+          background-image: none;
+          background-color: none; }
+        .navbar .userProfile .user .drop .glyphicon-triangle-bottom {
+          font-size: 10px;
+          padding-left: 3px; }
+        .navbar .userProfile .user .drop .userImage {
+          height: 25px;
+          width: 30px;
+          padding-right: 5px;
+          border-radius: 15px; }
+  .navbar .divider {
+    height: 1px;
+    width: 100%;
+    display: block;
+    /* for use on default inline elements like span */
+    margin: 0;
+    overflow: hidden;
+    background-color: whitesmoke; }
 
 .badge1 {
   position: relative;
@@ -70,13 +58,11 @@
   background-color: transparent;
   outline: none;
   margin-right: 20px; }
-
-.badge1 .material-icons {
-  text-shadow: none;
-  padding-top: 8px; }
-
-.badge1 .caret {
-  display: none; }
+  .badge1 .material-icons {
+    text-shadow: none;
+    padding-top: 8px; }
+  .badge1 .caret {
+    display: none; }
 
 .badge1[data-badge]:after {
   content: attr(data-badge);
@@ -97,13 +83,11 @@
   background-color: transparent;
   outline: none;
   margin-right: 30px; }
-
-.badge2 .material-icons {
-  text-shadow: none;
-  padding-top: 8px; }
-
-.badge2 .caret {
-  display: none; }
+  .badge2 .material-icons {
+    text-shadow: none;
+    padding-top: 8px; }
+  .badge2 .caret {
+    display: none; }
 
 .badge2[data-badge]:after {
   content: attr(data-badge);

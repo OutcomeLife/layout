@@ -17,7 +17,7 @@ class App extends Component {
 }
 
 componentWillMount(){
-	const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
+const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 
  var success = kc.init({ onLoad: 'login-required' })
 					.success((authenticated) => {

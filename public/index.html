@@ -12,24 +12,62 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!--<script src="http://localhost:8080/auth/js/keycloak.js"></script>-->
+   <style>
+    /*.bgImage {
+    background: #0f0f0f url("./images/internimg.jpeg") top left no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+     }*/
+  .container {
+    align-items: center;
+    display:flex;
+    justify-content:center;
+    margin-top:50vh;
+    
+  }   
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+   </style>
 </head>
 
-<body>
+<!--<body id="bgImage">-->
+  <body>
+  <div class="container" id="load">
+	<button class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+</div>
   <div id="app"></div>
-  <!--<script>
-    var keycloak = Keycloak({
-      url: 'https://bouncer.outcome-hub.com/auth',
-      realm: 'genny',
-      clientId: 'layout'
-    });
+  <script>
+    document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.getElementById('app').style.visibility="hidden";
+      //  document.getElementById("bgImage").classList.add("bgImage");
+ 
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('app').style.visibility="visible";
+      //  document.getElementById("bgImage").classList.remove("bgImage");
+         
+      },1000);
+  }
+}
 
-    keycloak.init({ onLoad: 'login-required' }).success(function (authenticated) {
-      keycloak.loadUserInfo().success((user) =>  alert("Welcome " + user.given_name + " to genny "));
-    }).error(function () {
-      alert('failed to initialize');
-    });
-    console.log(keycloak);
-  </script>-->
+  </script>
 </body>
 
 </html>
