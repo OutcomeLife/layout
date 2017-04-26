@@ -34,6 +34,11 @@ export default class Header extends Component {
     
   }
 
+  _account(e) {
+    this.props.keycloak.accountManagement();
+    e.preventDefault();
+  }
+
 
   render() {
     var { user, logo,keycloak } = this.props;
@@ -69,13 +74,8 @@ export default class Header extends Component {
         <li className="user" >
           <DropdownButton  className="drop"  title={ <div className="displayUser"><img className="userImage" src={user.image} alt="user profile" /><text style={{ fontSize: "15px" }}>{user.name}</text><span className="glyphicon glyphicon-triangle-bottom"></span></div>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="3">
 
-              <MenuItem href="profile">
-              profile
-              <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>person_outline</i>
-              </MenuItem>
-              <span className="divider"></span>
-            <MenuItem href="setting">
-              setting
+            <MenuItem onClick={this._account.bind(this)} >
+              account
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>settings</i>
               </MenuItem>
               <span className="divider"></span>

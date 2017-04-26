@@ -3,8 +3,9 @@
 .intern .body {
   background-color: #ecf0f1;
   color: black; }
-  .intern .body h1 {
-    color: blue; }
+
+.intern .body h1 {
+  color: blue; }
 
 .body {
   position: absolute;
