@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer} from './entry';
 import Keycloak from 'keycloak-js';
+import Profile from './Profile';
 
 class App extends Component {
   constructor() {
@@ -18,6 +19,7 @@ class App extends Component {
 
 componentWillMount(){
 const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
+window.kc = kc;
 
  var success = kc.init({ onLoad: 'login-required' })
 					.success((authenticated) => {
@@ -28,12 +30,12 @@ const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 						else {
 							console.log("user could not authenticated");
 						}
-							
+
 						})
 					 .error(function (err) {
 								//alert('failed to initialize');
-						
-							});     
+
+							});
 }
 
   render(){
@@ -55,9 +57,9 @@ const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 
     		</Sidebar>
     		<Content>
-    		content
+    		<Profile/>
     		</Content>
-    	</Body>*/}
+    	</Body>
     	<Footer >
         Version No:{process.env.REACT_APP_VERSION_NUMBER} ||| Build Date: {process.env.REACT_APP_BUILD_DATE}
     	</Footer>
@@ -67,4 +69,3 @@ const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
   }
 
 export default App;
-

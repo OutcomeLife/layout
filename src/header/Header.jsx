@@ -26,12 +26,12 @@ export default class Header extends Component {
   _logout (e) {
 
      //for production
-      this.props.keycloak.logout({redirectUri:"https://genny.outcome-hub.com/"});
+      this.props.keycloak.logout({redirectUri:"http://localhost:3000"});
     //for local development
     // this.props.keycloak.logout({redirectUri:"http://localhost:3000/"});
     this.props.keycloak.loadUserProfile().success((user) => console.log(user));
      e.preventDefault();
-    
+
   }
 
   _account() {
@@ -59,24 +59,24 @@ export default class Header extends Component {
         <a className="navbar-brand" href="#">{logo}</a>
 
         <ul className="nav navbar-nav navbar-right" >
-    
+
             <DropdownButton className="badge1" data-badge="6" title={<i  className="material-icons" >mail_outline</i>} style={{height:"40px",marginTop: "-4px",background:"none", border:"none"}} id="1" >
             <MenuItem  href="email">Email</MenuItem>
 
             </DropdownButton>
 
-            <DropdownButton  className="badge2" data-badge="6" title={<i  className="material-icons" >notifications_none</i>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="2" > 
+            <DropdownButton  className="badge2" data-badge="6" title={<i  className="material-icons" >notifications_none</i>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="2" >
             <MenuItem  href="notification">Notification</MenuItem>
 
             </DropdownButton>
 
       <span className="userProfile">
         <li className="user" >
-          <DropdownButton  className="drop"  
+          <DropdownButton  className="drop"
           title={ <div className="displayUser">
             <text style={{ fontSize: "15px" }}>Hi, {user.name}</text>&nbsp;
             <img className="userImage" src={user.image} alt="user profile" />
-            <span className="glyphicon glyphicon-triangle-bottom"></span></div>} 
+            <span className="glyphicon glyphicon-triangle-bottom"></span></div>}
             style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="3" >
 
             <MenuItem onClick={this._account.bind(this)} >
@@ -84,7 +84,7 @@ export default class Header extends Component {
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>settings</i>
               </MenuItem>
               <span className="divider"></span>
-                 <MenuItem href="logout" onClick={this._logout.bind(this)}>      
+                 <MenuItem href="logout" onClick={this._logout.bind(this)}>
               logout
               <i className="material-icons" style={{ fontSize: "18px", float: "right",paddingRight: "5px" }}>exit_to_app</i>
               </MenuItem>
