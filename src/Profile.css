@@ -7,7 +7,7 @@
 
 .profile-h3 {
   text-align: center;
-  font-weight: 200; }
+  font-weight: 400; }
 
 .profile-inner {
   border: 1px solid #e3e3e3;
@@ -22,3 +22,9 @@
 
 .profile-btn {
   margin-top: 10px; }
+
+.profile-image {
+  width: 20%;
+  border-radius: 50px;
+  border: 2px solid #e3e3e3;
+  padding: 4px; }

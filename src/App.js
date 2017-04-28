@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer} from './entry';
 import Keycloak from 'keycloak-js';
 import Profile from './Profile';
+// import './flatly.css';
 
 class App extends Component {
   constructor() {
@@ -17,26 +18,27 @@ class App extends Component {
 
 }
 
-componentWillMount(){
-const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
-window.kc = kc;
+// componentDidMount(){
+// const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
+// window.kc = kc;
+//
+//  var success = kc.init({ onLoad: 'login-required' })
+// 					.success((authenticated) => {
+// 						if(authenticated){
+// 							this.setState({keycloak:kc})
+// 							this.state.keycloak.loadUserInfo().success((user) => this.setState({logo:this.state.keycloak.realm,	user:{ image:'images/user.png', name:user.given_name }}));
+// 						}
+// 						else {
+// 							console.log("user could not authenticated");
+// 						}
+//
+// 						})
+// 					 .error(function (err) {
+// 								//alert('failed to initialize');
+//
+// 							});
+// }
 
- var success = kc.init({ onLoad: 'login-required' })
-					.success((authenticated) => {
-						if(authenticated){
-							this.setState({keycloak:kc})
-							this.state.keycloak.loadUserInfo().success((user) => this.setState({logo:this.state.keycloak.realm,	user:{ image:'images/user.png', name:user.given_name }}));
-						}
-						else {
-							console.log("user could not authenticated");
-						}
-
-						})
-					 .error(function (err) {
-								//alert('failed to initialize');
-
-							});
-}
 
   render(){
 		var { keycloak, user, logo } = this.state;
@@ -54,10 +56,9 @@ window.kc = kc;
 
 					<a href="#" >Admin </a>
 
-
     		</Sidebar>
     		<Content>
-    		<Profile/>
+    		<Profile keycloak={keycloak}/>
     		</Content>
     	</Body>
     	<Footer >

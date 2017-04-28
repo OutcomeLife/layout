@@ -24,12 +24,10 @@ export default class Header extends Component {
 
 
   _logout (e) {
-
-     //for production
-      this.props.keycloak.logout({redirectUri:"http://localhost:3000"});
+      window.kc.logout({redirectUri:"http://localhost:3000/"});
     //for local development
     // this.props.keycloak.logout({redirectUri:"http://localhost:3000/"});
-    this.props.keycloak.loadUserProfile().success((user) => console.log(user));
+    window.kc.loadUserProfile().success((user) => console.log(user));
      e.preventDefault();
 
   }
