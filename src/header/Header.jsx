@@ -60,7 +60,7 @@ export default class Header extends Component {
 
         <ul className="nav navbar-nav navbar-right" >
     
-            <DropdownButton className="badge1" data-badge="6" title={<i  className="material-icons" >mail_outline</i>} style={{height:"40px",marginTop: "-4px",background:"none", border:"none"}} id="1" >
+            {/*<DropdownButton className="badge1" data-badge="6" title={<i  className="material-icons" >mail_outline</i>} style={{height:"40px",marginTop: "-4px",background:"none", border:"none"}} id="1" >
             <MenuItem  href="email">Email</MenuItem>
 
             </DropdownButton>
@@ -68,7 +68,7 @@ export default class Header extends Component {
             <DropdownButton  className="badge2" data-badge="6" title={<i  className="material-icons" >notifications_none</i>} style={{marginTop:"-4px",height:"40px",background:"none", border:"none"}} id="2" > 
             <MenuItem  href="notification">Notification</MenuItem>
 
-            </DropdownButton>
+            </DropdownButton>*/}
 
       <span className="userProfile">
         <li className="user" >

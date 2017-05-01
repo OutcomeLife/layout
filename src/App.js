@@ -43,19 +43,19 @@ const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
     	<Header logo={logo} user={user} keycloak={keycloak}/>
     	<Body >
     		<Sidebar>
-
+{/*
 					<a href="#" >Roles </a>
 
 					<a href="#" >Message </a>
 
 					<a href="#" >Contact </a>
 
-					<a href="#" >Admin </a>
+					<a href="#" >Admin </a>*/}
 
 
     		</Sidebar>
     		<Content>
-    		content
+    		{/*content*/}
     		</Content>
     	</Body>*/}
     	<Footer >
