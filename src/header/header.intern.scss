@@ -1,45 +1,19 @@
 @import '../style/color.scss';
-
 .intern {
-.navbar {
-        background-color:$teal5;
-        .navbar-brand {
-            color:$white;
+    .navbar {
+        background-color: $teal5;
+        color: $white;
+        .navbar-right {
+            .userProfile {
+                background-color: inherit;
+                color: $white;
+                &:hover {
+                    background-color: $teal6;
+                }
+                &:active {
+                    background-color: $teal6;
+                }
+            }
         }
     }
-
-    .badge1 {
-        .material-icons {
-            color:$white;
-        }
-    
-        :hover {
-            color: $black;
-        }
-
-        
-        }
-.badge1[data-badge]:after {
-   background:green;
-   color:$white;
-   box-shadow:0 0 1px #333;
-}
-
- .badge2 {
-    .material-icons {
-            color:$white;
-        }
-    :hover {
-        color:$black;
-        }
-        :active {
-             color:$black;
-        }
-     }
-.badge2[data-badge]:after {
-
-   background:green;
-   color:$white;
-   box-shadow:0 0 1px #333;
-}
 }

@@ -1,135 +1,54 @@
  @import './header.intern.css';
+
  .navbar {
-        background: none;
-        outline:none;
-        position: absolute;
-        height:5vh;
-        width:100%;
-        top:0;
-        border-radius:0;
-
-        .material-icons {
-            cursor:pointer;
-            }
-        .navbar-right {
-        display:block;     
-        float:right;
-        }
-        .navbar-brand {
-            margin-top:-10px;
+     background: none;
+     outline: none;
+     position: absolute;
+     height: 60px;
+     width: 100%;
+     top: 0;
+     border-radius: 0;
+     overflow-x:hidden;
+     left:0;
+     z-index:999;
+     .navbar-brand {
+         height:inherit;
+         .material-icons {
+             cursor: pointer;
+             margin-left:20px;
+             margin-right:30px;
          }
-        .userProfile {
-                float: right;
-                margin-right:20px;
-                right:20px;
-                list-style:none;
-                
-          
-                .user {
-                    text-align: justify;
-                    margin-right: 10px;
-                    
-                    .drop {
-                        border: none;
-                        background: none;
-                        background-image: none;
-                        background-color: none;
-                        outline:none;
-                        .displayUser {
-                            text-shadow: none;
-                        }
-                        .caret {
-                            display:none;
-                        }
-                        
-                        :hover {
-                            background-image: none;
-                            background-color: none;
-
-                            }
-                        .glyphicon-triangle-bottom {
-                            font-size: 10px;
-                            padding-left: 3px;
-                        }
-                         .userImage {
-                            height:25px;
-                            width:30px;
-                            padding-right: 5px;
-                            border-radius: 15px;
-                        }
-
-                        }
-               
-                    }
-            }
-         .divider {
-                height: 1px;
-                width:100%;
-                display:block; /* for use on default inline elements like span */
-                margin: 0;
-                overflow: hidden;
-                background-color:whitesmoke;
-                }
-
-    }
-
-.badge1 {
-    position: relative;
-    border:none;
-    background-color:transparent;
-    outline:none;
-    margin-right:20px;
-    .material-icons {
-        text-shadow: none;
-        padding-top:8px;
-    }
-    .caret {
-        display:none;
-    }
-        }
-.badge1[data-badge]:after {
- content:attr(data-badge);
-   position:absolute;
-   top:4px;
-   right:2px;
-   font-size:.7em;
-   width:18px;height:18px;
-   text-align:center;
-   line-height:18px;
-   border-radius:50%;
-   box-shadow:0 0 1px #333;
-}
-
- .badge2 {
-        position: relative;
-        border:none;
-        background-color: transparent;
-        outline:none;
-        margin-right:30px;
-    .material-icons {
-        text-shadow: none;
-        padding-top:8px;
-    }
-    .caret {
-        display:none;
-    }
+         .logo {
+             text-transform: uppercase;
+         }
      }
-.badge2[data-badge]:after {
-content:attr(data-badge);
-   position:absolute;
-   top:4px;
-   right:9px;
-   font-size:.7em;
-   width:18px;height:18px;
-   text-align:center;
-   line-height:18px;
-   border-radius:50%;
-   box-shadow:0 0 1px #333;
-}
-
-.dropdown-menu {
-    border-radius:10px;
-}
-.dropdown-menu>li>a:hover {
-    color:blue;
-}
+     .navbar-right {
+         display: block;
+         float: right;
+         height: 60px;
+         margin-right: 50px;
+         margin-top:-60px;
+         .userProfile {
+             height:inherit;
+             width:inherit;
+             //padding-bottom: 20px;
+             padding-left: 15px;
+             min-width: 70px;
+             outline: none;
+             border: none;
+             display: inline-block;
+             cursor: pointer;
+             text-decoration: none;
+             .userImage {
+                 height: 30px;
+                 width: 30px;
+                 padding-right: 5px;
+                 border-radius: 15px;
+                 top: 40px;
+                 .material-icons {
+                     transition: 1s;
+                 }
+             }
+         }
+     }
+ }

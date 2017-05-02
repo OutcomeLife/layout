@@ -9,6 +9,8 @@
 .body {
   position: absolute;
   width: 100%;
-  top: 40px;
+  top: 60px;
   bottom: 40px;
-  display: flex; }
+  display: flex;
+  z-index: -1;
+  left: 0; }

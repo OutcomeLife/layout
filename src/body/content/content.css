@@ -5,4 +5,5 @@
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 200px;
-  transition: margin-left .5s; }
+  transition: margin-left .5s;
+  z-index: -1; }

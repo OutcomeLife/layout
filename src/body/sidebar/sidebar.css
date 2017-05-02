@@ -2,7 +2,7 @@
 @import url(./sidebar.jobby.css);
 .sidebar {
   position: fixed;
-  top: 40px;
+  top: 60px;
   bottom: 40px;
   width: 200px;
   overflow-x: hidden;

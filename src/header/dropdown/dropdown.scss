@@ -1,0 +1,26 @@
+@import './dropdown.intern.scss';
+.dropdown {
+    position: fixed;
+    top: 60px;
+    right: 50px;
+    display: none;
+    min-width: 174px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;  
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        padding: 12px 16px;
+        list-style: none;
+        display: block;
+        a {
+            padding: 8px;
+            text-decoration: none;
+        }
+    }
+}

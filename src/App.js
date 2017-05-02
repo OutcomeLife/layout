@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer} from './entry';
 import Keycloak from 'keycloak-js';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -8,22 +9,20 @@ class App extends Component {
 		this.state =({
 			keycloak:{},
 			user:{
-				image:'images/user.png',
+				image:'./images/user.png',
 				name:'sam'
 			},
 			logo:'logo'
 		})
-
+		this._getContent = this._getContent.bind(this);
 }
-
 componentWillMount(){
-const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
-
- var success = kc.init({ onLoad: 'login-required' })
-					.success((authenticated) => {
-						if(authenticated){
-							this.setState({keycloak:kc})
-							this.state.keycloak.loadUserInfo().success((user) => this.setState({logo:this.state.keycloak.realm,	user:{ image:'images/user.png', name:user.given_name }}));
+	const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
+	kc.init({ onLoad: 'login-required' })
+		.success((authenticated) => {
+				if(authenticated){
+						this.setState({keycloak:kc})
+						this.state.keycloak.loadUserInfo().success((user) => this.setState({logo:kc.realm,	user:{ image:'./images/user.png', name:user.given_name }}));
 						}
 						else {
 							console.log("user could not authenticated");
@@ -31,9 +30,25 @@ const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 							
 						})
 					 .error(function (err) {
-								//alert('failed to initialize');
+								console.log('failed to initialize');
 						
-							});     
+							})			  
+}
+_getContent () {
+	var { token } = this.state.keycloak;
+	console.log(token);
+
+	axios({
+		url:'time/now',
+		method:'get',
+		baseURL: 'http://qwanda-service.outcome-hub.com/',
+		data: {},
+		headers : {'Authorization':`Bearer ${token}`}
+	}).then( () => {
+		console.log('completed the authorization step');
+	}).catch(error => {
+		console.log(error);
+	})
 }
 
   render(){
@@ -43,21 +58,12 @@ const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
     	<Header logo={logo} user={user} keycloak={keycloak}/>
     	<Body >
     		<Sidebar>
-{/*
-					<a href="#" >Roles </a>
-
-					<a href="#" >Message </a>
-
-					<a href="#" >Contact </a>
-
-					<a href="#" >Admin </a>*/}
-
 
     		</Sidebar>
     		<Content>
-    		{/*content*/}
+    	<button onClick={this._getContent}>Get Content </button>
     		</Content>
-    	</Body>*/}
+    	</Body>
     	<Footer >
         Version No:{process.env.REACT_APP_VERSION_NUMBER} ||| Build Date: {process.env.REACT_APP_BUILD_DATE}
     	</Footer>

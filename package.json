@@ -5,6 +5,7 @@
   "main": "./dist/entry.js",
   "dependencies": {
     "appversion": "^1.7.1",
+    "axios": "^0.16.1",
     "dotenv": "^4.0.0",
     "json-loader": "^0.5.4",
     "keycloak-js": "^3.0.0",

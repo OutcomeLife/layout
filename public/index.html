@@ -2,71 +2,83 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genny Layout </title>
+<!-- SEO Ultimate (http://www.seodesignsolutions.com/wordpress-seo/) -->
+<meta name="description" content="outcome-hub genny layout" />
+<meta property="og:type" content="web applicaiont" />
+<meta property="og:title" content="genny layout" />
+<meta property="og:description" content="outcome-hub genny layout" />
+<meta property="og:url" content="https://genny.outcome-hub.com/" />
+<meta property="article:published_time" content="2017-04-02" />
+<meta property="article:modified_time" content="2017-04-03" />
+<meta property="og:site_name" content="outcome-hub genny layout" />
+<meta property="og:site_name" content="genny layout" />
+<!-- /SEO Ultimate -->
   
-<!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!--<script src="http://localhost:8080/auth/js/keycloak.js"></script>-->
-   <style>
-    /*.bgImage {
-    background: #0f0f0f url("./images/internimg.jpeg") top left no-repeat;
-    background-size: cover;
-    opacity: 0.9;
-     }*/
-  .container {
-    align-items: center;
-    display:flex;
-    justify-content:center;
-    margin-top:50vh;
+ 
+  <style>
+    .container {
+      margin-top: 40vh; 
+      margin-left: 40%;
+      float:left;
+      font-size:24px;
+      color:teal;
+      font-style: bold;
+      height:150px;
+    }
+    .container #title {
+      margin-top:15px;
+    }
+    .loader {
+      border: 12px solid #f3f3f3;
+      /* Light grey */
+      border-top: 12px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      margin-left:30px;
+    }
     
-  }   
-.glyphicon-refresh-animate {
-    -animation: spin .7s infinite linear;
-    -webkit-animation: spin2 .7s infinite linear;
-}
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
-
-   </style>
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
-<!--<body id="bgImage">-->
-  <body>
+<body>
+  <!-- loadin icon area -->
   <div class="container" id="load">
-	<button class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
-</div>
+    <div class="loader">
+    </div>
+    <div id="title" >Genny Layout </div>
+  </div>
+
   <div id="app"></div>
   <script>
     document.onreadystatechange = function () {
-  var state = document.readyState
-  if (state == 'interactive') {
-       document.getElementById('app').style.visibility="hidden";
-      //  document.getElementById("bgImage").classList.add("bgImage");
- 
-  } else if (state == 'complete') {
-      setTimeout(function(){
-         document.getElementById('interactive');
-         document.getElementById('load').style.visibility="hidden";
-         document.getElementById('app').style.visibility="visible";
-      //  document.getElementById("bgImage").classList.remove("bgImage");
-         
-      },1000);
-  }
-}
+      var state = document.readyState
+      if (state == 'interactive') {
+        document.getElementById('app').style.visibility = "hidden";
 
+      } else if (state == 'complete') {
+        setTimeout(function () {
+          document.getElementById('load').style.visibility = "hidden";
+          document.getElementById('app').style.visibility = "visible";        
+        }, 1000);
+      }
+    }
   </script>
 </body>
 
