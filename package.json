@@ -6,13 +6,9 @@
   "dependencies": {
     "appversion": "^1.7.1",
     "axios": "^0.16.1",
-    "dotenv": "^4.0.0",
-    "json-loader": "^0.5.4",
     "keycloak-js": "^3.0.0",
     "react": "^15.5.4",
-    "react-bootstrap": "^0.30.8",
-    "react-dom": "^15.5.4",
-    "setenv": "^1.0.3"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
