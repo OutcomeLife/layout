@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './header.css';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
 import Dropdown from './dropdown';
 
 export default class Header extends Component {
@@ -77,7 +76,7 @@ export default class Header extends Component {
         </span>
 
         <span className="navbar-right" >
-          <button className="userProfile" onBlur={this._hideDropdown} onClick={this._renderDropdown} style={{ transition: "0.3s ease-in" }}>
+          <button className={this.state.showUserProfile ? "userProfileActive" : "userProfile"} onBlur={this._hideDropdown} onClick={this._renderDropdown} style={{ transition: "0.3s ease-in" }}>
             <table>
               <tbody>
               <tr>
@@ -88,7 +87,7 @@ export default class Header extends Component {
               </tbody>
             </table>
           </button>
-          <Dropdown />
+          <Dropdown keycloak={keycloak}/>
         </span>
         <div>
         

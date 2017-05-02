@@ -29,7 +29,7 @@
   margin-right: 50px;
   margin-top: -60px; }
 
-.navbar .navbar-right .userProfile {
+.navbar .navbar-right .userProfile, .navbar .navbar-right .userProfileActive {
   height: inherit;
   width: inherit;
   padding-left: 15px;
@@ -40,12 +40,12 @@
   cursor: pointer;
   text-decoration: none; }
 
-.navbar .navbar-right .userProfile .userImage {
+.navbar .navbar-right .userProfile .userImage, .navbar .navbar-right .userProfileActive .userImage {
   height: 30px;
   width: 30px;
   padding-right: 5px;
   border-radius: 15px;
   top: 40px; }
 
-.navbar .navbar-right .userProfile .userImage .material-icons {
+.navbar .navbar-right .userProfile .userImage .material-icons, .navbar .navbar-right .userProfileActive .userImage .material-icons {
   transition: 1s; }

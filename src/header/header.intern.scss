@@ -10,9 +10,10 @@
                 &:hover {
                     background-color: $teal6;
                 }
-                &:active {
-                    background-color: $teal6;
-                }
+            }
+            .userProfileActive {
+            @extend .userProfile;
+             background-color: $teal6;
             }
         }
     }
