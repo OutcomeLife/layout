@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer } from './entry';
 import Keycloak from 'keycloak-js';
 import axios from 'axios';
+import md5 from 'js-md5';
 
 class App extends Component {
 	constructor() {
@@ -18,11 +19,29 @@ class App extends Component {
 	}
 	componentWillMount() {
 		const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
+		
 		kc.init({ onLoad: 'login-required' })
 			.success((authenticated) => {
 				if (authenticated) {
 					this.setState({ keycloak: kc })
-					this.state.keycloak.loadUserInfo().success((user) => this.setState({ logo: kc.realm, user: { image: './images/user.png', name: user.given_name } }));
+					this.state.keycloak.loadUserInfo()
+						.success((user) => {
+							// if ('adamcrow63+1@gmail.com'.includes("+")) {
+							// 	var n = 'adamcrow63+1@gmail.com'.indexOf('+');
+							// 	var at = 'adamcrow63+1@gmail.com'.indexOf('@');
+							// 	var email = 'adamcrow63+1@gmail.com'.substr(0, n) + 'adamcrow63+1@gmail.com'.substr(at);
+							// 	alert(email);
+							// }
+							md5(user.email);
+							//md5('adamcrow63@gmail.com');
+							const hash = md5.create();
+							//hash.update('adamcrow63@gmail.com');
+							hash.update(user.email);
+							hash.hex();
+							const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
+							//alert(imgUrl);
+							this.setState({ logo: kc.realm, user: { image: imgUrl, name: user.given_name } })
+						});
 				}
 				else {
 					console.log("user could not authenticated");
