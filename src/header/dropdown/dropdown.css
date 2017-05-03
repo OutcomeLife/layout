@@ -38,9 +38,8 @@
 .dropdown li {
   cursor: pointer;
   padding: 12px 16px;
-  list-style: none;
-  display: block; }
+  list-style: none; }
 
 .dropdown li a {
-  padding: 8px;
-  text-decoration: none; }
+  text-decoration: none;
+  display: block; }

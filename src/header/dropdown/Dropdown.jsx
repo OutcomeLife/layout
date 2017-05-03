@@ -24,14 +24,16 @@ class Dropdown extends Component {
         return (
             <div className="dropdown" id="dropdown">
                 <hr />
-                <li>
-                    <a href="/account" onMouseDown={this._account}>account</a>
-                    <i className="material-icons" style={{ fontSize: "18px", float: "right", paddingRight: "5px" }}>settings</i>
+                <li onMouseDown={this._account}>
+                    <a href="/account" >account
+                    <i className="material-icons" style={{ fontSize: "18px", float: "right", paddingRight:"5px" }}>settings</i>
+                    </a>
                 </li>
                 <hr />
-                <li>
-                    <a href="/logout" onMouseDown={this._logout}>logout</a>
+                <li onMouseDown={this._logout}>
+                    <a href="/logout" >logout
                     <i className="material-icons" style={{ fontSize: "18px", float: "right", paddingRight: "5px" }}>exit_to_app</i>
+                    </a>
                 </li>
             </div>
         );

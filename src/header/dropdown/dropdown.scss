@@ -19,10 +19,11 @@
         cursor: pointer;
         padding: 12px 16px;
         list-style: none;
-        display: block;
         a {
-            padding: 8px;
+            //padding: 8px;
             text-decoration: none;
+            display:block;
+
         }
     }
 }

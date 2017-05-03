@@ -68,14 +68,14 @@
   <div id="app"></div>
   <script>
     document.onreadystatechange = function () {
-      var state = document.readyState
+      var state = document.readyState;
       if (state == 'interactive') {
-        document.getElementById('app').style.visibility = "hidden";
+        document.getElementById('app').style.display = "none";
 
       } else if (state == 'complete') {
         setTimeout(function () {
-          document.getElementById('load').style.visibility = "hidden";
-          document.getElementById('app').style.visibility = "visible";        
+          document.getElementById('load').style.display = "none";
+          document.getElementById('app').style.display = "block";        
         }, 1000);
       }
     }

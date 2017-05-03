@@ -91,7 +91,7 @@ export default class Header extends Component {
             <table>
               <tbody>
               <tr>
-                <td> <text style={{ fontSize: "15px", marginRight: "5px" }}>Hi, {user.name}</text> </td>
+                <td> <text style={{ fontSize: "13px", marginRight: "5px" }}>Hi, {user.name}</text> </td>
                 <td> <img src={user.image} className="userImage"></img> </td>
                 <td> <i className="material-icons" style={{ transform:`${this.state.transform}`,transition: "0.5s ease transform"}}>keyboard_arrow_down</i> </td>
               </tr>
