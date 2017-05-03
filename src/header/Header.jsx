@@ -15,7 +15,18 @@ export default class Header extends Component {
     this._hideDropdown = this._hideDropdown.bind(this);
     this._renderSidebar = this._renderSidebar.bind(this);
   }
-
+  componentDidMount () {
+    //this is to hide sidebar when the scree size is small
+    var element = document.getElementById('sidebar'),
+    style = window.getComputedStyle(element),
+    width = style.getPropertyValue('width');
+    //alert(width);
+    if (width === "0px") {
+      document.getElementById('sidebar').style.width = "0";
+      document.getElementById('content').style.marginLeft = "0";
+      this.setState({ showSidebar: false });
+    }
+  }
   _renderDropdown() {
     const { showUserProfile } = this.state;
     if (showUserProfile === false) {

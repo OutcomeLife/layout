@@ -3,35 +3,35 @@
 
 
 .sidebar  {
-         position:fixed;
-            top:60px;
-            bottom:40px;
-            width:200px;
-            overflow-x: hidden;
-            display:block;
-            transition: 0.5s;
-            a {
-                padding: 10px 8px 10px 16px;
-                text-decoration: none;
-                font-size: 18px;
-                display: block;
-                transition: 0.3s;
-            }
-              i {
-                   float:right;
+    position:fixed;
+    top:60px;
+    bottom:40px;
+    width:200px;
+    overflow-x: hidden;
+    display:block;
+    transition: 0.5s;
+    a {
+        padding: 10px 8px 10px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        display: block;
+        transition: 0.3s;
+        }
+        i {
+            float:right;
             }
             .arrow {
-                    float:left;
-                    padding-left: 4px;
+                float:left;
+                padding-left: 4px;
                 }
                .subMenu {
                     list-style: none;
                     color:black;
                     a {
                         font-size: 12px;
-                    :hover {
+                        :hover {
                         color:white;
-                    }
+                        }
 
                     } 
                 }
@@ -45,4 +45,11 @@
                 background-color: rgb(255, 165, 0);
             }
         }
+
+    /*  for small devices */
+    @media screen and (max-width:415px) {
+        .sidebar {
+            width:0px;
+        }
+    }
 

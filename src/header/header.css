@@ -31,9 +31,9 @@
 
 .navbar .navbar-right .userProfile, .navbar .navbar-right .userProfileActive {
   height: inherit;
-  width: inherit;
+  min-width: 175px !important;
+  max-width: 175px !important;
   padding-left: 15px;
-  min-width: 70px;
   outline: none;
   border: none;
   display: inline-block;
@@ -49,3 +49,5 @@
 
 .navbar .navbar-right .userProfile .userImage .material-icons, .navbar .navbar-right .userProfileActive .userImage .material-icons {
   transition: 1s; }
+
+/*  for small devices */

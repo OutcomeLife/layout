@@ -23,7 +23,8 @@
   top: 60px;
   right: 50px;
   display: none;
-  min-width: 174px;
+  min-width: 175px !important;
+  max-width: 175px !important;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1; }
 

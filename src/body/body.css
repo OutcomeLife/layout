@@ -3,14 +3,17 @@
 .intern .body {
   background-color: #ecf0f1;
   color: black; }
-  .intern .body h1 {
-    color: blue; }
+
+.intern .body h1 {
+  color: blue; }
 
 .body {
   position: absolute;
   width: 100%;
   top: 60px;
   bottom: 40px;
-  display: flex;
   z-index: -1;
-  left: 0; }
+  left: 0;
+  display: -webkit-flex;
+  /* Safari */
+  display: flex; }
