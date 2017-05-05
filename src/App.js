@@ -83,7 +83,7 @@ class App extends Component {
 						<button onClick={this._getContent}>Get Content </button>
 					</Content>
 				</Body>
-				<Footer >
+			<Footer >
 					Version No:{process.env.REACT_APP_VERSION_NUMBER} ||| Build Date: {process.env.REACT_APP_BUILD_DATE}
 				</Footer>
 			</div>

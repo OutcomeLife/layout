@@ -1,13 +1,10 @@
  @import './header.intern.css';
  
  .navbar {
-     background: none;
-     outline: none;
      position: absolute;
      height: 60px;
      width: 100%;
      top: 0;
-     border-radius: 0;
      overflow-x: hidden;
      left: 0;
      z-index: 999;

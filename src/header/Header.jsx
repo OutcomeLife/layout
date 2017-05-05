@@ -17,15 +17,15 @@ export default class Header extends Component {
   }
   componentDidMount () {
     //this is to hide sidebar when the scree size is small
-    var element = document.getElementById('sidebar'),
-    style = window.getComputedStyle(element),
-    width = style.getPropertyValue('width');
-    //alert(width);
-    if (width === "0px") {
-      document.getElementById('sidebar').style.width = "0";
-      document.getElementById('content').style.marginLeft = "0";
-      this.setState({ showSidebar: false });
-    }
+    // var element = document.getElementById('sidebar'),
+    // style = window.getComputedStyle(element),
+    // width = style.getPropertyValue('width');
+    // //alert(width);
+    // if (width === "0px") {
+    //   document.getElementById('sidebar').style.width = "0";
+    //   document.getElementById('content').style.marginLeft = "0";
+    //   this.setState({ showSidebar: false });
+    // }
   }
   _renderDropdown() {
     const { showUserProfile } = this.state;
@@ -75,7 +75,7 @@ export default class Header extends Component {
     return (
 
       <div className="navbar">
-        <span className="navbar-brand" >
+        <div className="navbar-brand" >
           <table className="navbar-brand">
             <tbody>
             <tr>
@@ -84,9 +84,9 @@ export default class Header extends Component {
             </tr>
             </tbody>
           </table>
-        </span>
+        </div>
 
-        <span className="navbar-right" >
+        <div className="navbar-right" >
           <button className={this.state.showUserProfile ? "userProfileActive" : "userProfile"} onBlur={this._hideDropdown} onClick={this._renderDropdown} style={{ transition: "0.3s ease-in" }}>
             <table>
               <tbody>
@@ -99,7 +99,7 @@ export default class Header extends Component {
             </table>
           </button>
           <Dropdown keycloak={keycloak}/>
-        </span>
+        </div>
         <div>
         
         </div>

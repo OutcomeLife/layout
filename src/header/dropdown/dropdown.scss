@@ -1,4 +1,9 @@
 @import './dropdown.intern.scss';
+@keyframes animate {
+    from { height: 0px; opacity :0; }
+    to { height: 90px; opacity: 1;}
+
+}
 .dropdown {
     position: fixed;
     top: 60px;
@@ -8,6 +13,8 @@
     max-width: 175px !important;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    animation-name: animate;
+    animation-duration: 0.5s;
     hr {
         display: block;
         height: 1px;
