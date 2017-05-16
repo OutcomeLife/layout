@@ -58,15 +58,15 @@ class App extends Component {
 		console.log(token);
 
 		axios({
-			url: 'time/now',
+			url: 'qwanda/setup',
 			method: 'get',
-			baseURL: 'http://qwanda-service.outcome-hub.com/',
+			baseURL: 'https://qwanda-service.outcome-hub.com/',
 			data: {},
 			headers: { 'Authorization': `Bearer ${token}` }
 		}).then(() => {
-			console.log('completed the authorization step');
+			alert('completed the authorization step with data ');
 		}).catch(error => {
-			console.log(error);
+			alert(error);
 		})
 	}
 
