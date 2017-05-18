@@ -1,4 +1,7 @@
 layout:
   image: outcomelife/layout:latest
   ports:
-    - "4000:80"
+    - "3000:80"
+  environment:
+    - REACT_APP_PROJECT_NAME=INTERN MATCH
+    - REACT_APP_QWANDA_API_URL=https://qwanda-service.outcome-hub.com

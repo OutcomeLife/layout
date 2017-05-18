@@ -3,7 +3,7 @@ import { Header, Body, Sidebar, Content, Footer } from './entry';
 import Keycloak from 'keycloak-js';
 import axios from 'axios';
 import md5 from 'js-md5';
-
+import env from '../genny.properties';
 class App extends Component {
 	constructor() {
 		super();
@@ -62,9 +62,9 @@ class App extends Component {
 		console.log(token);
 
 		axios({
-			url: 'qwanda/setup',
+			url: '/qwanda/setup',
 			method: 'get',
-			// baseURL: 'https://qwanda-service.outcome-hub.com/',
+			// baseURL: 'https://qwanda-service.outcome-hub.com',
 			baseURL: process.env.REACT_APP_QWANDA_API_URL,
 			data: {},
 			headers: { 'Authorization': `Bearer ${token}` }
@@ -78,7 +78,10 @@ class App extends Component {
 
 	render() {
 		var { keycloak, user, logo } = this.state;
-		console.log('API', process.env.REACT_APP_QWANDA_API_URL);
+		console.log(env.project_name);
+		console.log(env.qwanda_api_url);
+		
+		console.log("API HARD");
 		return (
 			<div className="intern">
 				<Header logo={logo} user={user} keycloak={keycloak} />
