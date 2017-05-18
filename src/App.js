@@ -40,7 +40,7 @@ class App extends Component {
 							hash.hex();
 							const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
 							//alert(imgUrl);
-							const projectName = process.env.REACT_APP_PROJECT_NAME;
+							let projectName = process.env.REACT_APP_PROJECT_NAME;
 							if(projectName === undefined ) {
 								projectName = kc.realm;
 							}
