@@ -69,7 +69,7 @@ export default class Header extends Component {
 
   render() {
     var { user, logo, keycloak } = this.props;
-    (user === undefined) ? user = { image: './images/user.png', name: 'sam' } : user = user;
+    (user === undefined) ? user = { image: './images/user.png', name: 'sam' } : user;
     (logo === undefined) ? logo = "logo" : logo;
 
     return (

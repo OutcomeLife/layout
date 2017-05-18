@@ -40,7 +40,11 @@ class App extends Component {
 							hash.hex();
 							const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
 							//alert(imgUrl);
-							this.setState({ logo: kc.realm, user: { image: imgUrl, name: user.given_name } })
+							const projectName = process.env.REACT_APP_PROJECT_NAME;
+							if(projectName === undefined ) {
+								projectName = kc.realm;
+							}
+							this.setState({ logo: projectName, user: { image: imgUrl, name: user.given_name } })
 						});
 				}
 				else {
@@ -60,11 +64,13 @@ class App extends Component {
 		axios({
 			url: 'qwanda/setup',
 			method: 'get',
-			baseURL: 'https://qwanda-service.outcome-hub.com/',
+			// baseURL: 'https://qwanda-service.outcome-hub.com/',
+			baseURL: process.env.REACT_APP_QWANDA_API_URL,
 			data: {},
 			headers: { 'Authorization': `Bearer ${token}` }
-		}).then(() => {
+		}).then((success) => {
 			alert('completed the authorization step with data ');
+			console.log(success.data);
 		}).catch(error => {
 			alert(error);
 		})
@@ -72,6 +78,7 @@ class App extends Component {
 
 	render() {
 		var { keycloak, user, logo } = this.state;
+		console.log('API', process.env.REACT_APP_QWANDA_API_URL);
 		return (
 			<div className="intern">
 				<Header logo={logo} user={user} keycloak={keycloak} />
