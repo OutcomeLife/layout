@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "./dist/entry.js",
+  "homepage": "https://genny.outcome-hub.com",
   "dependencies": {
     "appversion": "^1.7.1",
     "axios": "^0.16.1",
