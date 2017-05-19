@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GENNY_PROP_FILE=/usr/share/nginx/html/genny.properties
+GENNY_PROP_FILE=/usr/share/nginx/html/genny.properties.js
 
 echo "module.exports = {"  > $GENNY_PROP_FILE
 
