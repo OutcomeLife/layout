@@ -31,10 +31,11 @@ var _this = this;
         .then(function(result) {    
        console.log("result",result.data.replace(/\\/g, ""));
           _this.setState({
-            config: result.data.replace(/\\/g, "")
+            config: JSON.parse(result.data.replace(/\\/g, ""))
           });
         })
 
+     console.log("config2:",this.state.config);
 		const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 		
 		kc.init({ onLoad: 'login-required' })
