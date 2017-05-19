@@ -29,9 +29,9 @@ var _this = this;
       axios
         .get("/genny.properties.json")
         .then(function(result) {    
-       console.log("result",result.data);
+       console.log("result",result.data.replace(/\\/g, ""));
           _this.setState({
-            config: result.data
+            config: result.data.replace(/\\/g, "")
           });
         })
 
