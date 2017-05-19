@@ -23,15 +23,16 @@ class App extends Component {
 
 
 	componentWillMount() {
-console.log("Fetching genny.json file");
+console.log("Fetching genny.json file - 2");
 var _this = this;
     this.serverRequest = 
       axios
         .get("/genny.properties.json")
-        .then(function(result) {    
-       console.log("result",result.data.replace(/\\/g, ""));
+        .then(function(result) {   
+         var result2 = result.data.replace(/\\/g,"")); 
+       console.log("result",result2);
           _this.setState({
-            config: JSON.parse(result.data.replace(/\\/g, ""))
+            config: JSON.parse(result2)
           });
         })
 
