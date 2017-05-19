@@ -9,7 +9,7 @@ echo "{" > $GENNY_PROP_FILE
 for i in `set | awk -F "=" '{print $1}' | grep ".*REACT_APP.*"`
 do
 PS1=`printf '%s\n' "${!i}"`
-  echo "    $i: \""$PS1"\"" >> $GENNY_PROP_FILE
+  echo "    $i: \""$PS1"\"," >> $GENNY_PROP_FILE
 done
 
 echo "}" >> $GENNY_PROP_FILE
