@@ -29,7 +29,7 @@ var _this = this;
       axios
         .get("/genny.properties.json")
         .then(function(result) {   
-         var result2 = result.data.replace(/\\/g,""); 
+         var result2 = result.data.replace(/\\\//g,""); 
        console.log("result",result2);
           _this.setState({
             config: JSON.parse(result2)
