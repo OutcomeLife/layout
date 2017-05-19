@@ -78,10 +78,9 @@ class App extends Component {
 
 	render() {
 		var { keycloak, user, logo } = this.state;
-		console.log(env.project_name);
-		console.log(env.qwanda_api_url);
-		
-		console.log("API HARD");
+		console.log("Build Date: ", env.REACT_APP_BUILD_DATE);
+		console.log("API Url: ", env.REACT_APP_QWANDA_API_URL);
+		console.log("Project Name :", env.REACT_APP_PROJECT_NAME);
 		return (
 			<div className="intern">
 				<Header logo={logo} user={user} keycloak={keycloak} />
