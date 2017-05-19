@@ -23,16 +23,17 @@ class App extends Component {
 
 
 	componentWillMount() {
-console.log("Fetching genny.json file - 2");
+console.log("Fetching genny.json file - 3");
 var _this = this;
     this.serverRequest = 
       axios
         .get("/genny.properties.json")
         .then(function(result) {   
          var result2 = result.data.replace("\\",""); 
-       console.log("result",result2);
+         var result3 = result2.replace("\\",""); 
+       console.log("result",result3);
           _this.setState({
-            config: JSON.parse(result2)
+            config: JSON.parse(result3)
           });
         })
 
