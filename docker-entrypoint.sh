@@ -11,7 +11,8 @@ do
 PS1=`printf '%s\n' "${!i}"`
   echo "    \"$i\": \""$PS1"\"," >> $GENNY_PROP_FILE
 done
-
+#remove trailing comma
+sed '$ s/.$//' $GENNY_PROP_FILE 
 echo "}" >> $GENNY_PROP_FILE
 
 nginx -g "daemon off;"

@@ -31,6 +31,7 @@ var _this = this;
         .then(function(result) {   
          var result2 = result.data.replace("\\",""); 
          var result3 = result2.replace("\\",""); 
+        
        console.log("result",result3);
           _this.setState({
             config: JSON.parse(result3)
