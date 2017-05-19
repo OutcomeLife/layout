@@ -10,7 +10,11 @@ config = null;
 
 	constructor() {
 		super();
-                App.config = require('config.json')('./genny.properties.json');
+                //App.config = require('config.json')('./genny.properties.json');
+loadJSON('genny.properties.json',
+         function(data) { console.log(data); App.conf = JSON.stringify(data); },
+         function(xhr) { console.error(xhr); }
+);
 		this.state = ({
 			keycloak: {},
 			user: {
@@ -104,6 +108,25 @@ config = null;
 			</div>
 		);
 	}
+
+function loadJSON(path, success, error)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (success)
+                    success(JSON.parse(xhr.responseText));
+            } else {
+                if (error)
+                    error(xhr);
+            }
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}
 }
 
 export default App;
