@@ -29,12 +29,12 @@ var _this = this;
       axios
         .get("/genny.properties.json")
         .then(function(result) {   
-         var result2 = result.data.replace("\\",""); 
-         var result3 = result2.replace("\\",""); 
+//         var result2 = result.data.replace("\\",""); 
+ //        var result3 = result2.replace("\\",""); 
         
-       console.log("result",result3);
+       console.log("result",result);
           _this.setState({
-            config: JSON.parse(result3)
+            config: JSON.parse(result)
           });
         })
 
