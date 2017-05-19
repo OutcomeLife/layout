@@ -10,24 +10,33 @@ config = null;
 
 	constructor() {
 		super();
-                //App.config = require('config.json')('./genny.properties.json');
-App.loadJSON('genny.properties.json',
-         function(data) { console.log(data); App.conf = JSON.stringify(data); },
-         function(xhr) { console.error(xhr); }
-);
+                //config = require('this.state.config.json')('./genny.properties.json');
+
 		this.state = ({
 			keycloak: {},
 			user: {
 				image: './images/user.png',
 				name: 'Genny'
 			},
-			logo: 'logo'
+			logo: 'logo',
+			config: {}
 		})
 		this._getContent = this._getContent.bind(this);
-                // load in the config json file
-                console.log("config :",App.config.REACT_APP_PROJECT_NAME);
 	}
+
+
 	componentWillMount() {
+
+var _this = this;
+    this.serverRequest = 
+      axios
+        .get("/genny.properties.json")
+        .then(function(result) {    
+          _this.setState({
+            config: result.data
+          });
+        })
+
 		const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
 		
 		kc.init({ onLoad: 'login-required' })
@@ -50,7 +59,7 @@ App.loadJSON('genny.properties.json',
 							hash.hex();
 							const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
 							//alert(imgUrl);
-							let projectName = App.config.REACT_APP_PROJECT_NAME;
+							let projectName = this.state.config.REACT_APP_PROJECT_NAME;
 							if(projectName === undefined ) {
 								projectName = kc.realm;
 							}
@@ -75,7 +84,7 @@ App.loadJSON('genny.properties.json',
 			url: '/qwanda/setup',
 			method: 'get',
 			// baseURL: 'https://qwanda-service.outcome-hub.com',
-			baseURL: App.config.REACT_APP_QWANDA_API_URL,
+			baseURL: this.state.config.REACT_APP_QWANDA_API_URL,
 			data: {},
 			headers: { 'Authorization': `Bearer ${token}` }
 		}).then((success) => {
@@ -88,9 +97,9 @@ App.loadJSON('genny.properties.json',
 
 	render() {
 		var { keycloak, user, logo } = this.state;
-		console.log("Build Date: ", App.config.REACT_APP_BUILD_DATE);
-		console.log("API Url: ", App.config.REACT_APP_QWANDA_API_URL);
-		console.log("Project Name :", App.config.REACT_APP_PROJECT_NAME);
+		console.log("Build Date: ", this.state.config.REACT_APP_BUILD_DATE);
+		console.log("API Url: ", this.state.config.REACT_APP_QWANDA_API_URL);
+		console.log("Project Name :", this.state.config.REACT_APP_PROJECT_NAME);
 		return (
 			<div className="intern">
 				<Header logo={logo} user={user} keycloak={keycloak} />
@@ -103,30 +112,12 @@ App.loadJSON('genny.properties.json',
 					</Content>
 				</Body>
 			<Footer >
-					Version No:{App.config.REACT_APP_VERSION_NUMBER} ||| Build Date: {App.config.REACT_APP_BUILD_DATE}
+					Version No:{this.state.config.REACT_APP_VERSION_NUMBER} ||| Build Date: {this.state.config.REACT_APP_BUILD_DATE}
 				</Footer>
 			</div>
 		);
 	}
 
- loadJSON(path, success, error)
-{
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function()
-    {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                if (success)
-                    success(JSON.parse(xhr.responseText));
-            } else {
-                if (error)
-                    error(xhr);
-            }
-        }
-    };
-    xhr.open("GET", path, true);
-    xhr.send();
-}
 }
 
 export default App;
