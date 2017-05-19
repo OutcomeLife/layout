@@ -11,7 +11,7 @@ config = null;
 	constructor() {
 		super();
                 //App.config = require('config.json')('./genny.properties.json');
-loadJSON('genny.properties.json',
+App.loadJSON('genny.properties.json',
          function(data) { console.log(data); App.conf = JSON.stringify(data); },
          function(xhr) { console.error(xhr); }
 );
@@ -109,7 +109,7 @@ loadJSON('genny.properties.json',
 		);
 	}
 
-function loadJSON(path, success, error)
+ loadJSON(path, success, error)
 {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
