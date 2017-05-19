@@ -34,7 +34,7 @@ var _this = this;
         
        console.log("result",result);
           _this.setState({
-            config: JSON.parse(result)
+            config: result.data
           });
         })
 
