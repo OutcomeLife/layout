@@ -5,3 +5,5 @@ layout:
   environment:
     - REACT_APP_PROJECT_NAME=INTERN MATCH
     - REACT_APP_QWANDA_API_URL=https://qwanda-service.outcome-hub.com
+    - REACT_APP_VERSION_NUMBER=0.9
+    - REACT_APP_BUILD_DATE=2017-05-19

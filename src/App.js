@@ -11,7 +11,7 @@ class App extends Component {
 			keycloak: {},
 			user: {
 				image: './images/user.png',
-				name: 'sam'
+				name: 'Genny'
 			},
 			logo: 'logo'
 		})
