@@ -3,10 +3,14 @@ import { Header, Body, Sidebar, Content, Footer } from './entry';
 import Keycloak from 'keycloak-js';
 import axios from 'axios';
 import md5 from 'js-md5';
-import env from '../genny.properties';
+//import env from '../genny.properties';
 class App extends Component {
+
+config = null;
+
 	constructor() {
 		super();
+                App.config = require('config.json')('./genny.properties.json');
 		this.state = ({
 			keycloak: {},
 			user: {
@@ -16,6 +20,8 @@ class App extends Component {
 			logo: 'logo'
 		})
 		this._getContent = this._getContent.bind(this);
+                // load in the config json file
+                console.log("config :",App.config.REACT_APP_PROJECT_NAME);
 	}
 	componentWillMount() {
 		const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
@@ -40,7 +46,7 @@ class App extends Component {
 							hash.hex();
 							const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
 							//alert(imgUrl);
-							let projectName = process.env.REACT_APP_PROJECT_NAME;
+							let projectName = App.config.REACT_APP_PROJECT_NAME;
 							if(projectName === undefined ) {
 								projectName = kc.realm;
 							}
@@ -65,7 +71,7 @@ class App extends Component {
 			url: '/qwanda/setup',
 			method: 'get',
 			// baseURL: 'https://qwanda-service.outcome-hub.com',
-			baseURL: process.env.REACT_APP_QWANDA_API_URL,
+			baseURL: App.config.REACT_APP_QWANDA_API_URL,
 			data: {},
 			headers: { 'Authorization': `Bearer ${token}` }
 		}).then((success) => {
@@ -78,9 +84,9 @@ class App extends Component {
 
 	render() {
 		var { keycloak, user, logo } = this.state;
-		console.log("Build Date: ", env.REACT_APP_BUILD_DATE);
-		console.log("API Url: ", env.REACT_APP_QWANDA_API_URL);
-		console.log("Project Name :", env.REACT_APP_PROJECT_NAME);
+		console.log("Build Date: ", App.config.REACT_APP_BUILD_DATE);
+		console.log("API Url: ", App.config.REACT_APP_QWANDA_API_URL);
+		console.log("Project Name :", App.config.REACT_APP_PROJECT_NAME);
 		return (
 			<div className="intern">
 				<Header logo={logo} user={user} keycloak={keycloak} />
@@ -93,7 +99,7 @@ class App extends Component {
 					</Content>
 				</Body>
 			<Footer >
-					Version No:{process.env.REACT_APP_VERSION_NUMBER} ||| Build Date: {process.env.REACT_APP_BUILD_DATE}
+					Version No:{App.config.REACT_APP_VERSION_NUMBER} ||| Build Date: {App.config.REACT_APP_BUILD_DATE}
 				</Footer>
 			</div>
 		);
