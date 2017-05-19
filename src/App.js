@@ -29,7 +29,7 @@ var _this = this;
       axios
         .get("/genny.properties.json")
         .then(function(result) {    
-       console.log("result",result);
+       console.log("result",result.data);
           _this.setState({
             config: result.data
           });
