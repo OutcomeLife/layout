@@ -6,11 +6,8 @@ import md5 from 'js-md5';
 //import env from '../genny.properties';
 class App extends Component {
 
-config = null;
-
 	constructor() {
 		super();
-                //config = require('this.state.config.json')('./genny.properties.json');
 
 		this.state = ({
 			keycloak: {},
@@ -32,6 +29,7 @@ var _this = this;
       axios
         .get("/genny.properties.json")
         .then(function(result) {    
+       console.log(result);
           _this.setState({
             config: result.data
           });
