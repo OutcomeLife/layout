@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Body, Sidebar, Content, Footer } from './entry';
+import { Header, Body, Sidebar, Content, Footer } from 'layout';
 import Keycloak from 'keycloak-js';
 import axios from 'axios';
 import md5 from 'js-md5';
@@ -128,7 +128,7 @@ var _this = this;
       }
     ]
 		return (
-			<div className="intern">
+			<div className="default">
 				<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
 				<Body >
 					<Sidebar>
