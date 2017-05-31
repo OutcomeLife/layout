@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer } from 'layout';
-import Keycloak from 'keycloak-js';
+// import Keycloak from 'keycloak-js';
 import axios from 'axios';
-import md5 from 'js-md5';
-//import env from '../genny.properties';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as UserActions from "./actions/UserAction";
+
 class App extends Component {
 
 	constructor() {
 		super();
-
-		this.state = ({
-			keycloak: {},
-			user: {
-				image: './images/user.png',
-				name: 'Genny'
-			},
-			logo: 'logo',
-			config: {}
-		})
-		this._getContent = this._getContent.bind(this);
+		this.state={
+			initialised: false
+		}
+		// this._getContent = this._getContent.bind(this);
 		this._account = this._account.bind(this);
     this._logout = this._logout.bind(this);
 
@@ -27,94 +22,36 @@ class App extends Component {
 
 
   _account() {
-  this.state.keycloak.accountManagement();
+  this.props.user.keycloak.accountManagement();
   }
 
   _logout() {
-   this.state.keycloak.logout({ redirectUri: "https://genny.outcome-hub.com/" });
+
+		if(process.env.NODE_ENV === "development") {
+   this.props.user.keycloak.logout({ redirectUri: "http://localhost:3000/" });
   }
-
-
-	componentWillMount() {
-console.log("Fetching genny.json file - 3");
-var _this = this;
-    this.serverRequest = 
-      axios
-        .get("/genny.properties.json")
-        .then(function(result) {   
-//         var result2 = result.data.replace("\\",""); 
- //        var result3 = result2.replace("\\",""); 
-        
-       console.log("result",result);
-          _this.setState({
-            config: result.data
-          });
-        })
-
-     console.log("config2:",this.state.config);
-		const kc = Keycloak(process.env.REACT_APP_KEYCLOAK_JSON_FILE);
-		
-		kc.init({ onLoad: 'login-required' })
-			.success((authenticated) => {
-				if (authenticated) {
-					this.setState({ keycloak: kc })
-					this.state.keycloak.loadUserInfo()
-						.success((user) => {
-							// if ('adamcrow63+1@gmail.com'.includes("+")) {
-							// 	var n = 'adamcrow63+1@gmail.com'.indexOf('+');
-							// 	var at = 'adamcrow63+1@gmail.com'.indexOf('@');
-							// 	var email = 'adamcrow63+1@gmail.com'.substr(0, n) + 'adamcrow63+1@gmail.com'.substr(at);
-							// 	alert(email);
-							// }
-							md5(user.email);
-							//md5('adamcrow63@gmail.com');
-							const hash = md5.create();
-							//hash.update('adamcrow63@gmail.com');
-							hash.update(user.email);
-							hash.hex();
-							const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
-							//alert(imgUrl);
-							let projectName = this.state.config.REACT_APP_PROJECT_NAME;
-							if(projectName === undefined ) {
-								projectName = kc.realm;
-							}
-							this.setState({ logo: projectName, user: { image: imgUrl, name: user.given_name } })
-						});
-				}
-				else {
-					console.log("user could not authenticated");
-				}
-
-			})
-			.error(function (err) {
-				console.log('failed to initialize');
-
-			})
+	else {
+		 this.props.user.keycloak.logout({ redirectUri: "https://genny.outcome-hub.com/" });
 	}
-	_getContent() {
-		var { token } = this.state.keycloak;
-		console.log(token);
 
-		axios({
-			url: '/qwanda/setup',
-			method: 'get',
-			// baseURL: 'https://qwanda-service.outcome-hub.com',
-			baseURL: this.state.config.REACT_APP_QWANDA_API_URL,
-			data: {},
-			headers: { 'Authorization': `Bearer ${token}` }
-		}).then((success) => {
-			alert('completed the authorization step with data ');
-			console.log(success.data);
-		}).catch(error => {
-			alert(error);
+	}
+componentWillMount() {
+	this.props.actions.UserActions.config();
+}
+
+componentWillReceiveProps(props) {
+	if(Object.keys(props.user.config).length != 0 && (this.state.initialised === false)) {
+		this.setState({
+			initialised: true
 		})
+		props.actions.UserActions.init(props.user.config);
 	}
+}
 
 	render() {
-		var { keycloak, user, logo } = this.state;
-		console.log("Build Date: ", this.state.config.REACT_APP_BUILD_DATE);
-		console.log("API Url: ", this.state.config.REACT_APP_QWANDA_API_URL);
-		console.log("Project Name :", this.state.config.REACT_APP_PROJECT_NAME);
+		var { keycloak, user, logo } = this.props.user;
+		console.log("user", user);
+	
 		const dropdownListItem = [
       {
         name: "account",
@@ -139,7 +76,7 @@ var _this = this;
 					</Content>
 				</Body>
 			<Footer >
-					Version No:{this.state.config.REACT_APP_VERSION_NUMBER} ||| Build Date: {this.state.config.REACT_APP_BUILD_DATE}
+					{/*Version No:{this.state.config.REACT_APP_VERSION_NUMBER} ||| Build Date: {this.state.config.REACT_APP_BUILD_DATE}*/}
 				</Footer>
 			</div>
 		);
@@ -147,5 +84,21 @@ var _this = this;
 
 }
 
-export default App;
+const mapStateToProps = (store, props) => {
+    return {
+       user: store.user,
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      actions: {
+         UserActions: bindActionCreators(UserActions, dispatch),
+      }
+    };
+      
+    
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
 
