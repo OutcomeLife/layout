@@ -2,13 +2,18 @@
 /*************** primary colors End **************/
 .intern .dropdown {
   background-color: #009688; }
-  .intern .dropdown hr {
-    border-top: 1px solid #00796b; }
-  .intern .dropdown li:hover {
+  .intern .dropdown .user-profile:hover {
     background-color: #00897b; }
-  .intern .dropdown li:active {
+  .intern .dropdown .user-profile-active {
     background-color: #00897b; }
-  .intern .dropdown li:visited {
-    background-color: #00897b; }
-  .intern .dropdown li a {
-    color: white; }
+  .intern .dropdown .dropdown-container {
+    background-color: #009688;
+    border-top: 1px solid #00695c; }
+    .intern .dropdown .dropdown-container li:hover {
+      background-color: #00897b; }
+    .intern .dropdown .dropdown-container li:active {
+      background-color: #00897b; }
+    .intern .dropdown .dropdown-container li:visited {
+      background-color: #00897b; }
+    .intern .dropdown .dropdown-container li a {
+      color: white; }

@@ -19,7 +19,20 @@ class App extends Component {
 			config: {}
 		})
 		this._getContent = this._getContent.bind(this);
+		this._account = this._account.bind(this);
+    this._logout = this._logout.bind(this);
+
 	}
+
+
+
+  _account() {
+  this.state.keycloak.accountManagement();
+  }
+
+  _logout() {
+   this.state.keycloak.logout({ redirectUri: "https://genny.outcome-hub.com/" });
+  }
 
 
 	componentWillMount() {
@@ -102,9 +115,21 @@ var _this = this;
 		console.log("Build Date: ", this.state.config.REACT_APP_BUILD_DATE);
 		console.log("API Url: ", this.state.config.REACT_APP_QWANDA_API_URL);
 		console.log("Project Name :", this.state.config.REACT_APP_PROJECT_NAME);
+		const dropdownListItem = [
+      {
+        name: "account",
+        onClick: this._account,
+        icon: "settings"
+      },
+      {
+        name: "logout",
+        onClick: this._logout,
+        icon: "exit_to_app"
+      }
+    ]
 		return (
 			<div className="intern">
-				<Header logo={logo} user={user} keycloak={keycloak} />
+				<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
 				<Body >
 					<Sidebar>
 
