@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer } from 'layout';
-// import Keycloak from 'keycloak-js';
-import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as UserActions from "./actions/UserAction";
+import './style.css';
 
 class App extends Component {
 
 	constructor() {
 		super();
 		this.state={
-			initialised: false
-		}
-		// this._getContent = this._getContent.bind(this);
+			initialised: false,
+		};
+
 		this._account = this._account.bind(this);
     this._logout = this._logout.bind(this);
 
 	}
-
 
 
   _account() {
@@ -40,18 +38,19 @@ componentWillMount() {
 }
 
 componentWillReceiveProps(props) {
-	if(Object.keys(props.user.config).length != 0 && (this.state.initialised === false)) {
+	if(Object.keys(props.user.config).length !== 0 && (this.state.initialised === false)) {
 		this.setState({
 			initialised: true
 		})
 		props.actions.UserActions.init(props.user.config);
 	}
 }
+	handleEntityClick(name) {
+		console.log(name);
+	}
 
 	render() {
-		var { keycloak, user, logo } = this.props.user;
-		console.log("user", user);
-	
+		var { user, logo, baseEntities } = this.props.user;
 		const dropdownListItem = [
       {
         name: "account",
@@ -63,16 +62,24 @@ componentWillReceiveProps(props) {
         onClick: this._logout,
         icon: "exit_to_app"
       }
-    ]
+    ];
+    const be = baseEntities.map((baseEntity) => {
+			let id = baseEntity.id;
+			return (<a style={{ cursor: "pointer" }} onClick={() => this.props.actions.UserActions.getAttributes(baseEntity.id)}>
+				<i className="material-icons arrow" >keyboard_arrow_right</i> {baseEntity.name}
+				</a>
+			);
+		});
 		return (
 			<div className="default">
 				<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
 				<Body >
 					<Sidebar>
-
+							{be}
 					</Sidebar>
 					<Content>
-						<button onClick={this._getContent}>Get Content </button>
+						{this.props.user.attribute.name}
+						<button onClick={this.props.actions.UserActions.loadBaseEntities} >Get Content </button>
 					</Content>
 				</Body>
 			<Footer >

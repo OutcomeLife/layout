@@ -7,7 +7,9 @@ const initialState = {
   user:{},
   config:{...defaultConfig},
   logo:null,
-  keycloak:{}
+  keycloak:{},
+  baseEntities:[],
+  attribute:{}
   
 }
 export default function reducer(state=initialState,action) {
@@ -39,6 +41,12 @@ export default function reducer(state=initialState,action) {
     }
     case "CONFIG_REJECTED": {
       return{...state, err: action.payload}
+    }
+    case "BASEENTITIES_FULLFILLED": {
+      return{...state, baseEntities:action.payload}
+    }
+    case "ATTRIBUTES_FULLFILLED": {
+      return{...state, attribute: action.payload}
     }
     default:
       return state;
