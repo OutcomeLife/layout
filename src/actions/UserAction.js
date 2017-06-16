@@ -129,7 +129,7 @@ export function loadBaseEntities(kc) {
 			'Authorization' : `Bearer ${kc.token}`
 		},
 		url: "/qwanda/baseentitys",
-		baseURL: "http://qwanda-service.outcome-hub.com",	
+		baseURL: "https://qwanda-service.outcome-hub.com",	
 	})
 	.then((response) => {
 		// console.log(response.data);
