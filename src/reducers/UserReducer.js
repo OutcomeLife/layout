@@ -9,7 +9,8 @@ const initialState = {
   logo:null,
   keycloak:{},
   baseEntities:[],
-  attribute:{}
+  attribute:{},
+  asks:[]
   
 }
 export default function reducer(state=initialState,action) {
@@ -47,6 +48,9 @@ export default function reducer(state=initialState,action) {
     }
     case "ATTRIBUTES_FULLFILLED": {
       return{...state, attribute: action.payload}
+    }
+    case "ASKS_FULLFILLED": {
+      return { ...state, attribute: action.payload }
     }
     default:
       return state;

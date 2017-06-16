@@ -50,7 +50,7 @@ componentWillReceiveProps(props) {
 	}
 
 	render() {
-		var { user, logo, baseEntities } = this.props.user;
+		var { user, logo, baseEntities,keycloak } = this.props.user;
 		const dropdownListItem = [
       {
         name: "account",
@@ -70,6 +70,10 @@ componentWillReceiveProps(props) {
 				</a>
 			);
 		});
+
+		const ask = this.props.user.asks.map((ask) => {
+			return ask;
+		})
 		return (
 			<div className="default">
 				<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
@@ -78,8 +82,9 @@ componentWillReceiveProps(props) {
 							{be}
 					</Sidebar>
 					<Content>
+						{ask}
 						{this.props.user.attribute.name}
-						<button onClick={this.props.actions.UserActions.loadBaseEntities} >Get Content </button>
+						<button onClick={() => this.props.actions.UserActions.loadBaseEntities(keycloak)} >Get Content </button>
 					</Content>
 				</Body>
 			<Footer >

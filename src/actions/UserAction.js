@@ -4,6 +4,7 @@ import Keycloak from 'keycloak-js';
 import md5 from 'js-md5';
 import baseEntities from '../config/baseEntities';
 import attributes from '../config/attributes';
+import asks from '../config/ask';
 
 export function registerUser(email, password) {
 
@@ -62,6 +63,7 @@ export function init(config) {
 						dispatch({ type: "INIT_FULLFILLED", payload: payload });
 					}
 					loadUserInfo(kc, config, projectDetails);
+					// loadBaseEntities(kc);
 				}
 				else {
 					console.log("user could not authenticated");
@@ -95,9 +97,11 @@ export function loadUserInfo(keycloak, config, projectDetails) {
 			hash.update(user.email);
 			hash.hex();
 			const imgUrl = 'https://www.gravatar.com/avatar/' + hash;
-			let projectName = config.REACT_APP_PROJECT_NAME;
-			if (projectName === undefined) {
+			let projectName;
+			if (config.REACT_APP_PROJECT_NAME !== undefined) {
 				projectName = keycloak.realm;
+			} else {
+				projectName = defaultConfig.REACT_APP_PROJECT_NAME;
 			}
 			const project = {
 				logo: projectName,
@@ -115,20 +119,24 @@ export function loadUserInfo(keycloak, config, projectDetails) {
 
 }
 
-export function loadBaseEntities() {
+export function loadBaseEntities(kc) {
 	console.log("laading base entities");
+	console.log("kecloak from base ",kc.token);
 	return function (dispatch) {
 	axios({
 		method:"get",
+		headers: {
+			'Authorization' : `Bearer ${kc.token}`
+		},
 		url: "/qwanda/baseentitys",
 		baseURL: "http://qwanda-service.outcome-hub.com",	
 	})
 	.then((response) => {
-		console.log(response.data);
+		// console.log(response.data);
 		dispatch(({ type: 'BASEENTITIES_FULLFILLED', payload: response.data }));
 	})
 	.catch ((error) => {
-
+		 console.log("error fetching baseEntities", error);
 	})
 	}
 }
@@ -148,5 +156,15 @@ export function getAttributes(id) {
 	});
 	return function (dispatch) {
 		dispatch(({ type: 'ATTRIBUTES_FULLFILLED', payload: element}));
+	}
+}
+
+export function getAsks() {
+	let element = [];
+	const asks = asks.forEach((ask) => {
+		element = ask;
+	})
+	return function (dispatch) {
+		dispatch(({ type: 'ASKS_FULLFILLED', payload: element }));
 	}
 }
