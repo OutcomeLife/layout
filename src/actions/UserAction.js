@@ -120,8 +120,7 @@ export function loadUserInfo(keycloak, config, projectDetails) {
 }
 
 export function loadBaseEntities(kc) {
-	console.log("laading base entities");
-	console.log("kecloak from base ",kc.token);
+	const baseURL = (process.env.NODE_ENV === "development") ? "http://qwanda-service.outcome-hub.com" : "https://qwanda-service.outcome-hub.com";
 	return function (dispatch) {
 	axios({
 		method:"get",
@@ -129,7 +128,7 @@ export function loadBaseEntities(kc) {
 			'Authorization' : `Bearer ${kc.token}`
 		},
 		url: "/qwanda/baseentitys",
-		baseURL: "http://qwanda-service.outcome-hub.com",	
+		baseURL: baseURL,	
 	})
 	.then((response) => {
 		// console.log(response.data);
