@@ -1,10 +1,11 @@
 {
-  "realm": "genny",
-  "auth-server-url": "https://bouncer.outcome-hub.com/auth",
+  "realm": "Genny",
+  "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkDbUPcpECVC8I661RMtYBqrqckHeFvzVkYJzKongwqMuhGwVb9AwQGHrYZ9B2ydOs1DpL/cM8FtETNVRfq2hOd4RNZXRhtaq1rQKeHw0EQIMwjMCDN9uvJRrcyKinEvMz67AZzex3IioYT4XbzrMK0dSSiaS0rpzTFhKpuWbeXnnTld8lMSufjlWnJrGWHKHV01wegGaCclkSic7WkVPvOZX3+HEKV8dHkqphQUibk1Vy/3PMqX1KkGphy/GToSqMGBRqbDu41wdC6273zAWo1d3MgHgWNlQL7oy/qPlx5SxnSrq7Wj9FEK9mUAJm5MbMoRTVBxsCUbvVacak9bnJQIDAQAB",
+  "auth-server-url": "https://keycloak.pleasedproperty.com.au/auth",
   "ssl-required": "external",
-  "resource": "layout",
+  "resource": "genny",
   "credentials": {
-    "secret": "87aa20f7-fb3d-4369-af13-7b5601ab1f74"
+    "secret": "6c61c6c3-aa68-419a-86e0-750a2517a3b0"
   },
   "policy-enforcer": {}
 }

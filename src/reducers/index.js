@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
-import UserReducer from './UserReducer';
+import user from './UserReducer';
+import vertx from './VertxReducer';
 
 
 export default combineReducers({
-  user: UserReducer
+  user,
+  vertx
 });

@@ -5,49 +5,7 @@ import md5 from 'js-md5';
 import baseEntities from '../config/baseEntities';
 import attributes from '../config/attributes';
 import asks from '../config/ask';
-
-export function registerUser(email, password) {
-
-	//for api call dispatching action so that we can show the user loading event
-	return function (dispatch) {
-		dispatch({ type: "CREATE_USER_PENDING", payload: null });
-		axios({
-			url: '',
-			method: 'post',
-			baseURL: defaultConfig.redirectURI,
-			data: {
-				email,
-				password
-			},
-			headers: {}
-		}).then((response) => {
-			dispatch({ type: "CREATE_USER_FULFILLED", payload: response.data });
-		}).catch((error) => {
-			dispatch({ type: "CREATE_USER_REJECTED", payload: error });
-		});
-	}
-}
-
-export function fetchUser(email, password) {
-
-	return function (dispatch) {
-		dispatch({ type: "FETCH_USER_PENDING", payload: null });
-		axios({
-			url: 'user/login',
-			method: 'post',
-			baseURL: defaultConfig.baseURL,
-			data: {
-				email,
-				password
-			},
-			headers: {}
-		}).then((response) => {
-			dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
-		}).catch((error) => {
-			dispatch({ type: "FETCH_USER_REJECTED", payload: error });
-		});
-	}
-}
+import * as VertxActions from './VertxAction';
 
 export function init(config) {
 	return function (dispatch) {
@@ -119,44 +77,33 @@ export function loadUserInfo(keycloak, config, projectDetails) {
 
 }
 
-export function loadBaseEntities(kc) {
-	const baseURL = (process.env.NODE_ENV === "development") ? "http://qwanda-service.outcome-hub.com" : "https://qwanda-service.outcome-hub.com";
+// export function loadBaseEntities(kc) {
+// 	const baseURL = (process.env.NODE_ENV === "development") ? "http://qwanda-service.outcome-hub.com" : "https://qwanda-service.outcome-hub.com";
+// 	return function (dispatch) {
+// 	axios({
+// 		method:"get",
+// 		headers: {
+// 			'Authorization' : `Bearer ${kc.token}`
+// 		},
+// 		url: "/qwanda/baseentitys",
+// 		baseURL: baseURL,	
+// 	})
+// 	.then((response) => {
+// 		// console.log(response.data);
+// 		dispatch(({ type: 'BASEENTITIES_FULLFILLED', payload: response.data }));
+// 	})
+// 	.catch ((error) => {
+// 		 console.log("error fetching baseEntities", error);
+// 	})
+// 	}
+// }
+
+export function loadBaseEntities() {
 	return function (dispatch) {
-	axios({
-		method:"get",
-		headers: {
-			'Authorization' : `Bearer ${kc.token}`
-		},
-		url: "/qwanda/baseentitys",
-		baseURL: baseURL,	
-	})
-	.then((response) => {
-		// console.log(response.data);
-		dispatch(({ type: 'BASEENTITIES_FULLFILLED', payload: response.data }));
-	})
-	.catch ((error) => {
-		 console.log("error fetching baseEntities", error);
-	})
+		dispatch(({ type: 'BASEENTITIES_FULLFILLED', payload: baseEntities }));
 	}
 }
 
-// export function loadBaseEntities() {
-// 	return function (dispatch) {
-// 		dispatch(({ type: 'BASEENTITIES_FULLFILLED', payload: baseEntities }));
-// 	}
-// }
-export function getAttributes(id) {
-	console.log(id);
-	let element = {};
-	const attribute = attributes.forEach((attribute) => {
-		if( attribute.id === id) {
-			element = attribute;
-		}
-	});
-	return function (dispatch) {
-		dispatch(({ type: 'ATTRIBUTES_FULLFILLED', payload: element}));
-	}
-}
 
 export function getAsks() {
 	let element = [];

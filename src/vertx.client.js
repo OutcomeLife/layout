@@ -1,18 +1,21 @@
-// import EventBus from 'vertx3-eventbus-client';
 
-// var eb = new EventBus("http://localhost:8081/myapp/");
+import EventBus from 'vertx3-eventbus-client';
 
-// eb.onopen = function() {
-//   // set a handler to receive a message
-//   eb.registerHandler('this.is.address.outbound', function(err, message) {  
-//       if (err) {
-//           console.log(err);
-//     }
-//     console.log('layout: ', JSON.stringify(message.body));
-//   });
-// }
-// export const callServer = () => {
-//  eb.publish('this.is.address.inbound', {"query":"{person{name }}"});
-// }
+var eb = new EventBus("http://localhost:8081/eventbus/");
+
+eb.onopen = function() {
+  // set a handler to receive a message
+  eb.registerHandler('address.outbound', function(err, message) {  
+      if (err) {
+          console.log(err);
+    }
+    //   window.serverData = JSON.stringify(message.body);
+     console.log('layout: ', JSON.stringify(message.body));
+  });
+}
+
+export function callServer(data){
+ eb.publish('address.inbound', {"data":data});
+}
 
 

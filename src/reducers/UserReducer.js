@@ -10,7 +10,8 @@ const initialState = {
   keycloak:{},
   baseEntities:[],
   attribute:{},
-  asks:[]
+  asks:[],
+  messageFromServer: null
   
 }
 export default function reducer(state=initialState,action) {
@@ -45,9 +46,6 @@ export default function reducer(state=initialState,action) {
     }
     case "BASEENTITIES_FULLFILLED": {
       return{...state, baseEntities:action.payload}
-    }
-    case "ATTRIBUTES_FULLFILLED": {
-      return{...state, attribute: action.payload}
     }
     case "ASKS_FULLFILLED": {
       return { ...state, attribute: action.payload }
