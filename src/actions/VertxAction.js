@@ -13,13 +13,13 @@ export function sendEvent(id, code) {
         }]
     }
     return dispatch => {
-        eb.publish("address.inbound", { "data": data });
         eb.registerHandler('address.outbound', (err, message) => {
             if (err) {
                 console.log(err);
             }
            dispatch({ type: "MESSAGE_FROM_SERVER_FULLFILLED", payload: JSON.stringify(message.body) });
         });
+        eb.publish("address.inbound", { "data": data });
         console.log("calling send event");
     }
 }
