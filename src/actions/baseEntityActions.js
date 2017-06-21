@@ -31,7 +31,6 @@ export function load() {
 	}
 }
 
-
 export function getAsks() {
 	let element = [];
 	 asks.forEach((ask) => {

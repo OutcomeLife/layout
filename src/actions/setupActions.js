@@ -1,8 +1,9 @@
-import axios from 'axios';
+// import axios from 'axios';
 import defaultConfig from '../config';
 import Keycloak from 'keycloak-js';
 import md5 from 'js-md5';
 import * as actions from './actionTypes';
+import getProperties from '../utils/asyncHelper';
 
 export function init(config) {
     return function (dispatch) {
@@ -11,12 +12,13 @@ export function init(config) {
             .success((authenticated) => {
                 if (authenticated) {
                     const projectDetails = (project) => {
-
-                        dispatch({ type: actions.KEYCLOAK_INIT_SUCCESS, payload: project });
+                        dispatch({
+                            type: actions.KEYCLOAK_INIT_SUCCESS, 
+                            payload: project
+                        });
                     }
                     loadUserInfo(kc, config, projectDetails);
-                }
-                else {
+                } else {
                     console.log("user could not authenticated");
                 }
             })
@@ -26,10 +28,9 @@ export function init(config) {
     }
 }
 
-export function config(config) {
+export function config() {
     return function (dispatch) {
-        axios
-            .get("/genny.properties.json")
+        getProperties()
             .then((result) => {
                 dispatch(({ type: actions.CONFIGFILE_LOAD_SUCCESS, payload: result.data }));
             })
@@ -66,4 +67,3 @@ export function loadUserInfo(keycloak, config, projectDetails) {
         });
 }
 
-// export default { init, config};

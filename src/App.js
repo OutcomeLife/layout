@@ -47,8 +47,6 @@ class App extends Component {
 		}
 	}
 
-
-
 	render() {
 
 		const { user, logo } = this.props.setup;
@@ -67,13 +65,13 @@ class App extends Component {
 		];
 
 		const baseEntity = baseEntities.map((baseEntity) => {
-				const {id, code } = baseEntity;
-				return (
-					<a key={id} style={{ cursor: "pointer" }} onClick={() => this.props.VertxActions.sendEvent(id, code)} >
-						<i className="material-icons arrow" key={id}>keyboard_arrow_right</i> {baseEntity.name}
+			const { id, code } = baseEntity;
+			return (
+				<a key={id} style={{ cursor: "pointer" }} onClick={() => this.props.VertxActions.sendEvent(id, code)} >
+					<i className="material-icons arrow" key={id}>keyboard_arrow_right</i> {baseEntity.name}
 				</a>
-				);
-			});
+			);
+		});
 
 		return (
 			<div className="default">
@@ -84,7 +82,10 @@ class App extends Component {
 					</Sidebar>
 					<Content>
 						{this.message()}
+						{JSON.stringify(this.props.setup.config)}
 						<button onClick={() => this.props.BaseEntity.load()} >Get Content </button>
+						<button onClick={() => this.props.Setup.config()} >Get Config </button>
+						
 					</Content>
 				</Body>
 				<Footer >

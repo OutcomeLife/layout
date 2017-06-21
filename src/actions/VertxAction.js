@@ -16,7 +16,6 @@ export function sendEvent(id, code) {
             if (err) {
                 console.log(err);
             }
-            // let messageFromServer = JSON.stringify(message.body);
             dispatch({ type: "MESSAGE_FROM_SERVER_FULLFILLED", payload: message.body });
         });
         eb.publish("address.inbound", {data});
