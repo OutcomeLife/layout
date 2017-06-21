@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer, Table } from 'genny-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as UserActions from "./actions/UserAction";
-import * as VertxActions from "./actions/VertxAction";
-
+import * as BaseEntity from "./actions/baseEntityActions";
+import * as VertxActions from "./actions/vertxAction";
+import * as Setup from './actions/setupActions';
+import * as Auth from './actions/authActions';
 import './style.css';
 
 class App extends Component {
@@ -13,32 +14,22 @@ class App extends Component {
 		super();
 		this.state = {
 			initialised: false,
-			code: ""
 		};
-
 		this._account = this._account.bind(this);
 		this._logout = this._logout.bind(this);
-
 	}
 
 
 	_account() {
-		this.props.user.keycloak.accountManagement();
+		this.props.Auth.account();
 	}
 
 	_logout() {
-
-		if (process.env.NODE_ENV === "development") {
-			this.props.user.keycloak.logout({ redirectUri: "http://localhost:3000/" });
-		}
-		else {
-			this.props.user.keycloak.logout({ redirectUri: "https://genny.outcome-hub.com/" });
-		}
-
+		this.props.Auth.logout();
 	}
 	componentWillMount() {
 		// this.props.actions.UserActions.config();
-	}	
+	}
 
 	componentWillReceiveProps(props) {
 		// if(Object.keys(props.user.config).length !== 0 && (this.state.initialised === false)) {
@@ -48,25 +39,20 @@ class App extends Component {
 		// 	props.actions.UserActions.init(props.user.config);
 		// }
 	}
-	handleEntityClick(name) {
-		console.log(name);
-	}
 
-	message(){
+	message() {
 		if (this.props.vertx.messageFromServer !== null) {
-			 const code = JSON.stringify(this.props.vertx.messageFromServer.data.data[0].code);
-			 //const code = codeWithQuotes.replace(/["]+/g, '');
-			if(code === "\"GRP_CONTACTS\"") {
-				return <Table />;
-			}
-			else {
-				return code;
-			}
-			// return <div> <br /> Message: {JSON.stringify(this.props.vertx.messageFromServer.data.data[0].code)} <br /> Type : {typeof(this.props.vertx.messageFromServer.data)}</div>
+			const code = JSON.stringify(this.props.vertx.messageFromServer.data.data[0].code);
+			return (code === "\"GRP_CONTACTS\"") ? <Table /> : code;
 		}
 	}
+
+
+
 	render() {
-		var { user, logo, baseEntities, keycloak } = this.props.user;
+
+		const { user, logo } = this.props.setup;
+		const { baseEntities } = this.props.baseEntity;
 		const dropdownListItem = [
 			{
 				name: "account",
@@ -79,30 +65,26 @@ class App extends Component {
 				icon: "exit_to_app"
 			}
 		];
-		const be = baseEntities.map((baseEntity) => {
-			let id = baseEntity.id;
-			return (<a style={{ cursor: "pointer" }} onClick={() => this.props.actions.VertxActions.sendEvent(baseEntity.id, baseEntity.code)}>
-				<i className="material-icons arrow" >keyboard_arrow_right</i> {baseEntity.name}
-			</a>
-			);
-		});
 
-		const ask = this.props.user.asks.map((ask) => {
-			return ask;
-		});
-		
+		const baseEntity = baseEntities.map((baseEntity) => {
+				const {id, code } = baseEntity;
+				return (
+					<a key={id} style={{ cursor: "pointer" }} onClick={() => this.props.VertxActions.sendEvent(id, code)} >
+						<i className="material-icons arrow" key={id}>keyboard_arrow_right</i> {baseEntity.name}
+				</a>
+				);
+			});
 
-		
 		return (
 			<div className="default">
 				<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
 				<Body >
 					<Sidebar>
-						{be}
+						{baseEntity}
 					</Sidebar>
 					<Content>
 						{this.message()}
-						<button onClick={() => this.props.actions.UserActions.loadBaseEntities(keycloak)} >Get Content </button>	
+						<button onClick={() => this.props.BaseEntity.load()} >Get Content </button>
 					</Content>
 				</Body>
 				<Footer >
@@ -116,17 +98,19 @@ class App extends Component {
 
 const mapStateToProps = (store, props) => {
 	return {
-		user: store.user,
-		vertx: store.vertx
+		baseEntity: store.baseEntity,
+		vertx: store.vertx,
+		setup: store.setup,
+		auth: store.auth
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		actions: {
-			UserActions: bindActionCreators(UserActions, dispatch),
-			VertxActions: bindActionCreators(VertxActions, dispatch)
-		}
+		BaseEntity: bindActionCreators(BaseEntity, dispatch),
+		VertxActions: bindActionCreators(VertxActions, dispatch),
+		Setup: bindActionCreators(Setup, dispatch),
+		Auth: bindActionCreators(Auth, dispatch)
 	};
 
 

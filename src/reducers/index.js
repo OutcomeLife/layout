@@ -1,9 +1,14 @@
 import {combineReducers} from 'redux';
-import user from './UserReducer';
-import vertx from './VertxReducer';
+import baseEntity from './baseEntityReducer';
+import vertx from './vertxReducer';
+import setup from './setupReducer';
+import auth from './authReducer';
+
 
 
 export default combineReducers({
-  user,
-  vertx
+  baseEntity,
+  vertx,
+  setup,
+  auth
 });
