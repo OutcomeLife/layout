@@ -29,6 +29,8 @@ class App extends Component {
 	}
 	componentWillMount() {
 		// this.props.actions.UserActions.config();
+		
+		
 	}
 
 	componentWillReceiveProps(props) {
@@ -39,6 +41,10 @@ class App extends Component {
 		// 	props.actions.UserActions.init(props.user.config);
 		// }
 	}
+	componentDidMount() {
+		this.props.VertxActions.receiveEvent(); 
+	}
+
 
 	message() {
 		if (this.props.vertx.messageFromServer !== null) {
@@ -82,7 +88,7 @@ class App extends Component {
 					</Sidebar>
 					<Content>
 						{this.message()}
-						{JSON.stringify(this.props.setup.config)}
+						{/*{JSON.stringify(this.props.setup.config)}*/}
 						<button onClick={() => this.props.BaseEntity.load()} >Get Content </button>
 						<button onClick={() => this.props.Setup.config()} >Get Config </button>
 						
