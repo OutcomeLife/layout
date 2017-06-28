@@ -12,6 +12,12 @@ export function logout() {
 export function account() {
     return dispatch => {
         store.setup.keycloak.accoutManagement({ redirectUri: API.redirectUri });
-        dispatch({ type: actions.ACCOUT_REDIRECT_SUCCESS, payload: true });
+        dispatch({ type: actions.ACCOUNT_REDIRECT_SUCCESS, payload: true });
+    }
+}
+
+export function redirectUri() {
+    return dispatch => {
+        
     }
 }

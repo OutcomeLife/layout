@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Body, Sidebar, Content, Footer, Table } from 'genny-components';
+import { Header, Body, Sidebar, Content, Footer, ButtonThick } from 'genny-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as BaseEntity from "./actions/baseEntityActions";
@@ -28,9 +28,9 @@ class App extends Component {
 		this.props.Auth.logout();
 	}
 	componentWillMount() {
-		// this.props.actions.UserActions.config();
-		
-		
+		//  this.props.actions.UserActions.config();
+
+
 	}
 
 	componentWillReceiveProps(props) {
@@ -42,18 +42,41 @@ class App extends Component {
 		// }
 	}
 	componentDidMount() {
-		this.props.VertxActions.receiveEvent(); 
+		this.props.VertxActions.receiveMessage();
 	}
 
+	changeLayout(e, code) {
+		this.props.VertxActions.sendEvent(code, code);
+	}
 
-	message() {
-		if (this.props.vertx.messageFromServer !== null) {
-			const code = JSON.stringify(this.props.vertx.messageFromServer.data.data[0].code);
-			return (code === "\"GRP_CONTACTS\"") ? <Table /> : code;
+	data_message() {
+		const { messageFromServer } = this.props.vertx;
+		if (messageFromServer !== null) {
+			return JSON.parse(messageFromServer).code
+		} else {
+			return "Layout3";
+		}
+	}
+	cmd_message() {
+
+		const { messageFromServer } = this.props.vertx;
+		if(messageFromServer !== null ) {
+			if (messageFromServer.cmd_type === 'CMD_LAYOUT') {
+				return JSON.parse(messageFromServer).code
+			} else if (messageFromServer.cmd_type === 'CMD_REDIRECT') {
+				//execute command
+				const redirectUrl = messageFromServer.redirect_url;
+				this.props.Auth.redirectUrl();
+			} else if (messageFromServer.cmd_type === 'CMD_LOGOUT'){
+				this.props.Auth.logout();
+			} else {
+				//erro handling display error react compon
+			}
+		
 		}
 	}
 
-	render() {
+	layout() {
 
 		const { user, logo } = this.props.setup;
 		const { baseEntities } = this.props.baseEntity;
@@ -79,28 +102,57 @@ class App extends Component {
 			);
 		});
 
-		return (
-			<div className="default">
-				<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
-				<Body >
-					<Sidebar>
+		const layout = this.data_message();
+		let theme = "default";
+		let themeName = null;
+		switch(layout) {
+			case "Layout1":
+				theme = "default";
+				themeName = "Layout 1"
+				break;
+			case "Layout2":
+				theme = "cyan";
+				themeName = "Layout 2"
+				break;				
+			case "Layout3":
+				theme = "blue";
+				themeName = "Layout 3"
+				break;				
+			default:
+				theme = "default";
+				themeName = "Layout 1"
+				break;				
+		}
+			return (
+				<div className={theme}>
+					<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
+					<Body >
+						<Sidebar>
+							{themeName}
 						{baseEntity}
-					</Sidebar>
-					<Content>
-						{this.message()}
-						{/*{JSON.stringify(this.props.setup.config)}*/}
-						<button onClick={() => this.props.BaseEntity.load()} >Get Content </button>
-						<button onClick={() => this.props.Setup.config()} >Get Config </button>
-						
-					</Content>
-				</Body>
-				<Footer >
-					{/*Version No:{this.state.config.REACT_APP_VERSION_NUMBER} ||| Build Date: {this.state.config.REACT_APP_BUILD_DATE}*/}
-				</Footer>
+						</Sidebar>
+						<Content>
+							<ButtonThick label="Layout 1" code="Layout1" icon="android" onClick={(e) => this.changeLayout(e, "Layout1")} />
+							<ButtonThick label="Layout 2" code="Layout2" icon="android" onClick={(e) => this.changeLayout(e, "Layout2")} />
+							<ButtonThick label="Layout 3" code="Layout3" icon="android" onClick={(e) => this.changeLayout(e, "Layout3")} />
+							<ButtonThick label="Random Button" code="Random" icon="android" onClick={(e) => this.changeLayout(e, "Random ")} />
+
+						</Content>
+					</Body>
+					<Footer >
+						<h1> {themeName} </h1>
+					</Footer>
+				</div>);
+	}
+
+	render() {
+		return (
+			<div>
+				{this.layout()}
+				{this.cmd_message()}
 			</div>
 		);
 	}
-
 }
 
 const mapStateToProps = (store, props) => {

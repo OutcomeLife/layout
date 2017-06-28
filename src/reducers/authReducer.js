@@ -9,7 +9,7 @@ export default function reducer(state = initialState, action) {
         case actions.LOGOUT_SUCCESS: {
             return { ...state, logout:action.payload }
         }
-        case actions.ACCOUT_REDIRECT_SUCCESS: {
+        case actions.ACCOUNT_REDIRECT_SUCCESS: {
             return { ...state, account: action.payload }
         }
         default:

@@ -8,16 +8,19 @@
     "appversion": "^1.7.1",
     "axios": "^0.16.1",
     "config.json": "0.0.4",
+    "genny": "github:pkandel/genny",
+    "genny-components": "github:pkandel/genny",
     "js-md5": "^0.4.2",
     "keycloak-js": "^3.0.0",
+    "layout2": "github:pkandel/layout2",
+    "layout3": "github:pkandel/layout3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "vertx3-eventbus-client": "^3.4.1",
-    "genny": "github:pkandel/genny"
+    "vertx3-eventbus-client": "^3.4.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
