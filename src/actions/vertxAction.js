@@ -8,13 +8,14 @@ export function receiveMessage() {
                 if (err) {
                     console.log(err);
                 }
-                if(message.body.msg_type === 'CMD_MSG') {
+                console.log("from server", message.body);
+                // if(message.body.msg_type === 'CMD_MSG') {
                     //responsible for getting command to do something
                     dispatch({ type: "MESSAGE_FROM_SERVER_FULLFILLED", payload: message.body });
 
-                } else if (message.body.msg_type === 'DATA_MSG') {
+                // } else if (message.body.msg_type === 'DATA_MSG') {
                     //responsible for changing data 
-                }
+                // }
                 
             });
         }
@@ -22,7 +23,7 @@ export function receiveMessage() {
 }
 
 
-export function sendEvent(id, code) {
+export function sendEvent(id, code, value) {
     // const baseURL = (process.env.NODE_ENV === "development") ? "http://qwanda-service.outcome-hub.com" : "https://qwanda-service.outcome-hub.com";
 
     const data =
@@ -32,7 +33,8 @@ export function sendEvent(id, code) {
             'data':
             {
                 'code': code,
-                'id': 1234
+                'id': id,
+                'value': value
             }
 
         }
@@ -41,4 +43,17 @@ export function sendEvent(id, code) {
 
 
     }
+}
+
+//this function is called when the answer is send back to the vertx
+export function sendAnswer(item, value) {
+    let Answer = {};
+    let items = [];
+    items.push(item);
+    Answer.items = items;
+    Answer.value = value;
+    Answer.data_type = "Answer";
+     Answer.delete= false;
+     Answer.msg_type= "DATA_MSG";
+   console.log("Answer",Answer);
 }

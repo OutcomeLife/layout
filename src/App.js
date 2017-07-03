@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Body, Sidebar, Content, Footer, ButtonThick } from 'genny-components';
+import { VerticleLayout, ERROR } from './components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as BaseEntity from "./actions/baseEntityActions";
@@ -30,7 +31,6 @@ class App extends Component {
 	componentWillMount() {
 		//  this.props.actions.UserActions.config();
 
-
 	}
 
 	componentWillReceiveProps(props) {
@@ -46,34 +46,42 @@ class App extends Component {
 	}
 
 	changeLayout(e, code) {
-		this.props.VertxActions.sendEvent(code, code);
+		this.props.VertxActions.sendEvent("1234", code);
 	}
 
 	data_message() {
 		const { messageFromServer } = this.props.vertx;
 		if (messageFromServer !== null) {
-			return JSON.parse(messageFromServer).code
+		 	return messageFromServer.code
 		} else {
 			return "Layout3";
 		}
 	}
 	cmd_message() {
 
-		const { messageFromServer } = this.props.vertx;
+		let { messageFromServer } = this.props.vertx;
+	
 		if(messageFromServer !== null ) {
 			if (messageFromServer.cmd_type === 'CMD_LAYOUT') {
-				return JSON.parse(messageFromServer).code
+				return messageFromServer.code
 			} else if (messageFromServer.cmd_type === 'CMD_REDIRECT') {
 				//execute command
-				const redirectUrl = messageFromServer.redirect_url;
-				this.props.Auth.redirectUrl();
+				//const redirectUrl = messageFromServer.redirect_url;
+				const redirectUrl = messageFromServer.code;		
+				this.props.Auth.redirectUrl(redirectUrl);
 			} else if (messageFromServer.cmd_type === 'CMD_LOGOUT'){
-				this.props.Auth.logout();
+				const redirectUrl = messageFromServer.code;
+				this.props.Auth.redirectUrl(redirectUrl);
+				//this.props.Auth.logout();
 			} else {
 				//erro handling display error react compon
 			}
 		
 		}
+	}
+
+	verticle_layout() {
+		return (<div> <VerticleLayout data={this.props.vertx.messageFromServer} onChange={this.props.VertxActions.sendAnswer}/> </div>);
 	}
 
 	layout() {
@@ -131,24 +139,30 @@ class App extends Component {
 							{themeName}
 						{baseEntity}
 						</Sidebar>
-						<Content>
+						<div style={{backgroundColor:"white", width:"!00%", height:"100%"}}>
+						<Content >
 							<ButtonThick label="Layout 1" code="Layout1" icon="android" onClick={(e) => this.changeLayout(e, "Layout1")} />
 							<ButtonThick label="Layout 2" code="Layout2" icon="android" onClick={(e) => this.changeLayout(e, "Layout2")} />
 							<ButtonThick label="Layout 3" code="Layout3" icon="android" onClick={(e) => this.changeLayout(e, "Layout3")} />
 							<ButtonThick label="Random Button" code="Random" icon="android" onClick={(e) => this.changeLayout(e, "Random ")} />
+							<ButtonThick label="Redirect Button" code="Redirect" icon="android" onClick={(e) => this.changeLayout(e, "Redirect ")} />
+							{this.verticle_layout()}
+								
 
 						</Content>
+						</div>
 					</Body>
-					<Footer >
+					{/*<Footer >
 						<h1> {themeName} </h1>
-					</Footer>
+					</Footer>*/}
 				</div>);
 	}
 
 	render() {
 		return (
-			<div>
-				{this.layout()}
+			<div> 
+				{/*<ERROR />*/}
+				{this.layout()} 
 				{this.cmd_message()}
 			</div>
 		);
