@@ -58,7 +58,7 @@ export function sendAnswer(item, value) {
   for (var i = 0; i < Object.keys(value).length; i++) {
      eachItem = {
       created: new Date().toLocaleString(),
-      value: value,
+      value: value[item.question.code],
       attributeCode: item.question.attribute.code,
       targetCode: 22,
       sourceCode: 20,
