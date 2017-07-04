@@ -54,7 +54,9 @@ export function sendAnswer(item, value) {
     "delete": false,
     "msg_type": "DATA_MSG"
   };
-  let eachItem = {
+  let eachItem = {};
+  for (var i = 0; i < Object.keys(value).length; i++) {
+     eachItem = {
       created: new Date().toLocaleString(),
       value: value,
       attributeCode: item.question.attribute.code,
@@ -63,10 +65,14 @@ export function sendAnswer(item, value) {
       expired: false,
       refused: false,
       weight: 0.5
-  };
-  Answer.items.push(eachItem);
+    };
+     Answer.items.push(eachItem);
+  }
+  
   console.log("Answer", Answer);
   return dispatch => {
-      eb.publish("address.inbound",{data: Answer});
+    eb.publish("address.inbound", {
+      data: Answer
+    });
   }
 }

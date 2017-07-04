@@ -39,7 +39,7 @@ class ExampleVerticleLayout extends Component {
         if (e.target.value.length >= 2) {
             this.validate(e,id, validation, error, code);
         }
-        this.props.onChange(item, this.state.value[code]);
+        this.props.onChange(item, this.state.value);
     }
 
     handleClickMenuItem(e, value, code) {
@@ -76,14 +76,14 @@ class ExampleVerticleLayout extends Component {
                 } else {
                     name = data.name;
                 }
+                    // onBlur={(e) => this.validate(e, data.id, data.validation, data.errorText, data.question.code)}
                     Asks.push(
                         <MuiThemeProvider key={data.id}>
                             <div>
                                 <TextField
                                     hintText={name}
                                     floatingLabelText={name}
-                                    onBlur={(e) => this.validate(e, data.id, data.validation, data.errorText, data.question.code)}
-                                    onChange={(e) => this.handleInput(e, data.id, data.validation, data.errorText, data.question.code, data)}
+                                    onBlur={(e) => this.handleInput(e, data.id, data.validation, data.errorText, data.question.code, data)}
                                     errorText={this.state.error === null ? this.state.error : this.state.error[data.code]}
                                     disabled={disabled}
                                 />
