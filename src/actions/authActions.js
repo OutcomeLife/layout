@@ -1,6 +1,6 @@
-import store from '../store';
-import * as API from '../utils/apiList';
-import * as actions from './actionTypes';
+// import store from '../store';
+// import * as API from '../utils/apiList';
+// import * as actions from './actionTypes';
 
 export function logout() {
     return dispatch => {

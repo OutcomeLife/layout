@@ -18,7 +18,7 @@ class ExampleVerticleLayout extends Component {
     validate(e, id, regx, errorText, code) {
         let { value, error } = this.state;
         let errorMessage = error;
-        if (value[code] != undefined && value[code].match(regx) && value[code]) {
+        if (value[code] !== undefined && value[code].match(regx) && value[code]) {
             if (Object.keys(error).length !== 0) {
                 delete errorMessage[code];
                 this.setState({ error: errorMessage });
@@ -60,23 +60,32 @@ class ExampleVerticleLayout extends Component {
     
     processAsks() {
         let Asks = [];
-        let dataArray = this.props.data === undefined || this.props.data === null ? [] : this.props.data;
+        let asksArray = this.props.asks === undefined || this.props.asks === null ? [] : this.props.asks.asks;
 
-        dataArray.map(data => {
-            switch(data.data_type) {
-            case 'Ask':
-            data.items.map(item => {
-            switch (item.question.attribute.dataType.className) {
+        asksArray.map(data => {
+            switch (data.question.attribute.dataType.className) {
                 case "java.lang.String":
+                let name = "";
+                let disabled = false;
+                //if answerlist is not empty
+                if(Object.keys(data.answerList).length !== 0) {
+                data.answerList.answerList.map(answer => {
+                    name = `${data.name} - ${answer.valueString}`;
+                    disabled = true;
+                });
+                } else {
+                    name = data.name;
+                }
                     Asks.push(
-                        <MuiThemeProvider key={item.id}>
+                        <MuiThemeProvider key={data.id}>
                             <div>
                                 <TextField
-                                    hintText={item.name}
-                                    floatingLabelText={item.name}
-                                    onBlur={(e) => this.validate(e, item.id, data.validation, data.errorText, item.question.code)}
-                                    onChange={(e) => this.handleInput(e, item.id, data.validation, data.errorText, item.question.code, item)}
-                                    errorText={this.state.error === null ? this.state.error : this.state.error[item.code]}
+                                    hintText={name}
+                                    floatingLabelText={name}
+                                    onBlur={(e) => this.validate(e, data.id, data.validation, data.errorText, data.question.code)}
+                                    onChange={(e) => this.handleInput(e, data.id, data.validation, data.errorText, data.question.code, data)}
+                                    errorText={this.state.error === null ? this.state.error : this.state.error[data.code]}
+                                    disabled={disabled}
                                 />
                             </div>
                         </MuiThemeProvider>);
@@ -108,9 +117,9 @@ class ExampleVerticleLayout extends Component {
                     break;
                 case "java.time.LocalDateTime":
                     Asks.push(
-                        <MuiThemeProvider key={item.id}>
+                        <MuiThemeProvider key={data.id}>
                             <div style={{marginTop:20}}>
-                                <DatePicker hintText={item.name} mode="landscape" onChange={this.handleDatePickerChange}  />
+                                <DatePicker hintText={data.name} mode="landscape" onChange={this.handleDatePickerChange}  />
                             </div>
                         </MuiThemeProvider>);
                     break;
@@ -132,11 +141,6 @@ class ExampleVerticleLayout extends Component {
                     break;
                 default:
                     break;
-            }
-        })
-            default:
-                //default handel
-                break;
             }
 
         })

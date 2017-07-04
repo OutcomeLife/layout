@@ -1,48 +1,35 @@
 import React, { Component } from 'react';
-import { Header, Body, Sidebar, Content, Footer, ButtonThick } from 'genny-components';
-import { VerticleLayout, ERROR } from './components';
+import { Header, Body, Sidebar, Content, ButtonThick } from 'genny-components';
+import { VerticleLayout} from './components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as BaseEntity from "./actions/baseEntityActions";
 import * as VertxActions from "./actions/vertxAction";
-import * as Setup from './actions/setupActions';
-import * as Auth from './actions/authActions';
+import * as SetupActions from './actions/setupActions';
+import * as AuthActions from './actions/authActions';
 import './style.css';
 
 class App extends Component {
 
 	constructor() {
 		super();
-		this.state = {
-			initialised: false,
-		};
 		this._account = this._account.bind(this);
 		this._logout = this._logout.bind(this);
 	}
 
 
 	_account() {
-		this.props.Auth.account();
+		this.props.AuthActions.account();
 	}
 
 	_logout() {
-		this.props.Auth.logout();
-	}
-	componentWillMount() {
-		//  this.props.actions.UserActions.config();
-
+		this.props.AuthActions.logout();
 	}
 
-	componentWillReceiveProps(props) {
-		// if(Object.keys(props.user.config).length !== 0 && (this.state.initialised === false)) {
-		// 	this.setState({
-		// 		initialised: true
-		// 	})
-		// 	props.actions.UserActions.init(props.user.config);
-		// }
-	}
 	componentDidMount() {
 		this.props.VertxActions.receiveMessage();
+		this.props.SetupActions.config();
+		this.props.SetupActions.init(this.props.setup.config);
 	}
 
 	changeLayout(e, code) {
@@ -68,11 +55,11 @@ class App extends Component {
 				//execute command
 				//const redirectUrl = messageFromServer.redirect_url;
 				const redirectUrl = messageFromServer.code;		
-				this.props.Auth.redirectUrl(redirectUrl);
+				this.props.AuthActions.redirectUrl(redirectUrl);
 			} else if (messageFromServer.cmd_type === 'CMD_LOGOUT'){
 				const redirectUrl = messageFromServer.code;
-				this.props.Auth.redirectUrl(redirectUrl);
-				//this.props.Auth.logout();
+				this.props.AuthActions.redirectUrl(redirectUrl);
+				//this.props.AuthActions.logout();
 			} else {
 				//erro handling display error react compon
 			}
@@ -81,7 +68,7 @@ class App extends Component {
 	}
 
 	verticle_layout() {
-		return (<div> <VerticleLayout data={this.props.vertx.messageFromServer} onChange={this.props.VertxActions.sendAnswer}/> </div>);
+		return (<div> <VerticleLayout asks={this.props.vertx.messageFromServer} onChange={this.props.VertxActions.sendAnswer}/> </div>);
 	}
 
 	layout() {
@@ -131,6 +118,9 @@ class App extends Component {
 				themeName = "Layout 1"
 				break;				
 		}
+		let content = {
+			backgroundColor: "white",
+		}
 			return (
 				<div className={theme}>
 					<Header logo={logo} user={user} dropdownListItem={dropdownListItem} />
@@ -139,18 +129,15 @@ class App extends Component {
 							{themeName}
 						{baseEntity}
 						</Sidebar>
-						<div style={{backgroundColor:"white", width:"!00%", height:"100%"}}>
-						<Content >
+						<Content style={content}>
 							<ButtonThick label="Layout 1" code="Layout1" icon="android" onClick={(e) => this.changeLayout(e, "Layout1")} />
 							<ButtonThick label="Layout 2" code="Layout2" icon="android" onClick={(e) => this.changeLayout(e, "Layout2")} />
 							<ButtonThick label="Layout 3" code="Layout3" icon="android" onClick={(e) => this.changeLayout(e, "Layout3")} />
 							<ButtonThick label="Random Button" code="Random" icon="android" onClick={(e) => this.changeLayout(e, "Random ")} />
 							<ButtonThick label="Redirect Button" code="Redirect" icon="android" onClick={(e) => this.changeLayout(e, "Redirect ")} />
 							{this.verticle_layout()}
-								
-
+ 
 						</Content>
-						</div>
 					</Body>
 					{/*<Footer >
 						<h1> {themeName} </h1>
@@ -182,8 +169,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		BaseEntity: bindActionCreators(BaseEntity, dispatch),
 		VertxActions: bindActionCreators(VertxActions, dispatch),
-		Setup: bindActionCreators(Setup, dispatch),
-		Auth: bindActionCreators(Auth, dispatch)
+		SetupActions: bindActionCreators(SetupActions, dispatch),
+		AuthActions: bindActionCreators(AuthActions, dispatch)
 	};
 
 
