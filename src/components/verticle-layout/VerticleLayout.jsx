@@ -69,12 +69,13 @@ class ExampleVerticleLayout extends Component {
             switch (data.question.attribute.dataType.className) {
                 case "java.lang.String":
                 let name = "";
-                let hasValue = "";
+                let hasValue = null;
                 //if answerlist is not empty
                 if(Object.keys(data.answerList).length !== 0) {
                 data.answerList.answerList.map(answer => {
-                    name = answer.valueString;
-                    hasValue = name;
+                    name = data.name;
+                    value = answer.valueString;
+                    hasValue = value;
                 });
                 } else {
                     name = data.name;
@@ -88,7 +89,7 @@ class ExampleVerticleLayout extends Component {
                                     floatingLabelText={name}
                                     onBlur={(e) => this.handleInput(e, data.id, data.validation, data.errorText, data.question.code, data)}
                                     errorText={this.state.error === null ? this.state.error : this.state.error[data.code]}
-                                    value={hasValue}
+                                    defaultValue={hasValue}
                                 />
                             </div>
                         </MuiThemeProvider>);
