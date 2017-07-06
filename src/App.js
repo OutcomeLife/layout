@@ -44,7 +44,8 @@ class App extends Component {
 	}
 	//this returns a data required for the layout
 	receive_data_message() {
-		return (<div> <VerticleLayout asks={this.props.vertx.data} onChange={this.props.VertxActions.sendAnswer} /> </div>);
+		const asks = Object.keys(this.props.vertx.data).length !== 0 ? this.props.vertx.data.items : [];
+		return (<div> <VerticleLayout asks={asks} onChange={this.props.VertxActions.sendAnswer} /> </div>);
 	}
 	//this is for getting event from the server
 	evt_message() {
@@ -131,6 +132,7 @@ class App extends Component {
 							<ButtonThick label="Random Button" code="Random" icon="android" onClick={(e) => this.send_event(e, 4, "Random ", eventType.BUTTON_CLICK)} />
 							<ButtonThick label="Redirect Button" code="Redirect" icon="android" onClick={(e) => this.send_event(e, 5 , "Redirect ", eventType.BUTTON_CLICK)} />
 							{this.receive_cmd_message()}
+							{this.receive_data_message()}
 						</Content>
 					</Body>
 				</div>);

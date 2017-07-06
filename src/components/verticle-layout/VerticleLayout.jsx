@@ -60,8 +60,11 @@ class ExampleVerticleLayout extends Component {
     
     processAsks() {
         let Asks = [];
-        let asksArray = this.props.asks === undefined || this.props.asks === null ? [] : this.props.asks.asks;
-
+        if (this.props.asks === undefined || this.props.asks.length === 0) {
+            return Asks;
+        } else {
+        let asksArray = this.props.asks;
+        console.log("askArray", asksArray);
         asksArray.map(data => {
             switch (data.question.attribute.dataType.className) {
                 case "java.lang.String":
@@ -144,6 +147,8 @@ class ExampleVerticleLayout extends Component {
             }
 
         })
+        }
+
         return Asks;
         
     }

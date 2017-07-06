@@ -1,9 +1,9 @@
 import * as actions from '../actions/actionTypes';
 const initialState = {
     messageFromServer: null,
-    data:null,
-    cmd:null,
-    evt:null
+    data:{},
+    cmd:{},
+    evt:{}
 }
 
 export default function reducer(state= initialState, action) {
