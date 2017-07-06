@@ -7,6 +7,7 @@ import * as BaseEntity from "./actions/baseEntityActions";
 import * as VertxActions from "./actions/vertxAction";
 import * as SetupActions from './actions/setupActions';
 import * as AuthActions from './actions/authActions';
+import * as eventType from './utils/eventType';
 import './style.css';
 
 class App extends Component {
@@ -17,7 +18,6 @@ class App extends Component {
 		this._logout = this._logout.bind(this);
 	}
 
-
 	_account() {
 		this.props.AuthActions.account();
 	}
@@ -25,54 +25,52 @@ class App extends Component {
 	_logout() {
 		this.props.AuthActions.logout();
 	}
-
-	componentDidMount() {
-		this.props.VertxActions.receiveMessage();
+	componentWillMount() {
+		alert("will");
+		//console.log("started connection");
+		//this.props.VertxActions.receiveMessage();
+	}
+	componentWillReceiveProps(props) {
+		alert('will receive props');
+		props.VertxActions.receiveMessage();
+		// props.VertxActions.sendInitialEvent("token");
+	}
+	componentDidMount() {	
 		this.props.SetupActions.config();
 		this.props.SetupActions.init(this.props.setup.config);
+		this.props.VertxActions.sendInitialEvent("token");				
 	}
 
-	changeLayout(e, code) {
-		this.props.VertxActions.sendEvent("1234", code);
+	send_event(e,id, code, evtType) {
+		this.props.VertxActions.sendEvent(id, code, evtType);
 	}
-
-	data_message() {
-		const { messageFromServer } = this.props.vertx;
-		if (messageFromServer !== null) {
-		 	return messageFromServer.code
-		} else {
-			return "Layout3";
-		}
+	//this returns a data required for the layout
+	receive_data_message() {
+		return (<div> <VerticleLayout asks={this.props.vertx.data} onChange={this.props.VertxActions.sendAnswer} /> </div>);
 	}
-	cmd_message() {
+	//this is for getting event from the server
+	evt_message() {
 
-		let { messageFromServer } = this.props.vertx;
-	
-		if(messageFromServer !== null ) {
-			if (messageFromServer.cmd_type === 'CMD_LAYOUT') {
-				return messageFromServer.code
-			} else if (messageFromServer.cmd_type === 'CMD_REDIRECT') {
-				//execute command
-				//const redirectUrl = messageFromServer.redirect_url;
-				const redirectUrl = messageFromServer.code;		
+	}
+	//this returns a layout name
+	receive_cmd_message() {
+		let { cmd } = this.props.vertx;
+		if(cmd !== null ) {
+			if (cmd.cmd_type === 'CMD_LAYOUT') {
+				return cmd.code;
+			} else if (cmd.cmd_type === 'CMD_REDIRECT') {
+				const redirectUrl = cmd.redirect_url;
 				this.props.AuthActions.redirectUrl(redirectUrl);
-			} else if (messageFromServer.cmd_type === 'CMD_LOGOUT'){
-				const redirectUrl = messageFromServer.code;
-				this.props.AuthActions.redirectUrl(redirectUrl);
-				//this.props.AuthActions.logout();
+			} else if (cmd.cmd_type === 'CMD_LOGOUT'){
+				this.props.AuthActions.logout();
 			} else {
 				//erro handling display error react compon
 			}
 		
 		}
 	}
-
-	verticle_layout() {
-		return (<div> <VerticleLayout asks={this.props.vertx.messageFromServer} onChange={this.props.VertxActions.sendAnswer}/> </div>);
-	}
-
+// This will combine data and layout to render in the browser
 	layout() {
-
 		const { user, logo } = this.props.setup;
 		const { baseEntities } = this.props.baseEntity;
 		const dropdownListItem = [
@@ -96,8 +94,7 @@ class App extends Component {
 				</a>
 			);
 		});
-
-		const layout = this.data_message();
+		const layout = this.receive_cmd_message();
 		let theme = "default";
 		let themeName = null;
 		switch(layout) {
@@ -114,11 +111,11 @@ class App extends Component {
 				themeName = "Layout 3"
 				break;				
 			default:
-				theme = "default";
-				themeName = "Layout 1"
+				theme = "cyan";
+				themeName = "Layout 2"
 				break;				
 		}
-		let content = {
+		let contentStyle = {
 			backgroundColor: "white",
 		}
 			return (
@@ -129,28 +126,22 @@ class App extends Component {
 							{themeName}
 						{baseEntity}
 						</Sidebar>
-						<Content style={content}>
-							<ButtonThick label="Layout 1" code="Layout1" icon="android" onClick={(e) => this.changeLayout(e, "Layout1")} />
-							<ButtonThick label="Layout 2" code="Layout2" icon="android" onClick={(e) => this.changeLayout(e, "Layout2")} />
-							<ButtonThick label="Layout 3" code="Layout3" icon="android" onClick={(e) => this.changeLayout(e, "Layout3")} />
-							<ButtonThick label="Random Button" code="Random" icon="android" onClick={(e) => this.changeLayout(e, "Random ")} />
-							<ButtonThick label="Redirect Button" code="Redirect" icon="android" onClick={(e) => this.changeLayout(e, "Redirect ")} />
-							{this.verticle_layout()}
- 
+						<Content style={contentStyle}>
+							<ButtonThick label="Layout 1" code="Layout1" icon="android" onClick={(e) => this.send_event(e, 1, "Layout1", eventType.BUTTON_CLICK)} />
+							<ButtonThick label="Layout 2" code="Layout2" icon="android" onClick={(e) => this.send_event(e, 2,  "Layout2", eventType.BUTTON_CLICK)} />
+							<ButtonThick label="Layout 3" code="Layout3" icon="android" onClick={(e) => this.send_event(e, 3, "Layout3", eventType.BUTTON_CLICK)} />
+							<ButtonThick label="Random Button" code="Random" icon="android" onClick={(e) => this.send_event(e, 4, "Random ", eventType.BUTTON_CLICK)} />
+							<ButtonThick label="Redirect Button" code="Redirect" icon="android" onClick={(e) => this.send_event(e, 5 , "Redirect ", eventType.BUTTON_CLICK)} />
+							{this.receive_cmd_message()}
 						</Content>
 					</Body>
-					{/*<Footer >
-						<h1> {themeName} </h1>
-					</Footer>*/}
 				</div>);
 	}
 
 	render() {
 		return (
 			<div> 
-				{/*<ERROR />*/}
 				{this.layout()} 
-				{this.cmd_message()}
 			</div>
 		);
 	}

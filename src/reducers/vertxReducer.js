@@ -1,11 +1,19 @@
+import * as actions from '../actions/actionTypes';
 const initialState = {
-    messageFromServer: null
+    messageFromServer: null,
+    data:null,
+    cmd:null,
+    evt:null
 }
 
 export default function reducer(state= initialState, action) {
     switch(action.type) {
-        case 'MESSAGE_FROM_SERVER_FULLFILLED' : 
-            return { ...state, messageFromServer: action.payload }
+        case actions.DATA_FROM_SERVER_FULLFIELD: 
+            return { ...state, data: action.payload }
+        case actions.CMD_FROM_SERVER_FULLFIELD:
+            return {...state, cmd: action.payload}
+        case actions.EVT_FROM_SERVER_FULLFIELD:
+            return { ...state, evt: action.payload }
          default: 
             return { ...state}
         

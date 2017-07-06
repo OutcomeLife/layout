@@ -1,0 +1,2 @@
+export const BUTTON_CLICK='BUTTON_CLICK';
+export const TREEVIEW_CLICK = 'TREEVIEW_CLICK';
