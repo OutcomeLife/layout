@@ -26,19 +26,17 @@ class App extends Component {
 		this.props.AuthActions.logout();
 	}
 	componentWillMount() {
-		alert("will");
 		//console.log("started connection");
 		//this.props.VertxActions.receiveMessage();
 	}
 	componentWillReceiveProps(props) {
-		alert('will receive props');
 		props.VertxActions.receiveMessage();
 		// props.VertxActions.sendInitialEvent("token");
 	}
 	componentDidMount() {	
 		this.props.SetupActions.config();
 		this.props.SetupActions.init(this.props.setup.config);
-		this.props.VertxActions.sendInitialEvent("token");				
+		// this.props.VertxActions.sendInitialEvent("token");				
 	}
 
 	send_event(e,id, code, evtType) {
