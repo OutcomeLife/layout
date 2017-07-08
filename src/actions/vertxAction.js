@@ -88,7 +88,7 @@ export function sendAnswer(item, value) {
   let eachItem = {};
   for (var i = 0; i < Object.keys(value).length; i++) {
      eachItem = {
-      created: new Date().toLocaleString(),
+      created: {"date":{"year":2017,"month":7,"day":8},"time":{"hour":12,"minute":23,"second":14,"nano":806000000}},
       value: value[item.question.code],
       attributeCode: item.question.attribute.code,
       targetCode: 22,
