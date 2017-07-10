@@ -2,7 +2,7 @@ import EventBus from 'vertx3-eventbus-client';
 import * as actions from './actionTypes';
 import store from '../store';
 var vertxAddress;
-var eb = new EventBus(store.getState().setup.config.REACT_APP_EVENT_BUS);
+var eb = new EventBus(store.getState().setup.config.REACT_APP_EVENTBUS_URL);
 
 export function receiveMessage() {
   return dispatch => {
