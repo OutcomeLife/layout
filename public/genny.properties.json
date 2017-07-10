@@ -1,3 +1,4 @@
 {
-    "REACT_APP_QWANDA_API_URL": "https://qwanda-service.outcome-hub.com"
+    "REACT_APP_QWANDA_API_URL": "https://qwanda-service.outcome-hub.com",
+    "REACT_APP_VERTX_URL": "http://localhost:8081/eventbus"
 }

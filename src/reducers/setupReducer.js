@@ -1,4 +1,3 @@
-import defaultConfig from '../config';
 import * as actions from '../actions/actionTypes';
 
 const initialState = {
@@ -9,7 +8,7 @@ const initialState = {
         name: "prakash",
         image: "./images/user.png"
     },
-    config: { ...defaultConfig },
+    config: { },
     logo: "Logo",
 }
 export default function reducer(state = initialState, action) {

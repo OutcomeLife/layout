@@ -4,7 +4,6 @@ import Keycloak from 'keycloak-js';
 import md5 from 'js-md5';
 import * as actions from './actionTypes';
 import getProperties from '../utils/asyncHelper';
-import * as VertexAction from './vertxAction';
 
 export function init(config) {
     return function (dispatch) {
@@ -12,7 +11,6 @@ export function init(config) {
         kc.init({ onLoad: 'login-required' })
             .success((authenticated) => {
                 if (authenticated) {
-                // VertexAction.sendEvent(1, "code", "value", "event_type");   
                     const projectDetails = (project) => {
                         dispatch({
                             type: actions.KEYCLOAK_INIT_SUCCESS, 

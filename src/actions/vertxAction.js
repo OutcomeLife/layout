@@ -1,8 +1,13 @@
 import EventBus from 'vertx3-eventbus-client';
 import * as actions from './actionTypes';
-var eb = new EventBus("http://localhost:8081/eventbus/");
-
+import * as setup from './setupActions';
+import store from '../store';
+var eb;
 export function receiveMessage() {
+  if(Object.keys(store.getState().setup.config.length === 0 )){
+    setup.config();
+    eb = new EventBus(store.getState().setup.config.REACT_APP_VERTX_URL);
+  }
   return dispatch => {
      eb.onopen = () => {
       eb.registerHandler('address.outbound', (err, message) => {

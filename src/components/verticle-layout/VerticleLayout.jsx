@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TextField, DropDownMenu, MenuItem, DatePicker, TimePicker } from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import demoData from './demoData';
 
 
 class ExampleVerticleLayout extends Component {
@@ -70,6 +69,7 @@ class ExampleVerticleLayout extends Component {
                 let hasValue = null;
                 //if answerlist is not empty
                 if(Object.keys(data.answerList).length !== 0) {
+                    let name, value;
                 data.answerList.answerList.map(answer => {
                     name = data.name;
                     value = answer.valueString;
