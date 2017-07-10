@@ -21,8 +21,7 @@ class ExampleVerticleLayout extends Component {
         if (value[code] !== undefined && value[code].match(regx) && value[code]) {
             if (Object.keys(error).length !== 0) {
                 delete errorMessage[code];
-                this.setState({ error: errorMessage });
-                
+                this.setState({ error: errorMessage });            
             }
 
         } else {
@@ -32,7 +31,6 @@ class ExampleVerticleLayout extends Component {
     }
 
     handleInput(e,id, validation, error, code, item) {
-
         let value = this.state.value;
         value[code] = e.target.value;
         this.setState({ value })
@@ -68,7 +66,7 @@ class ExampleVerticleLayout extends Component {
         asksArray.map(data => {
             switch (data.question.attribute.dataType.className) {
                 case "java.lang.String":
-                let name = "";
+                let name = null;
                 let hasValue = null;
                 //if answerlist is not empty
                 if(Object.keys(data.answerList).length !== 0) {

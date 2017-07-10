@@ -90,6 +90,7 @@ export function sendAnswer(item, value) {
      eachItem = {
       created: {"date":{"year":2017,"month":7,"day":8},"time":{"hour":12,"minute":23,"second":14,"nano":806000000}},
       value: value[item.question.code],
+      id: item.code,
       attributeCode: item.question.attribute.code,
       targetCode: 22,
       sourceCode: 20,
