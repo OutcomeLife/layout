@@ -64,6 +64,7 @@ export function loadUserInfo(keycloak, config, projectDetails) {
             projectDetails(project);
         })
         .error((err) => {
+	console.log(err);
         });
 }
 

@@ -1,10 +1,10 @@
-// import store from '../store';
-// import * as API from '../utils/apiList';
+ import store from '../store';
+ import * as API from '../utils/apiList';
 // import * as actions from './actionTypes';
 
 export function logout() {
     return dispatch => {
-      //  store.setup.keycloak.logout({ redirectUri: API.redirectUri });
+        store.getState().setup.keycloak.logout({ redirectUri: API.redirectUri });
       //  dispatch({ type: actions.LOGOUT_SUCCESS, payload : true });
     }
 }

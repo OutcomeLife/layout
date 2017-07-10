@@ -35,7 +35,7 @@ class App extends Component {
 	}
 	componentDidMount() {	
 		this.props.SetupActions.config();
-		// this.props.SetupActions.init(this.props.setup.config);
+		this.props.SetupActions.init(this.props.setup.config);
 		// this.props.VertxActions.sendInitialEvent("token");				
 	}
 
