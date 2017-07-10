@@ -1,10 +1,10 @@
 {
-  "realm": "genny",
-  "auth-server-url": "http://bouncer.outcome-hub.com/auth",
+  "realm": "wildfly-swarm-keycloak-example",
+  "auth-server-url": "http://localhost:8180/auth",
   "ssl-required": "external",
-  "resource": "layout",
+  "resource": "curl",
   "credentials": {
-    "secret": "87aa20f7-fb3d-4369-af13-7b5601ab1f74"
+    "secret": "056b73c1-7078-411d-80ec-87d41c55c3b4"
   },
   "policy-enforcer": {}
 }
