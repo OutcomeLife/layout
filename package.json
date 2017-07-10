@@ -8,7 +8,6 @@
     "appversion": "^1.7.1",
     "axios": "^0.16.1",
     "config.json": "0.0.4",
-    "genny": "github:pkandel/genny",
     "genny-components": "github:outcomelife/genny-components",
     "js-md5": "^0.4.2",
     "keycloak-js": "^3.0.0",
