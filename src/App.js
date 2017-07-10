@@ -138,7 +138,7 @@ class App extends Component {
 				</div>);
 	}
 
-	render() {
+	render() { 
 		return (
 			<div> 
 				{this.layout()} 
