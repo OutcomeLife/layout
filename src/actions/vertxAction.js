@@ -96,9 +96,10 @@ export function sendAnswer(item, value) {
       created: "2017-03-02T10:11:12.000+10:00",
       value: value[item.question.code],
       id: item.code,
+      askId: item.id,
       attributeCode: item.question.attribute.code,
-      targetCode: 22,
-      sourceCode: 20,
+      targetCode: null,
+      sourceCode: null,
       expired: false,
       refused: false,
       weight: 0.5
