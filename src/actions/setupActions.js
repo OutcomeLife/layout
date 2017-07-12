@@ -59,7 +59,8 @@ export function loadUserInfo(keycloak, config, projectDetails) {
                 user: {
                     image: imgUrl,
                     name: user.given_name
-                }
+                },
+                keycloak:keycloak
             }
             projectDetails(project);
         })

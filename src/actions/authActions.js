@@ -5,14 +5,14 @@
 export function logout() {
     return dispatch => {
         store.getState().setup.keycloak.logout({ redirectUri: API.redirectUri });
-      //  dispatch({ type: actions.LOGOUT_SUCCESS, payload : true });
+        // dispatch({ type: actions.LOGOUT_SUCCESS, payload : true });
     }
 }
 
 export function account() {
     return dispatch => {
-     //   store.setup.keycloak.accoutManagement({ redirectUri: API.redirectUri });
-     //   dispatch({ type: actions.ACCOUNT_REDIRECT_SUCCESS, payload: true });
+        store.setup.keycloak.accoutManagement({ redirectUri: API.redirectUri });
+        // dispatch({ type: actions.ACCOUNT_REDIRECT_SUCCESS, payload: true });
     }
 }
 

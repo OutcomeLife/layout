@@ -10,11 +10,12 @@ const initialState = {
     },
     config: { },
     logo: "Logo",
+    keycloak:{}
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case actions.KEYCLOAK_INIT_SUCCESS: {
-            return { ...state, user: action.payload.user, logo: action.payload.logo }
+            return { ...state, user: action.payload.user, logo: action.payload.logo, keycloak: action.payload.keycloak }
         }
         case actions.CONFIGFILE_LOAD_SUCCESS: {
             return { ...state, config: action.payload }
