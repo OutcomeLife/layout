@@ -30,13 +30,15 @@ class App extends Component {
 		//this.props.VertxActions.receiveMessage();
 	}
 	componentWillReceiveProps(props) {
-		props.VertxActions.receiveMessage();
+	  if ( props.setup.keycloak ) {
+      props.VertxActions.receiveMessage( props.setup.keycloak );
+    }
 		// props.VertxActions.sendInitialEvent("token");
 	}
-	componentDidMount() {	
+	componentDidMount() {
 		this.props.SetupActions.config();
 		 this.props.SetupActions.init(this.props.setup.config);
-		// this.props.VertxActions.sendInitialEvent("token");				
+		// this.props.VertxActions.sendInitialEvent("token");
 	}
 
 	send_event(e,id, code, evtType) {
@@ -65,7 +67,7 @@ class App extends Component {
 			} else {
 				//erro handling display error react compon
 			}
-		
+
 		}
 	}
 // This will combine data and layout to render in the browser
@@ -104,15 +106,15 @@ class App extends Component {
 			case "Layout2":
 				theme = "cyan";
 				themeName = "Layout 2"
-				break;				
+				break;
 			case "Layout3":
 				theme = "blue";
 				themeName = "Layout 3"
-				break;				
+				break;
 			default:
 				theme = "cyan";
 				themeName = "Layout 2"
-				break;				
+				break;
 		}
 		let contentStyle = {
 			backgroundColor: "white",
@@ -138,10 +140,10 @@ class App extends Component {
 				</div>);
 	}
 
-	render() { 
+	render() {
 		return (
-			<div> 
-				{this.layout()} 
+			<div>
+				{this.layout()}
 			</div>
 		);
 	}

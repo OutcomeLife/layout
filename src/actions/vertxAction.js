@@ -3,49 +3,53 @@ import * as actions from './actionTypes';
 import * as setup from './setupActions';
 import store from '../store';
 var eb;
-export function receiveMessage() {
-  if(Object.keys(store.getState().setup.config.length === 0 )){
+export function receiveMessage(keycloak) {
+  if(Object.keys(store.getState().setup.config.length === 0 )) {
     setup.config();
-    eb = new EventBus(store.getState().setup.config.REACT_APP_VERTX_URL);
-  }
-  return dispatch => {
-     eb.onopen = () => {
-      eb.registerHandler('address.outbound', (err, message) => {
-        if (err) {
-          console.log(err);
-        }
-        console.log(message.body);
-        switch(message.body.msg_type) {
-          case 'DATA_MSG':
-            dispatch({
-              type: actions.DATA_FROM_SERVER_FULLFIELD,
-              payload: message.body
-            });
-            break;
-          case 'CMD_MSG':
-            dispatch({
-              type: actions.CMD_FROM_SERVER_FULLFIELD,
-              payload: message.body
-            });
-            break;
-          case 'EVT_MSG':
-            dispatch({
-              type: actions.EVT_FROM_SERVER_FULLFIELD,
-              payload: message.body
-            });
-            break;
-          default:
-          //have to do default action
-            dispatch({
-              type: actions.DATA_FROM_SERVER_FULLFIELD,
-              payload: message.body
-            });
-            break;
-        }
+    if (Object.keys(keycloak).length !== 0) {
+      eb = new EventBus(store.getState().setup.config.REACT_APP_VERTX_URL + "?token=" + keycloak.token);
+      return dispatch => {
+        eb.onopen = () => {
+          eb.registerHandler('address.outbound', (err, message) => {
+            if (err) {
+              console.log(err);
+            }
+            console.log(message.body);
+            switch(message.body.msg_type) {
+              case 'DATA_MSG':
+                dispatch({
+                  type: actions.DATA_FROM_SERVER_FULLFIELD,
+                  payload: message.body
+                });
+                break;
+              case 'CMD_MSG':
+                dispatch({
+                  type: actions.CMD_FROM_SERVER_FULLFIELD,
+                  payload: message.body
+                });
+                break;
+              case 'EVT_MSG':
+                dispatch({
+                  type: actions.EVT_FROM_SERVER_FULLFIELD,
+                  payload: message.body
+                });
+                break;
+              default:
+                //have to do default action
+                dispatch({
+                  type: actions.DATA_FROM_SERVER_FULLFIELD,
+                  payload: message.body
+                });
+                break;
+            }
 
-      });
-     }
+          });
+        }
+      }
+    }
   }
+
+  return dispatch => {}
 }
 export function sendInitialEvent(token) {
   const data = {
@@ -54,7 +58,7 @@ export function sendInitialEvent(token) {
   },
     'msg_type': 'EVT_MSG',
     'event_type': 'INITIAL_LAYOUT'
-  
+
   };
 
   return dispatch => {
@@ -106,7 +110,7 @@ export function sendAnswer(item, value) {
     };
      Answer.items.push(eachItem);
   }
-  
+
   console.log("Answer", Answer);
   return dispatch => {
     eb.publish("address.inbound", {

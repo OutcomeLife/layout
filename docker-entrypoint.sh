@@ -2,6 +2,7 @@
 
 GENNY_PROP_FILE=/usr/share/nginx/html/genny.properties.json
 PACKAGE_FILE=/usr/share/nginx/html/package.json
+KEYCLOAK_JSON=/usr/share/nginx/html/keycloak.json
 
 #echo "module.exports = {"  > $GENNY_PROP_FILE
 echo "{" > $GENNY_PROP_FILE
@@ -38,6 +39,12 @@ else
    NEW_LINE="homepage": "$REACT_APP_HOSTNAME",
    change_line $OLD_LINE_KEY $NEW_LINE $PACKAGE_FILE
 fi
-
+if [ -z "${REACT_APP_KEYCLOAK_URL}" ]; then
+   version="latest"
+else
+   OLD_LINE_KEY="auth-server-url": "http://localhost:8180/auth",
+   NEW_LINE="homepage": "$REACT_APP_KEYCLOAK_URL",
+   change_line $OLD_LINE_KEY $NEW_LINE $KEYCLOAK_JSON
+fi
 
 nginx -g "daemon off;"
