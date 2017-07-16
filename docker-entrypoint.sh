@@ -4,6 +4,8 @@ GENNY_PROP_FILE=/usr/share/nginx/html/genny.properties.json
 PACKAGE_FILE=/usr/share/nginx/html/package.json
 KEYCLOAK_JSON=/usr/share/nginx/html/keycloak.json
 
+cp -f /tmp/realm/keycloak.json /usr/share/nginx/html/keycloak.json
+
 #echo "module.exports = {"  > $GENNY_PROP_FILE
 echo "{" > $GENNY_PROP_FILE
 # update the genny.properties.json file with env
