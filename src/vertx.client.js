@@ -1,7 +1,7 @@
 
 import EventBus from 'vertx3-eventbus-client';
 
-var eb = new EventBus("http://192.168.64.7:8081/eventbus/");
+var eb = new EventBus("http://localhost:8081/eventbus/");
 
 eb.onopen = function() {
   // set a handler to receive a message

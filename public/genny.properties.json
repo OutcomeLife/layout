@@ -1,4 +1,7 @@
 {
-    "REACT_APP_QWANDA_API_URL": "https://qwanda-service.outcome-hub.com",
-    "REACT_APP_VERTX_URL": "http://192.168.64.7:8081/eventbus"
+    "REACT_APP_BUILD_DATE": "2017-07-12",
+    "REACT_APP_PROJECT_NAME": "Docker Genny",
+    "REACT_APP_QWANDA_API_URL": "http://localhost:8280",
+    "REACT_APP_VERSION_NUMBER": "0.5",
+    "REACT_APP_VERTX_URL": "http://localhost:8081/eventbus"
 }
